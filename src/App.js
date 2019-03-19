@@ -1,17 +1,22 @@
-import React, { Component } from 'react';
+import React, {useContext} from 'react'
+import {MyContext} from "./components/MyProvider/MyProvider"
 
-import './App.css';
-
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-       <div>
-         <h1>Hello World</h1>
-       </div>
+export default function App() {
+  const context = useContext(MyContext)
+  return (
+      <div className="person">
+            <React.Fragment>
+            {console.log(context)}
+              {/* <p>Age: {context.age}</p>
+              <p>Name: {context.name}</p>
+              <button onClick={context.growAYearOlder}>🍰🍥🎂</button> */}
+            </React.Fragment>
       </div>
-    );
-  }
+    )
 }
 
-export default App;
+
+
+
+
+
