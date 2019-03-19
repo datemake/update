@@ -21,20 +21,20 @@ const theme = createMuiTheme({
             fontFamily: 'Vollkorn',
         },
         h2: {
-            fontFamily: 'Lobster'
+            fontFamily: ['Lobster']
         },
         h3: {
-            fontFamily: 'Lobster'
+            fontFamily: ['Lobster']
         },
         h4: {
             fontFamily: ['Vollkorn', 'serif'],
-            color: '#FFFFFF',
+            color: '#000000',
             fontWeight: "900",
             textTransform: "none"
         },
         h5: {
             fontFamily: ['Vollkorn', 'serif'],
-            color: '#FFFFFF',
+            color: '#000000',
             fontWeight: "900",
             textTransform: "none"
         },
