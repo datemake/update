@@ -19,10 +19,10 @@ app.use(
  })
 );
 
-// massive(process.env.CONNECTION_STRING).then(db => {
-//     app.set("db", db);
-//     console.log("Database connected");
-//    });
+massive(process.env.CONNECTION_STRING).then(db => {
+    app.set("db", db);
+    console.log("Database connected");
+   });
 
 
 
