@@ -1,0 +1,55 @@
+.main-form-div{
+    background-image: url("../../photos/cityDark.jpg");
+    background-size: cover;
+    /* display: flex; */
+    
+    /* align-items: center; */
+    height: 100%;
+  
+}
+
+.form-activity-inner-card{
+    display: flex;
+    /* flex-direction: column; */
+    padding-right:10vh;
+    padding-left:10vh;
+    height: 100%;
+    
+
+}
+
+.form-activity-title{
+    display: flex;
+    justify-content: center;
+}
+
+
+.form-activity-textfield{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.activity-card-content{
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 10vh;}
+
+    .card-activity-results-button{
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        margin-top:3vh;
+   }
+
+
+
+.form-link{
+    text-decoration: none;
+}
+
+.form-activity-search-results-div{
+    height: 30vh;
+}
