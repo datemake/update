@@ -1,6 +1,16 @@
 .container {
-    
 }
 .main {
-    /* display: flex; */
+  /* display: flex; */
+}
+.main2 img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+.numbers {
+    color: #ff4081;
+}
+.user_info {
+    display: "flex",
 }

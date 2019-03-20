@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 //material-ui
 import PropTypes from "prop-types";
@@ -9,6 +10,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Textfield from "@material-ui/core/TextField";
 
 //css
 import "./form.css";
@@ -19,7 +21,7 @@ import TextfieldFL from "./TextfieldFL";
 const styles = {
   card: {
     width: 1000,
-    height: 555,
+    height: 575,
     marginTop: 65,
     marginBottom: 65
   },
@@ -31,44 +33,78 @@ const styles = {
 
 function FormLocation(props) {
   const { classes } = props;
+  const [location, SetLocation] = useState("");
+  const [data, setData] = useState([])
+
+  const getLocation = () => {
+    axios
+      .get(
+        `https://maps.googleapis.com/maps/api/geocode/json?key=${
+          process.env.REACT_APP_GOOGLE
+        }&address=${location}`
+      )
+      .then(response => {
+        console.log(response)
+        setData(response)
+        console.log(data)
+      })
+
+  };
+  
 
   return (
+    
     <div className="main-form-div">
       <Card className={classes.card} style={{ backgroundColor: "#white" }}>
         <div className="form-inner-card">
           <CardContent className="card-content">
-            <Typography variant="h3" paragraph="true" className="main-question">
-              Enter your location<br />
+            <Typography variant="h3" className="main-question">
+              Enter your location
+              <br />
               <br />
             </Typography>
             <Typography
               variant="h5"
-              paragraph="true"
               className="main-question"
               style={{ fontWeight: 200 }}
             >
-              Choose a starting point. You can enter a city, a zipcode, or even your home address.
+              Choose a starting point. You can enter a city, a zipcode, or even
+              your home address.
               <br />
               <br />
             </Typography>
-            <TextfieldFL />
+            <Textfield
+              id="outlined-bare"
+              className={classes.textField}
+              //   defaultValue="string"
+              //  placeholder={placeholder}
+              margin="normal"
+              variant="outlined"
+              style={{ width: 700, height: 30 }}
+              onChange={e => SetLocation(e.target.value)}
+            />
           </CardContent>
           <CardActions className="card-button">
             <Link to={"/create-date-activity"} className="form-link">
               <Button
+                onClick={getLocation}
                 size="small"
-                variant="raised"
+                variant="contained"
                 color="primary"
                 style={{ color: "white", fontWeight: 600, fontSize: 16 }}
               >
                 Next
               </Button>
+              {data.map(item => (
+        <div key={item}>{item}</div>
+      ))}
             </Link>
           </CardActions>
         </div>
       </Card>
     </div>
   );
+ 
 }
 
 FormLocation.propTypes = {

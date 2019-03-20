@@ -20,7 +20,7 @@ import Profile from "../src/components/Profile/Profile"
 
 //search
 
-import Search from "../src/components/search/Search"
+// import Search from "../src/components/search/Search"
 
 export default (
 
@@ -32,7 +32,7 @@ export default (
       <Route path="/create-date-memory/" exact component={FormMemory} />
       <Route path="/create-date-review/" exact component={FormReview} />
       <Route path="/profile" exact component={Profile} />
-      <Route path="/search" exact component={Search} />
+      {/* <Route path="/search" exact component={Search} /> */}
       <Route path="/" exact component={Landing} />
 
 
