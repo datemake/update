@@ -1,5 +1,8 @@
 import React, {useContext,useState} from 'react'
 import routes from "./routes"
+
+import Header from './components/header/Header'
+
 const MyContext = React.createContext();
 export default function App() {
   // const context = useContext(MyContext)
@@ -15,6 +18,7 @@ export default function App() {
           
       <div className="person">
             <React.Fragment>
+              <Header/>
               {routes}
             {/* {console.log(context)} */}
               <p>Age: {age}</p>
