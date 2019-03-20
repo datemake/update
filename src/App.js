@@ -21,8 +21,8 @@ export default function App() {
               <Header/>
               {routes}
             {/* {console.log(context)} */}
-              <p>Age: {age}</p>
-              <p>Name: {name}</p>
+              {/* <p>Age: {age}</p>
+              <p>Name: {name}</p> */}
               {/* <button onClick={growAYearOlder}>🍰🍥🎂</button> */}
             </React.Fragment>
       </div>

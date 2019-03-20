@@ -1,45 +1,55 @@
 import React from "react";
-import "./Profile.css"
+import "./Profile.css";
 
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
 const styles = {
-    card: {
-      maxWidth: 345,
-    },
-    media: {
-      height: 140,
-    },
-  };
- function Profile(props) {
-    const { classes } = props;
+  card: {
+    width: "60vw",
+    margin: "0 auto",
+    maxWidth: 545,
+    dispplay: "flex",
+    marginTop: "20vh"
+  },
+  media: {
+    height: 140
+  },
+  main: {
+    // display: "flex",
+    // flexDirection: "row"
+  }
+};
+function Profile(props) {
+  const { classes } = props;
   return (
-      <Card className={classes.card}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Lizard
-          </Typography>
-          <Typography component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
+    <Card className={classes.card}>
+        <CardActionArea>
+      <div className="main">
+          {/* <CardMedia
+            className={classes.media}
+            image="https://cdn.inquisitr.com/wp-content/uploads/2019/03/selena-gomez-4.jpg"
+            title="Contemplative Reptile"
+          /> */}
+          <img src="https://cdn.inquisitr.com/wp-content/uploads/2019/03/selena-gomez-4.jpg" />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              Selena
+            </Typography>
+            <Typography component="p">
+              Lizards are a widespread group of squamate reptiles, with over
+              6,000 species, ranging across all continents except Antarctica
+            </Typography>
+          </CardContent>
+      </div>
+        </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
           Share
@@ -102,7 +112,7 @@ const styles = {
   );
 }
 Profile.propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
-  
-  export default withStyles(styles)(Profile);
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(Profile);
