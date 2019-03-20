@@ -13,102 +13,68 @@ import Typography from "@material-ui/core/Typography";
 
 const styles = {
   card: {
-    width: "60vw",
-    margin: "0 auto",
-    maxWidth: 545,
-    dispplay: "flex",
-    marginTop: "20vh"
+    minWidth: 275,
+    // marginBottom: "150px",
+    // marginTop: "150px",
+    display: "flex"
   },
-  media: {
-    height: 140
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  title: {
+    // fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
   },
   main: {
-    // display: "flex",
-    // flexDirection: "row"
+    width: "50%",
+    margin: " 0 auto",
+    display: "flex",
+    justifyContent: "space-between"
   }
 };
 function Profile(props) {
   const { classes } = props;
   return (
-    <Card className={classes.card}>
-        <CardActionArea>
-      <div className="main">
-          {/* <CardMedia
-            className={classes.media}
-            image="https://cdn.inquisitr.com/wp-content/uploads/2019/03/selena-gomez-4.jpg"
-            title="Contemplative Reptile"
-          /> */}
+    <div>
+     <Card className={classes.card}>
+      <CardContent className={classes.main}>
+        <div className="main2">
           <img src="https://cdn.inquisitr.com/wp-content/uploads/2019/03/selena-gomez-4.jpg" />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              Selena
-            </Typography>
-            <Typography component="p">
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
-            </Typography>
-          </CardContent>
-      </div>
-        </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
+        </div>
+        <div className="user_info">
+        <Typography className={classes.title} variant="h2"  color="textSecondary" gutterBottom>
+          Completed Dates: <span className="numbers">12</span>
+        </Typography>
+        <Typography className={classes.title} variant="h2"  color="textSecondary" gutterBottom>
+          Saved Dates: <span className="numbers">5</span>
+        </Typography>
+        </div>
+      </CardContent>
     </Card>
-    /* <div className="contaier">
-      <div className="profile">
-        <div className="user">
-          <div className="profile_picture">
-            <img src="" alt="" />
-          </div>
-          <div className="user_info">
-            <h4>Martha</h4>
-            <h5>member since 2018</h5>
-          </div>
+          
+        <Typography className={classes.title} variant="h2"  color="textSecondary" gutterBottom>
+          Saved Dates
+        </Typography>
+     <Card className={classes.card}>
+      <CardContent className={classes.main}>
+        <div className="main2">
+          <img src="https://cdn.inquisitr.com/wp-content/uploads/2019/03/selena-gomez-4.jpg" />
         </div>
-        <div className="date_summary">
-          <h2>Dates Complete: 12</h2>
-          <h2>Dates Created: 6</h2>
+        <div className="user_info">
+        <Typography className={classes.title} variant="h2"  color="textSecondary" gutterBottom>
+          Completed Dates: <span className="numbers">12</span>
+        </Typography>
+        <Typography className={classes.title} variant="h2"  color="textSecondary" gutterBottom>
+          Saved Dates: <span className="numbers">5</span>
+        </Typography>
         </div>
-      </div>
-
-      <div className="saved_dates">
-          <div className="saved_date_pic">
-            <img src="" alt="" />
-          </div>
-          <div className="saved_date_info">
-            <h2>Carnival Party</h2>
-            <div>
-              <img src="" alt="" />
-              <h5>Marky_34</h5>
-          </div>
-        </div>
-          <div className="saved_date_hearts" />
-      </div>
-
-      <div className="completed_dates">
-          <h1>Completed Dates</h1>
-        <div className="completed">
-          <div className="completed_date_pic">
-            <img src="" alt="" />
-          </div>
-          <div className="completed_date_info">
-            <h2>Neon Evening</h2>
-            <p className="date_paragraph">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Corporis, repudiandae voluptatem soluta ipsam ad ducimus obcaecati
-              magni molestias eum, provident facere quaerat ullam. A deserunt
-              harum quisquam, totam molestias est.
-            </p>
-          </div>
-          <div className="saved_date_hearts" />
-        </div>
-      </div>
-    </div> */
+      </CardContent>
+    </Card>
+    </div>
   );
 }
 Profile.propTypes = {
@@ -116,3 +82,54 @@ Profile.propTypes = {
 };
 
 export default withStyles(styles)(Profile);
+
+/* <div className="contaier">
+  <div className="profile">
+    <div className="user">
+      <div className="profile_picture">
+        <img src="" alt="" />
+      </div>
+      <div className="user_info">
+        <h4>Martha</h4>
+        <h5>member since 2018</h5>
+      </div>
+    </div>
+    <div className="date_summary">
+      <h2>Dates Complete: 12</h2>
+      <h2>Dates Created: 6</h2>
+    </div>
+  </div>
+
+  <div className="saved_dates">
+      <div className="saved_date_pic">
+        <img src="" alt="" />
+      </div>
+      <div className="saved_date_info">
+        <h2>Carnival Party</h2>
+        <div>
+          <img src="" alt="" />
+          <h5>Marky_34</h5>
+      </div>
+    </div>
+      <div className="saved_date_hearts" />
+  </div>
+
+  <div className="completed_dates">
+      <h1>Completed Dates</h1>
+    <div className="completed">
+      <div className="completed_date_pic">
+        <img src="" alt="" />
+      </div>
+      <div className="completed_date_info">
+        <h2>Neon Evening</h2>
+        <p className="date_paragraph">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          Corporis, repudiandae voluptatem soluta ipsam ad ducimus obcaecati
+          magni molestias eum, provident facere quaerat ullam. A deserunt
+          harum quisquam, totam molestias est.
+        </p>
+      </div>
+      <div className="saved_date_hearts" />
+    </div>
+  </div>
+</div> */

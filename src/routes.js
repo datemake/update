@@ -38,6 +38,8 @@ export default (
       <Route path="/search" exact component={Search} />
       {/* <Route path="/" exact component={Landing} /> */}
       <Route path="/date" exact component={DateLanding} />
+      {/* <Route path="/search" exact component={Search} /> */}
+      <Route path="/" exact component={Landing} />
 
 
   </Switch>
