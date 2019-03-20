@@ -18,8 +18,10 @@ const theme = createMuiTheme({
     },
     typography: {
         button: {
-            fontFamily: 'Vollkorn',
+            fontFamily: 'Vollkorn'
         },
+       
+        
         h2: {
             fontFamily: ['Lobster']
         },
@@ -39,7 +41,7 @@ const theme = createMuiTheme({
             textTransform: "none"
         },
         h6: {
-            fontFamily: 'Lato'
+            fontFamily: ['Vollkorn', 'serif']
         }
     }
 })
