@@ -53,7 +53,7 @@ const suggestions = [
 
 function renderInput(inputProps) {
   const { InputProps, classes, ref, ...other } = inputProps;
-  console.log(InputProps)
+  // console.log(InputProps)
   return (
     <TextField
       InputProps={{
@@ -157,12 +157,12 @@ class DownshiftMultiple extends React.Component {
   render() {
     const { classes } = this.props;
     const { inputValue, selectedItem } = this.state;
-    console.log(selectedItem)
+    // console.log(selectedItem)
     return (
       <div id='search_bar_div'>
         <ExpansionPanel style={{borderRadius: '0', width: '200px', minHeight: '56px', boxShadow: '0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12)'}}>
           <ExpansionPanelSummary expandIcon={<FilterList/>}>
-            <Typography className={classes.heading} style={{paddingTop: '10px'}}>Filter</Typography>
+            <Typography className={classes.heading} style={{paddingTop: '6px'}}>Filter</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <Downshift
