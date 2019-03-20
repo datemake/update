@@ -29,7 +29,7 @@ const styles = {
   }
 };
 
-function FormLanding(props) {
+function FormLocation(props) {
   const { classes } = props;
 
   return (
@@ -38,7 +38,7 @@ function FormLanding(props) {
         <div className="form-inner-card">
           <CardContent className="card-content">
             <Typography variant="h3" paragraph="true" className="main-question">
-              Create a Date! <br />
+              Enter your location<br />
               <br />
             </Typography>
             <Typography
@@ -47,15 +47,14 @@ function FormLanding(props) {
               className="main-question"
               style={{ fontWeight: 200 }}
             >
-              What would you like to call your date? Give it an eye-catching
-              name.
+              Choose a starting point. You can enter a city, a zipcode, or even your home address.
               <br />
               <br />
             </Typography>
             <TextfieldFL />
           </CardContent>
           <CardActions className="card-button">
-            <Link to={"/create-date-location"} className="form-link">
+            <Link to={"/create-date-activity"} className="form-link">
               <Button
                 size="small"
                 variant="raised"
@@ -72,8 +71,8 @@ function FormLanding(props) {
   );
 }
 
-FormLanding.propTypes = {
+FormLocation.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(FormLanding);
+export default withStyles(styles)(FormLocation);

@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
 const styles = theme => ({
-   
+ 
   });
 
 
@@ -22,9 +22,10 @@ return(
      id="outlined-bare"
      className={classes.textField}
    //   defaultValue="string"
+   placeholder={this.props.placeholder}
      margin="normal"
      variant="outlined"
-     style={{width: 700, height: 30, backgroundColor: '#fff9c4'}}
+     style={{width: 700, height: 30}}
    />
  </form>
     </div>

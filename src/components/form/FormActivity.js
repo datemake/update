@@ -15,19 +15,20 @@ import "./form-activity.css";
 
 //other components
 import TextfieldFL from "./TextfieldFL";
+import ExpansionOneActivity from "./ExpansionOneActivity";
+import ExpansionTwoActivity from "./ExpansionTwoActivity";
 
 const styles = {
   card: {
     width: 1000,
-    height: 1455,
+    minheight: 1145,
     marginTop: 65,
     marginBottom: 65
   },
 
   title: {
     fontSize: 12
-  },
-
+  }
 };
 
 function FormActivity(props) {
@@ -37,16 +38,17 @@ function FormActivity(props) {
       <Card className={classes.card} style={{ backgroundColor: "#white" }}>
         <div className="form-activity-inner-card">
           <CardContent className="activity-card-content">
-          <div className="form-activity-title">
-            <Typography variant="h3" className="main-question" >
-              Choose your main activity <br />
-              <br />
-            </Typography>
+            <div className="form-activity-title">
+              <Typography variant="h3" className="activity-main-question">
+                Describe your main activity <br />
+                <br />
+           
+              </Typography>
             </div>
+            <div  className="activity-instructions">
             <Typography
               variant="h5"
-            
-              className="main-question"
+             
               style={{ fontWeight: 200 }}
             >
               Search for a place. Type in the exact name of the location, or see
@@ -54,58 +56,62 @@ function FormActivity(props) {
               "Miniature golfing."
               <br />
               <br />
+
             </Typography>
-            <div className="form-activity-textfield">
-            <TextfieldFL />
-       
             </div>
-            <CardActions className="card-activity-results-button">
-            <Button size="small" variant="text" color="primary" style={{color: 'primary', fontWeight: 600, fontSize: 16}} >See Results</Button>
-           
-    
-      
-       </CardActions>
+            <div className="form-activity-textfield">
+              <TextfieldFL placeholder="Search term or establishment name"/>
+            </div>
+
+     
+     <br />
+            <br />
+            <br />
+            <ExpansionOneActivity/>
             <br />
               <br />
-              <div className="form-activity-search-results-div"></div>
-          <Typography
-            variant="h5"
-      
-            className="main-question"
-            style={{ fontWeight: 200 }}
-          >
-            Choose a picture to represent your activity.
-            <br />
-            <br />
-        
-          </Typography>
-<div className="form-activity-search-results-div"></div>
+         
+            <div className="form-activity-search-results-div" />
             <Typography
-            variant="h5"
-      
-            className="main-question"
-            style={{ fontWeight: 200 }}
-          >
-            Write one descriptive sentence about the activity to give users the main gist of what they will do on this part of the date.
-            <br />
-            <br />
-        
-          </Typography>
-          <div className="form-activity-textfield">
-          <TextfieldFL />
-          </div>
-          <CardActions className="card-button">
-            <Link to={"/create-date-activity"} className="form-link">
-              <Button
-                size="small"
-                variant="contained"
-                color="primary"
-                style={{ color: "white", fontWeight: 600, fontSize: 16 }}
-              >
-                Next
-              </Button>
-            </Link>
-          </CardActions>
+              variant="h5"
+              className="activity-text-choose-picture"
+              style={{ fontWeight: 200 }}
+            >
+              Choose a photo to represent your activity.
+              <br />
+              <br />
+              {/* <div className="form-activity-search-results-div" /> */}
+              <ExpansionTwoActivity/>
+              <br />
+              <br />
+            </Typography>
+            {/* <div className="form-activity-search-results-div" /> */}
+            <Typography
+              variant="h5"
+              className="main-question"
+              style={{ fontWeight: 200 }}
+            >
+              Write one descriptive sentence about the activity to give users
+              the main gist of what they will do on the activity part of the
+              date.
+              <br />
+              <br />
+            </Typography>
+            <div className="form-activity-textfield">
+              <TextfieldFL />
+            </div>
+            <CardActions className="card-button">
+              <Link to={"/create-date-food"} className="form-link">
+                <Button
+                  size="small"
+                  variant="raised"
+                  color="primary"
+                  style={{ color: "white", fontWeight: 600, fontSize: 16 }}
+                >
+                  Next
+                </Button>
+              </Link>
+            </CardActions>
           </CardContent>
         </div>
       </Card>

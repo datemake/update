@@ -5,6 +5,7 @@
     
     /* align-items: center; */
     height: 100%;
+    
   
 }
 
@@ -13,19 +14,42 @@
     /* flex-direction: column; */
     padding-right:10vh;
     padding-left:10vh;
-    height: 100%;
+   
+    
     
 
+}
+
+
+
+
+
+
+
+
+
+.see-results-button{
+display: flex;
+justify-content: flex-end;
+width: 100%;
 }
 
 .form-activity-title{
     display: flex;
     justify-content: center;
+   
 }
 
 
 .form-activity-textfield{
     display: flex;
+    align-items: center;
+    flex-direction: column;
+   
+}
+
+.form-memory-textfield{
+       display: flex;
     align-items: center;
     flex-direction: column;
 }
@@ -51,5 +75,11 @@
 }
 
 .form-activity-search-results-div{
-    height: 30vh;
+    
+}
+
+.form-checkbox{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 3vw;
 }
