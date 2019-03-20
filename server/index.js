@@ -6,6 +6,8 @@ const session = require("express-session");
 const bcrypt = require("bcryptjs");
 const app = express();
 
+const {nameDate} = require('./controller/dates/createDate')
+
 app.use(json());
 
 app.use(
@@ -25,6 +27,9 @@ massive(process.env.CONNECTION_STRING).then(db => {
    });
 
 
+
+//form endpoints
+app.post("/api/nameDate", nameDate)
 
 
    app.listen(4000, () => {

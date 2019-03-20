@@ -9,6 +9,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "dotenv": "^7.0.0",
+    "downshift": "^3.2.7",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "massive": "^5.7.7",

@@ -1,5 +1,5 @@
 import React from 'react';
-import Search from '../Search/Search'
+import SearchBar from './SearchBar'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button'
 import SearchIcon from '@material-ui/icons/Search';
@@ -28,7 +28,7 @@ class Search extends React.Component {
             }}
           />
 
-        <Search/>
+        <SearchBar/>
         <Button variant='contained' color='primary' style={{borderRadius: '0', maxHeight: '56px'}}>Search</Button>
       </div>
     );

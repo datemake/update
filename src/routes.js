@@ -4,6 +4,9 @@ import { Switch, Route } from "react-router-dom";
 //authorization
 
 //date
+import DateLanding from "../src/components/date/DateLanding"
+
+
 
 //form
 import FormLanding from "../src/components/form/FormLanding"
@@ -33,7 +36,8 @@ export default (
       <Route path="/create-date-review/" exact component={FormReview} />
       <Route path="/profile" exact component={Profile} />
       <Route path="/search" exact component={Search} />
-      <Route path="/" exact component={Landing} />
+      {/* <Route path="/" exact component={Landing} /> */}
+      <Route path="/date" exact component={DateLanding} />
 
 
   </Switch>

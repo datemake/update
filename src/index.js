@@ -17,8 +17,10 @@ const theme = createMuiTheme({
         }
     },
     typography: {
+        useNextVariants: true,
         button: {
-            fontFamily: 'Vollkorn'
+            fontFamily: 'Vollkorn',
+            
         },
        
         

@@ -5,6 +5,7 @@
     
     /* align-items: center; */
     height: 100%;
+    padding-top: 10vh;
     
   
 }
@@ -14,6 +15,7 @@
     /* flex-direction: column; */
     padding-right:10vh;
     padding-left:10vh;
+    
    
     
     
