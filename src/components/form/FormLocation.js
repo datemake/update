@@ -56,7 +56,7 @@ function FormLocation(props) {
       // })
   };
   
-
+console.log(props)
   return (
     
     <div className="main-form-div">
@@ -119,7 +119,8 @@ FormLocation.propTypes = {
 const mapStateToProps = state => {
   return {
   
-    locationData: state.locationData
+    locationData: state.locationData,
+    dateName: state.dateName
   };
 };
 

@@ -9,7 +9,16 @@ const logger = createLogger({
   diff: true
 });
 
-const middlewares = applyMiddleware(thunk, logger);
-const store = createStore(reducer, middlewares);
+// const middlewares = applyMiddleware(applyMiddleWare, logger);
+// const store = createStore(reducer, middlewares);
 
-export default store;
+// export default store;
+
+// import { createStore, applyMiddleware, combineReducers } from "redux";
+// import reducer from "./userReducer";
+// import postReducer from "./postReducer";
+// import promiseMiddleware from "redux-promise-middleware";
+
+// const reducers = combineReducers({ reducer, postReducer });
+
+// export default createStore(reducers, applyMiddleware(promiseMiddleware));
