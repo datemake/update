@@ -1,32 +1,68 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import firebase from 'firebase/app';
+import 'firebase/auth'
+import '../../firebase'
+import './firebaseui-styling.global.css'
+
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar'
 import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button'
-import TextField from '@material-ui/core/TextField'
-import {createMuiTheme, MuiThemeProvider} from '@material-ui/core/styles';
 import AddBox from '@material-ui/icons/AddBox'
 import {Link} from 'react-router-dom'
 
 import './header.css'
 
-const testTheme = createMuiTheme({
-    palette: {
-        primary: {
-            main: '#EF4E4E',
-            contrastText: '#fff'
-        }
-    },
-    typography: {
-        useNextVariants: true,
-    }
-    
-})
+const uiConfig = {
+    // Popup signin flow rather than redirect flow.
+    signInFlow: 'popup',
+    // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
+    signInSuccessUrl: '/',
+    // We will display Google and Facebook as auth providers.
+    signInOptions: [
+        firebase.auth.EmailAuthProvider.PROVIDER_ID,
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.FacebookAuthProvider.PROVIDER_ID
+    ],
+    callbacks: {
+        // Avoid redirects after sign-in.
+        signInSuccessWithAuthResult: () => false
+      },
+      CredentialHelper: 'none'
+  }
 
 const Header = () => {
 
-    const [loginOpen, setLoginOpen] = useState(false);
-    const [signupOpen, setSignupOpen] =  useState(false)
+    const [open, setOpen] = useState(true);
+    const [signedIn, setSignedIn] = useState(false)
+    const [user, setUser] = useState('')
+    
+    useEffect(() => {
+        checkUser()
+    })
+
+    function checkUser(){
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              setSignedIn(true)
+              setOpen(false)
+              console.log(user)
+            } else {
+              setSignedIn(false)
+            }
+          })
+    }
+
+    function logout(){
+        firebase.auth().signOut().catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorCode, errorMessage)
+          });
+    }
 
     return(
         <div>
@@ -42,79 +78,26 @@ const Header = () => {
                 </div>
             </Link>
             <Dialog
-            open={loginOpen}
-            onClose={() => setLoginOpen(false)}
+                open={open}
+                onClose={() => setOpen(false)}
             >
-                <MuiThemeProvider theme={testTheme}>
-                    <TextField
-                        id="outlined-name"
-                        label="username"
-                        // className={classes.textField}
-                        // value={this.state.name}
-                        // onChange={this.handleChange('name')}
-                        margin="normal"
-                        variant="outlined"
-                        style={{marginLeft: '100px', marginRight: '100px', marginTop: '50px'}}
-                        
-                    />
-                    <TextField
-                        id="outlined-name"
-                        label="password"
-                        type='password'
-
-                        margin="normal"
-                        variant="outlined"
-                        style={{marginLeft: '100px', marginRight: '100px'}}
-                    />
-                </MuiThemeProvider>
+                <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
                 <div className='button_div'>
-                    <Button onClick={() => setLoginOpen(false)} color="primary" style={{fontWeight: '900'}}>
+                    <Button onClick={() => setOpen(false)} color="primary">
                     Cancel
-                    </Button>
-                    <Button variant='contained' onClick={() => setLoginOpen(false)} color="primary" style={{fontWeight: '900'}}>
-                    Login
                     </Button>
                 </div>
             </Dialog>
-            <Dialog
-            open={signupOpen}
-            onClose={() => setSignupOpen(false)}
-            >
-                <MuiThemeProvider theme={testTheme}>
-                    <TextField
-                        id="outlined-name"
-                        label="username"
-                        // className={classes.textField}
-                        // value={this.state.name}
-                        // onChange={this.handleChange('name')}
-                        margin="normal"
-                        variant="outlined"
-                        style={{marginLeft: '100px', marginRight: '100px', marginTop: '50px'}}
-                        
-                    />
-                    <TextField
-                        id="outlined-name"
-                        label="password"
-                        type='password'
-
-                        margin="normal"
-                        variant="outlined"
-                        style={{marginLeft: '100px', marginRight: '100px'}}
-                    />
-                </MuiThemeProvider>
-                <div className='button_div'>
-                    <Button onClick={() => setSignupOpen(false)} color="primary">
-                    Cancel
-                    </Button>
-                    <Button variant='contained' onClick={() => setSignupOpen(false)} color="primary">
-                    Login
-                    </Button>
-                </div>
-            </Dialog>
-            <div id='loginSignup'>
-                <Typography variant='h4' style={{color: 'white', borderRight: '2px solid white', paddingRight: '10px', cursor: 'pointer'}} onClick={() => setLoginOpen(true)}>Login</Typography>
-                <Typography variant='h4' style={{color: "#EF4E4E", fontFamily: 'Lobster', fontSize: '200%', fontWeight: 'bold', marginLeft: '10px', cursor: 'pointer'}} onClick={() => setSignupOpen(true)}>Signup</Typography>
-            </div>
+            {signedIn === true
+                    ?
+                        <Typography variant='h4'>Signed in as {user}</Typography>
+                    :
+                        <div id='loginSignup'>
+                            <Button style={{color: 'white'}} onClick={() => logout()}>Logout</Button>
+                            <Typography variant='h4' style={{color: 'white', borderRight: '2px solid white', paddingRight: '10px', cursor: 'pointer'}} onClick={() => setOpen(true)}>Login</Typography>
+                            <Typography variant='h4' style={{color: "#EF4E4E", fontFamily: 'Lobster', fontSize: '200%', fontWeight: 'bold', marginLeft: '10px', cursor: 'pointer'}} onClick={() => setOpen(true)}>Signup</Typography>
+                        </div>
+                }
         </AppBar>
 
     </div>
