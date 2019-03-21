@@ -1,12 +1,11 @@
-.main-form-div{
+.main-form-activity-div{
     background-image: url("../../photos/cityDark.jpg");
     background-size: cover;
-    /* display: flex; */
-    
-    /* align-items: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100%;
     padding-top: 10vh;
-    
   
 }
 
@@ -16,6 +15,7 @@
     padding-right:10vh;
     padding-left:10vh;
     
+  
    
     
     

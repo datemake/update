@@ -35,7 +35,7 @@ const styles = {
 function FormActivity(props) {
   const { classes } = props;
   return (
-    <div className="main-form-div">
+    <div className="main-form-activity-div">
       <Card className={classes.card} style={{ backgroundColor: "#white" }}>
         <div className="form-activity-inner-card">
           <CardContent className="activity-card-content">
@@ -52,7 +52,7 @@ function FormActivity(props) {
              
               style={{ fontWeight: 200 }}
             >
-              Search for a place. Type in the exact name of the location, or see
+              Search for a place for your main date activity. Type in the exact name of the establishment, or see
               a list of results based on your search term. For example:
               "Miniature golfing."
               <br />

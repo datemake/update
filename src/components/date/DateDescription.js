@@ -13,7 +13,6 @@ import Typography from "@material-ui/core/Typography";
 //css
 import "./date.css"
 
-
 const styles = {
     card: {
       width: 700,
@@ -25,11 +24,9 @@ const styles = {
     title: {
       fontSize: 12
     },
- 
-    
+
   };
   
-
 function DateDescription(props) {
     const { classes } = props;
     

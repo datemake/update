@@ -37,13 +37,14 @@ const styles = {
 function FormLanding(props) {
   const { classes } = props;
   const [name,SetName ] = useState("")
-
+  
 
   const nameDate=()=>{
     console.log(name)
     axios.post("/api/nameDate", {name})
     }
     
+    console.log(props)
 
   return (
     <div className="main-form-div">

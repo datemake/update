@@ -36,7 +36,7 @@ const styles = {
 function FormMemory(props) {
   const { classes } = props;
   return (
-    <div className="main-form-div">
+    <div className="main-form-activity-div">
       <Card className={classes.card} style={{ backgroundColor: "#white" }}>
         <div className="form-activity-inner-card">
           <CardContent className="activity-card-content">
