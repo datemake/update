@@ -1,16 +1,73 @@
-.container {
+.profile-component{
+  background-image: url("../../photos/amusementPark.jpg");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  align-items: center;
+
+  /* padding-right:10vw;
+  padding-left:10vw; */
 }
-.main {
-  /* display: flex; */
+
+
+/* 
+.main-date-div {
+  background-image: url("../../photos/abstractBlur.jpg");
+  background-size: cover;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  padding-right:10vw;
+  padding-left:10vw;
+} */
+
+.profile-user-card{
+    display: flex;
+    flex-direction: column;
+    
+    padding-right:10vh;
+    padding-left:10vh;
+    height: 100%;
+    justify-content: center;
 }
-.main2 img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
+
+.profile-user-card-content{
+    display: flex;
+    justify-content: space-around;
+  
+    /* align-items: center; */
+    /* justify-content: center; */
+  
 }
-.numbers {
-    color: #ff4081;
+
+.profile-user-card-text{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 70vw;
 }
-.user_info {
-    display: "flex",
+
+.profile-user-card-text-inner{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; 
+  width: 30vw;
+}
+
+.profile-user-avatar{
+  margin-right: 5vw;
+}
+
+.dates-completed{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 25vw;
+
+}
+
+.dates-completed-num{
+margin-left: 5vw;
 }
