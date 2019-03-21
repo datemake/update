@@ -15,7 +15,6 @@ import Textfield from "@material-ui/core/TextField";
 import "./form-activity.css";
 
 //other components
-import TextfieldFL from "./TextfieldFL";
 import ExpansionOneActivity from "./ExpansionOneActivity";
 import ExpansionTwoActivity from "./ExpansionTwoActivity";
 

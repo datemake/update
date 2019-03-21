@@ -16,7 +16,7 @@ import Textfield from "@material-ui/core/TextField";
 import "./form.css";
 
 //other components
-import TextfieldFL from "./TextfieldFL";
+
 
 const styles = {
   card: {
@@ -39,10 +39,10 @@ function FormLanding(props) {
   const [name,SetName ] = useState("")
   
 
-  const nameDate=()=>{
-    console.log(name)
-    axios.post("/api/nameDate", {name})
-    }
+  // const nameDate=()=>{
+  //   console.log(name)
+  //   axios.post("/api/nameDate", {name})
+  //   }
     
     console.log(props)
 
@@ -65,25 +65,25 @@ function FormLanding(props) {
               <br />
               <br />
             </Typography>
+            
+            {/* // As the user types in the name, we keep that state/name in redux as 'dateName' */}
             <Textfield
               id="outlined-bare"
               className={classes.textField}
-              //   defaultValue="string"
-              //  placeholder={placeholder}
+        
               value={name}
               margin="normal"
               variant="outlined"
               style={{ width: 700, height: 30 }}
               onChange={(e) => SetName(e.target.value)}
             />
-            {/* <TextfieldFL
-            onChange={onChange()}
-             /> */}
+         
           </CardContent>
           <CardActions className="card-button">
             <Link to={"/create-date-location"} className="form-link">
+
               <Button
-                onClick={nameDate}
+                // onClick={nameDate}
                 size="small"
                 variant="contained"
                 color="primary"
