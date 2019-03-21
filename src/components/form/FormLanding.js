@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 //material-ui
 import PropTypes from "prop-types";
@@ -9,6 +10,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Textfield from "@material-ui/core/TextField";
 
 //css
 import "./form.css";
@@ -19,7 +21,7 @@ import TextfieldFL from "./TextfieldFL";
 const styles = {
   card: {
     width: 1000,
-    height: 555,
+    height: 575,
     marginTop: 65,
     marginBottom: 65
   },
@@ -29,21 +31,32 @@ const styles = {
   }
 };
 
+
+
+
 function FormLanding(props) {
   const { classes } = props;
+  const [name,SetName ] = useState("")
+  
+
+  const nameDate=()=>{
+    console.log(name)
+    axios.post("/api/nameDate", {name})
+    }
+    
+    console.log(props)
 
   return (
     <div className="main-form-div">
       <Card className={classes.card} style={{ backgroundColor: "#white" }}>
         <div className="form-inner-card">
           <CardContent className="card-content">
-            <Typography variant="h3" paragraph="true" className="main-question">
+            <Typography variant="h3" className="main-question">
               Create a Date! <br />
               <br />
             </Typography>
             <Typography
               variant="h5"
-              paragraph="true"
               className="main-question"
               style={{ fontWeight: 200 }}
             >
@@ -52,13 +65,27 @@ function FormLanding(props) {
               <br />
               <br />
             </Typography>
-            <TextfieldFL />
+            <Textfield
+              id="outlined-bare"
+              className={classes.textField}
+              //   defaultValue="string"
+              //  placeholder={placeholder}
+              value={name}
+              margin="normal"
+              variant="outlined"
+              style={{ width: 700, height: 30 }}
+              onChange={(e) => SetName(e.target.value)}
+            />
+            {/* <TextfieldFL
+            onChange={onChange()}
+             /> */}
           </CardContent>
           <CardActions className="card-button">
             <Link to={"/create-date-location"} className="form-link">
               <Button
+                onClick={nameDate}
                 size="small"
-                variant="raised"
+                variant="contained"
                 color="primary"
                 style={{ color: "white", fontWeight: 600, fontSize: 16 }}
               >

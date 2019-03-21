@@ -1,5 +1,19 @@
 module.exports = {
-    createDate: (req,res) => {
+  nameDate: (req, res) => {
+    const db = req.app.get("db");
+    const {name} = req.body;
+    console.log(req.body);
+    db.name_date(name)
+    .then(response => res.status(200).json(response.pop()))
+    .catch(err => {
+      res.status(500).send({ errorMessage: "Something went wrong" });
+      console.log(err);
+    });
+  },
+  
+  
+  
+  createDate: (req,res) => {
         const db = req.app.get("db");
     const { food_id,activity_id,memory_id,user_id } = req.body;
     console.log(req.body);

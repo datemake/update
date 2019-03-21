@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { connect } from "react-redux";
+import { getUserLocation } from "../../ducks/reducer";
 
 //material-ui
 import PropTypes from "prop-types";
@@ -36,19 +38,22 @@ function FormLocation(props) {
   const [location, SetLocation] = useState("");
   const [data, setData] = useState([])
 
-  const getLocation = () => {
-    axios
-      .get(
-        `https://maps.googleapis.com/maps/api/geocode/json?key=${
-          process.env.REACT_APP_GOOGLE
-        }&address=${location}`
-      )
-      .then(response => {
-        console.log(response)
-        setData(response)
-        console.log(data)
-      })
 
+
+
+  const getLocation = () => {
+    props.getUserLocation(location)
+    // axios
+    //   .get(
+    //     `https://maps.googleapis.com/maps/api/geocode/json?key=${
+    //       process.env.REACT_APP_GOOGLE
+    //     }&address=${location}`
+    //   )
+      // .then(response => {
+      //   console.log(response)
+      //   setData(response)
+      //   console.log(data)
+      // })
   };
   
 
@@ -111,4 +116,13 @@ FormLocation.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(FormLocation);
+const mapStateToProps = state => {
+  return {
+  
+    locationData: state.locationData
+  };
+};
+
+// export default withStyles(styles)(FormLocation);
+
+export default connect(mapStateToProps,{getUserLocation})(withStyles(styles)(FormLocation));

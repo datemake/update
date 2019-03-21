@@ -9,6 +9,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Textfield from "@material-ui/core/TextField";
 
 //css
 import "./form-activity.css";
@@ -34,7 +35,7 @@ const styles = {
 function FormFood(props) {
   const { classes } = props;
   return (
-    <div className="main-form-div">
+    <div className="main-form-activity-div">
       <Card className={classes.card} style={{ backgroundColor: "#white" }}>
         <div className="form-activity-inner-card">
           <CardContent className="activity-card-content">
@@ -60,7 +61,17 @@ function FormFood(props) {
             </Typography>
             </div>
             <div className="form-activity-textfield">
-              <TextfieldFL placeholder="Search term or establishment name"/>
+              {/* <TextfieldFL placeholder="Search term or establishment name"/> */}
+              <Textfield
+               id="outlined-bare"
+     className={classes.textField}
+   //   defaultValue="string"
+  //  placeholder={placeholder}
+     margin="normal"
+     variant="outlined"
+     style={{width: 700, height: 30}}
+     
+            />
             </div>
 
      
@@ -96,7 +107,16 @@ function FormFood(props) {
               <br />
             </Typography>
             <div className="form-activity-textfield">
-              <TextfieldFL />
+            <Textfield
+               id="outlined-bare"
+     className={classes.textField}
+   //   defaultValue="string"
+  //  placeholder={placeholder}
+     margin="normal"
+     variant="outlined"
+     style={{width: 700, height: 30}}
+     
+            />
             </div>
             <CardActions className="card-button">
               <Link to={"/create-date-memory"} className="form-link">

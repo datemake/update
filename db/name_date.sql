@@ -1,0 +1,2 @@
+INSERT INTO DATES(date_name)
+VALUES($1);
