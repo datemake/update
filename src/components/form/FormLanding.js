@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
+import {connect} from "react-redux"
 import axios from "axios";
-
+import {getDateName} from "../../ducks/reducer"
 //material-ui
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
@@ -17,6 +18,7 @@ import "./form.css";
 
 //other components
 import TextfieldFL from "./TextfieldFL";
+// import { connect } from "http2";
 
 const styles = {
   card: {
@@ -45,6 +47,7 @@ function FormLanding(props) {
     }
     
     console.log(props)
+    const {dateName} = props
 
   return (
     <div className="main-form-div">
@@ -70,11 +73,10 @@ function FormLanding(props) {
               className={classes.textField}
               //   defaultValue="string"
               //  placeholder={placeholder}
-              value={name}
-              margin="normal"
+              /* value={dateName} */
               variant="outlined"
               style={{ width: 700, height: 30 }}
-              onChange={(e) => SetName(e.target.value)}
+              onChange={(e) => getDateName(e.target.value)}
             />
             {/* <TextfieldFL
             onChange={onChange()}
@@ -98,9 +100,15 @@ function FormLanding(props) {
     </div>
   );
 }
+const mapStateToProps = state => {
+  const {dateName} = state
+  return {
+    dateName
+  }
+}
 
 FormLanding.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(FormLanding);
+export default withStyles(styles)(connect(mapStateToProps,{getDateName})(FormLanding));
