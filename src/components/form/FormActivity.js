@@ -15,7 +15,7 @@ import Textfield from "@material-ui/core/TextField";
 import "./form-activity.css";
 
 //other components
-import TextfieldFL from "./TextfieldFL";
+
 import ExpansionOneActivity from "./ExpansionOneActivity";
 import ExpansionTwoActivity from "./ExpansionTwoActivity";
 
@@ -43,45 +43,37 @@ function FormActivity(props) {
               <Typography variant="h3" className="activity-main-question">
                 Describe your main activity <br />
                 <br />
-           
               </Typography>
             </div>
-            <div  className="activity-instructions">
-            <Typography
-              variant="h5"
-             
-              style={{ fontWeight: 200 }}
-            >
-              Search for a place for your main date activity. Type in the exact name of the establishment, or see
-              a list of results based on your search term. For example:
-              "Miniature golfing."
-              <br />
-              <br />
-
-            </Typography>
+            <div className="activity-instructions">
+              <Typography variant="h5" style={{ fontWeight: 200 }}>
+                Search for a place for your main date activity. Type in the
+                exact name of the establishment, or see a list of results based
+                on your search term. For example: "Miniature golfing."
+                <br />
+                <br />
+              </Typography>
             </div>
             <div className="form-activity-textfield">
               {/* <TextfieldFL placeholder="Search term or establishment name"/> */}
               <Textfield
-               id="outlined-bare"
-     className={classes.textField}
-   //   defaultValue="string"
-  //  placeholder={placeholder}
-     margin="normal"
-     variant="outlined"
-     style={{width: 700, height: 30}}
-    //  onChange={onChange}
-            />
+                id="outlined-bare"
+                className={classes.textField}
+                //  onChange={e => function from redux}
+
+                margin="normal"
+                variant="outlined"
+                style={{ width: 700, height: 30 }}
+              />
             </div>
 
-     
-     <br />
             <br />
             <br />
-            <ExpansionOneActivity/>
             <br />
-              <br />
-         
+            <ExpansionOneActivity />
+            <br />
+            <br />
+
             <div className="form-activity-search-results-div" />
             <Typography
               variant="h5"
@@ -92,7 +84,7 @@ function FormActivity(props) {
               <br />
               <br />
               {/* <div className="form-activity-search-results-div" /> */}
-              <ExpansionTwoActivity/>
+              <ExpansionTwoActivity />
               <br />
               <br />
             </Typography>
@@ -109,16 +101,15 @@ function FormActivity(props) {
               <br />
             </Typography>
             <div className="form-activity-textfield">
-            <Textfield
-               id="outlined-bare"
-     className={classes.textField}
-   //   defaultValue="string"
-  //  placeholder={placeholder}
-     margin="normal"
-     variant="outlined"
-     style={{width: 700, height: 30}}
-     
-            />
+              <Textfield
+                id="outlined-bare"
+                className={classes.textField}
+                //   defaultValue="string"
+                //  placeholder={placeholder}
+                margin="normal"
+                variant="outlined"
+                style={{ width: 700, height: 30 }}
+              />
             </div>
             <CardActions className="card-button">
               <Link to={"/create-date-food"} className="form-link">

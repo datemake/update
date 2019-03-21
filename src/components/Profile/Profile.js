@@ -11,6 +11,12 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
+
+//components
+import UserCard from "./UserCard"
+import SavedDates from "./SavedDates"
+import CompletedDates from "./CompletedDates"
+
 const styles = {
   card: {
     minWidth: 275,
@@ -39,8 +45,11 @@ const styles = {
 function Profile(props) {
   const { classes } = props;
   return (
-    <div>
-     <Card className={classes.card}>
+    <div className="profile-component">
+    <UserCard/>
+    <SavedDates/>
+    <CompletedDates/>
+     {/* <Card className={classes.card}>
       <CardContent className={classes.main}>
         <div className="main2">
           <img src="https://cdn.inquisitr.com/wp-content/uploads/2019/03/selena-gomez-4.jpg" />
@@ -54,26 +63,9 @@ function Profile(props) {
         </Typography>
         </div>
       </CardContent>
-    </Card>
+    </Card> */}
           
-        <Typography className={classes.title} variant="h2"  color="textSecondary" gutterBottom>
-          Saved Dates
-        </Typography>
-     <Card className={classes.card}>
-      <CardContent className={classes.main}>
-        <div className="main2">
-          <img src="https://cdn.inquisitr.com/wp-content/uploads/2019/03/selena-gomez-4.jpg" />
-        </div>
-        <div className="user_info">
-        <Typography className={classes.title} variant="h2"  color="textSecondary" gutterBottom>
-          Completed Dates: <span className="numbers">12</span>
-        </Typography>
-        <Typography className={classes.title} variant="h2"  color="textSecondary" gutterBottom>
-          Saved Dates: <span className="numbers">5</span>
-        </Typography>
-        </div>
-      </CardContent>
-    </Card>
+  
     </div>
   );
 }
