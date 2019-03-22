@@ -1,21 +1,28 @@
 import axios from "axios";
+const cors = require("cors")
+
+
 
 const initialState = {
   locationData: [],
+  location:"",
   date: [],
   dateName: "",
+
   //activities
   inputActivity: "",
   allMatchingActivityLocations: [],
   specificActivity: [],
   describeActivity: "",
   activityPhotoReference: [],
+
   //food
   inputFood: "",
   allMatchingFoodLocations: [],
   specificFood: [],
   describeFood: "",
   foodPhotoReference: [],
+
   //memory maker
   inputMemory: "",
   allMatchingMemoryLocations: [],
@@ -23,9 +30,10 @@ const initialState = {
   describeMemory: "",
   memoryPhotoReference: []
 };
-
+const INPUT_LOCATION = "INPUT_LOCATION"
 const GET_USER_LOCATION = "GET_USER_LOCATION";
 const GET_DATE_NAME = "GET_DATE_NAME";
+
 // user activities constants
 const INPUT_ACTIVITY = "INPUT_ACTIVITY";
 const GET_MATCHING_ACTIVITY_LOCATIONS = "GET_MATCHING_ACTIVITY_LOCATIONS";
@@ -53,15 +61,22 @@ export default function reducer(state = initialState, action) {
     case GET_DATE_NAME:
       console.log(action.type);
       return { ...state, dateName: action.payload };
+      case INPUT_LOCATION:
+      console.log(action.type);
+      return { ...state, location: action.payload };
 
     case `${GET_USER_LOCATION}_FULFILLED`:
       return { ...state, locationData: action.payload.data };
+
+
+
 
     //activity cases
     case INPUT_ACTIVITY:
       return { ...state, inputActivity: action.payload };
 
     case `${GET_MATCHING_ACTIVITY_LOCATIONS}_FULFILLED`:
+    console.log(action.payload.data)
       return {
         ...state,
         allMatchingActivityLocations: action.payload.data
@@ -121,7 +136,7 @@ export const getDateName = date => {
 };
 //initial get location
 export function getUserLocation(location) {
-  console.log(location);
+  console.log(location)
   return {
     type: GET_USER_LOCATION,
     payload: axios.get(
@@ -131,6 +146,15 @@ export function getUserLocation(location) {
     )
   };
 }
+
+export const inputLocation = location => {
+  console.log(location);
+  return {
+    type: INPUT_LOCATION,
+    payload: location
+  };
+};
+
 //activity functions
 export const inputActivity = activity => {
   console.log(activity);
@@ -140,17 +164,22 @@ export const inputActivity = activity => {
   };
 };
 
-export function getMatchingActivities(match) {
-  console.log(match);
+export function getMatchingActivities(activity, location) {
+  console.log(activity, location);
   return {
     type: GET_MATCHING_ACTIVITY_LOCATIONS,
     payload: axios.get(
-      `https://maps.googleapis.com/maps/api/geocode/json?key=${
+      `https://maps.googleapis.com/maps/api/place/textsearch/json?key=${
         process.env.REACT_APP_GOOGLE
-      }&address=${match}`
+      }&query=${activity}&location=${location}&radius=10000`,
+      {headers: {
+        "Access-Control-Allow-Origin": "*"
+
+      }}
     )
   };
 }
+
 export function getSpecificActivity(specific) {
   console.log(specific);
   return {
