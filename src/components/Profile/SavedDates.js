@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -29,7 +29,19 @@ const styles = {
   
 function SavedDates(props) {
     const { classes } = props;
-    
+    const [savedDates,setSavedDates] = useState([])
+
+    useEffect(() => {
+      const fetchData = async () => {
+        const result = await axios(
+          '/api/completedDates',
+        );
+        console.log(result.data)
+        setSavedDates(result.data);
+      };
+  
+      fetchData();
+    }, []);
 
 
 

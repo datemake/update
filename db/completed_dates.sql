@@ -1,0 +1,1 @@
+SELECT * from completeddates where user_id = $1;

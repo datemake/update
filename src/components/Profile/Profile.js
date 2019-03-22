@@ -1,6 +1,6 @@
-import React from "react";
+import React , {useState,useEffect} from "react";
 import "./Profile.css";
-
+import axios from "axios"
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -44,6 +44,20 @@ const styles = {
 };
 function Profile(props) {
   const { classes } = props;
+  const [profile,setProfile] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+        '/api/profile',
+      );
+      console.log(result.data)
+      setProfile(result.data);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="profile-component">
     <UserCard/>
