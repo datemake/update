@@ -5,10 +5,12 @@ const massive = require("massive");
 const session = require("express-session");
 const bcrypt = require("bcryptjs");
 const app = express();
+const cors = require("cors")
 
 const {nameDate} = require('./controller/dates/createDate')
 
 app.use(json());
+app.use(cors())
 
 app.use(
  session({

@@ -6,7 +6,9 @@ import {
   getMatchingActivities,
   getSpecificActivity,
   activityPhotoReference,
-  inputActivityDescription
+  inputActivityDescription, 
+  
+ 
 } from "../../ducks/reducer";
 //material-ui
 import PropTypes from "prop-types";
@@ -40,9 +42,10 @@ const styles = {
   }
 };
 
+
 function FormActivity(props) {
   const { classes } = props;
-  console.log(props);
+  
   return (
     <div className="main-form-activity-div">
       <Card className={classes.card} style={{ backgroundColor: "#white" }}>
@@ -79,7 +82,7 @@ function FormActivity(props) {
             <br />
             <br />
             <br />
-            <ExpansionOneActivity onClick={props.getMatchingActivities} />
+            <ExpansionOneActivity  />
             <br />
             <br />
 
@@ -93,7 +96,7 @@ function FormActivity(props) {
               <br />
               <br />
               {/* <div className="form-activity-search-results-div" /> */}
-              <ExpansionTwoActivity onClick={props.getSpecificActivity} />
+              <ExpansionTwoActivity />
               <br />
               <br />
             </Typography>
@@ -170,7 +173,9 @@ export default withStyles(styles)(
       getMatchingActivities,
       getSpecificActivity,
       activityPhotoReference,
-      inputActivityDescription
+      inputActivityDescription,
+   
+    
     }
   )(FormActivity)
 );

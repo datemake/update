@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
-import { getUserLocation } from "../../ducks/reducer";
+import { getUserLocation,inputLocation  } from "../../ducks/reducer";
 
 //material-ui
 import PropTypes from "prop-types";
@@ -34,11 +34,10 @@ const styles = {
 
 function FormLocation(props) {
   const { classes } = props;
-  const [location, SetLocation] = useState("");
   const [data, setData] = useState([]);
 
   const getLocation = () => {
-    props.getUserLocation(location);
+    props.getUserLocation(props.location);
   };
 
   console.log(props);
@@ -67,10 +66,10 @@ function FormLocation(props) {
               className={classes.textField}
               //   defaultValue="string"
               //  placeholder={placeholder}
+              onChange={(e) => props.inputLocation(e.target.value)}
               margin="normal"
               variant="outlined"
               style={{ width: 700, height: 30 }}
-              onChange={e => SetLocation(e.target.value)}
             />
           </CardContent>
           <CardActions className="card-button">
@@ -102,11 +101,12 @@ FormLocation.propTypes = {
 const mapStateToProps = state => {
   return {
     locationData: state.locationData,
-    dateName: state.dateName
+    dateName: state.dateName,
+    location: state.location
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getUserLocation }
+  { getUserLocation,inputLocation }
 )(withStyles(styles)(FormLocation));
