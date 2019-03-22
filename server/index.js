@@ -7,7 +7,7 @@ const bcrypt = require("bcryptjs");
 const app = express();
 const cors = require("cors")
 
-const {nameDate} = require('./controller/dates/createDate')
+const {nameDate, getMatchingActivities} = require('./controller/dates/createDate')
 const {getProfile,completedDates,savedDates} = require('./controller/profile')
 
 app.use(json());
@@ -33,6 +33,8 @@ massive(process.env.CONNECTION_STRING).then(db => {
 
 //form endpoints
 app.post("/api/nameDate", nameDate)
+
+app.post('/api/getMatchingActivites', getMatchingActivities)
 
 //profile endpoints
 app.get("/api/profile", getProfile)
