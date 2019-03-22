@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import {connect} from "react-redux"
+import { connect } from "react-redux";
 import axios from "axios";
-import {getDateName} from "../../ducks/reducer"
+import { getDateName } from "../../ducks/reducer";
 //material-ui
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
@@ -31,21 +31,12 @@ const styles = {
   }
 };
 
-
-
-
 function FormLanding(props) {
   const { classes } = props;
-  const [name,SetName ] = useState("")
-  
+  const [name, SetName] = useState("");
 
-  // const nameDate=()=>{
-  //   console.log(name)
-  //   axios.post("/api/nameDate", {name})
-  //   }
-    
-    console.log(props)
-    const {dateName} = props
+  console.log(props);
+  const { dateName } = props;
 
   return (
     <div className="main-form-div">
@@ -66,26 +57,22 @@ function FormLanding(props) {
               <br />
               <br />
             </Typography>
-            
+
             {/* // As the user types in the name, we keep that state/name in redux as 'dateName' */}
             <Textfield
               id="outlined-bare"
               className={classes.textField}
               //   defaultValue="string"
               //  placeholder={placeholder}
-              /* value={dateName} */
-        
-//               value={name}
+              //               value={name}
               margin="normal"
               variant="outlined"
               style={{ width: 700, height: 30 }}
-              onChange={(e) => getDateName(e.target.value)}
+              onChange={e => props.getDateName(e.target.value)}
             />
-         
           </CardContent>
           <CardActions className="card-button">
             <Link to={"/create-date-location"} className="form-link">
-
               <Button
                 // onClick={nameDate}
                 size="small"
@@ -103,14 +90,19 @@ function FormLanding(props) {
   );
 }
 const mapStateToProps = state => {
-  const {dateName} = state
+  const { dateName } = state;
   return {
     dateName
-  }
-}
+  };
+};
 
 FormLanding.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(connect(mapStateToProps,{getDateName})(FormLanding));
+export default withStyles(styles)(
+  connect(
+    mapStateToProps,
+    { getDateName }
+  )(FormLanding)
+);

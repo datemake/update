@@ -19,7 +19,6 @@ import "./form.css";
 
 //other components
 
-
 const styles = {
   card: {
     width: 1000,
@@ -36,29 +35,14 @@ const styles = {
 function FormLocation(props) {
   const { classes } = props;
   const [location, SetLocation] = useState("");
-  const [data, setData] = useState([])
-
-
-
+  const [data, setData] = useState([]);
 
   const getLocation = () => {
-    props.getUserLocation(location)
-    // axios
-    //   .get(
-    //     `https://maps.googleapis.com/maps/api/geocode/json?key=${
-    //       process.env.REACT_APP_GOOGLE
-    //     }&address=${location}`
-    //   )
-      // .then(response => {
-      //   console.log(response)
-      //   setData(response)
-      //   console.log(data)
-      // })
+    props.getUserLocation(location);
   };
-  
-console.log(props)
+
+  console.log(props);
   return (
-    
     <div className="main-form-div">
       <Card className={classes.card} style={{ backgroundColor: "#white" }}>
         <div className="form-inner-card">
@@ -101,15 +85,14 @@ console.log(props)
                 Next
               </Button>
               {data.map(item => (
-        <div key={item}>{item}</div>
-      ))}
+                <div key={item}>{item}</div>
+              ))}
             </Link>
           </CardActions>
         </div>
       </Card>
     </div>
   );
- 
 }
 
 FormLocation.propTypes = {
@@ -118,12 +101,12 @@ FormLocation.propTypes = {
 
 const mapStateToProps = state => {
   return {
-  
     locationData: state.locationData,
     dateName: state.dateName
   };
 };
 
-// export default withStyles(styles)(FormLocation);
-
-export default connect(mapStateToProps,{getUserLocation})(withStyles(styles)(FormLocation));
+export default connect(
+  mapStateToProps,
+  { getUserLocation }
+)(withStyles(styles)(FormLocation));

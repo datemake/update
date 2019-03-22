@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {connect} from "react-redux"
+
+import {inputMemory,getMatchingMemories,getSpecificMemory,memoryPhotoReference,inputMemoryDescription} from "../../ducks/reducer"
 
 //material-ui
 import PropTypes from "prop-types";
@@ -66,6 +69,7 @@ function FormMemory(props) {
         
               {/* <TextfieldFL placeholder="Search term or establishment name"/> */}
               <Textfield
+              onChange={(e) => props.inputMemory(e.target.value)}
                id="outlined-bare"
      className={classes.textField}
    //   defaultValue="string"
@@ -81,7 +85,7 @@ function FormMemory(props) {
             </div>
      
             <br />
-            <ExpansionOneActivity/>
+            <ExpansionOneActivity onClick= {props.getSpecificMemory}/>
             <br />
            
               <br />
@@ -101,6 +105,7 @@ function FormMemory(props) {
               <br />
             </Typography>
             {/* <div className="form-activity-search-results-div" /> */}
+            onchange={(e) => props.inputMemory(e.target.value)}
             <Typography
               variant="h5"
               className="main-question"
@@ -112,6 +117,7 @@ function FormMemory(props) {
             </Typography>
             <div className="form-activity-textfield">
             <Textfield
+            onChange={(e) => props.inputMemoryDescription(e.target.value)}
                id="outlined-bare"
      className={classes.textField}
    //   defaultValue="string"
@@ -140,9 +146,16 @@ function FormMemory(props) {
     </div>
   );
 }
+const mapStateToProps = state => {
+  const {inputMemory,getMatchingMemories,getSpecificMemory,memoryPhotoReference,inputMemoryDescription} = state
+  return {
+    inputMemory,getMatchingMemories,getSpecificMemory,memoryPhotoReference,inputMemoryDescription
+  }
+}
 
 FormMemory.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(FormMemory);
+export default withStyles(styles)(connect(mapStateToProps,{inputMemory,getMatchingMemories,getSpecificMemory,memoryPhotoReference,inputMemoryDescription})(FormMemory));
+

@@ -1,5 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+import {
+  inputFood,
+  getMatchingFood,
+  getSpecificFood,
+  foodPhotoReference,
+  inputFoodDescription
+} from "../../ducks/reducer";
 
 //material-ui
 import PropTypes from "prop-types";
@@ -40,58 +49,53 @@ function FormFood(props) {
           <CardContent className="activity-card-content">
             <div className="form-activity-title">
               <Typography variant="h3" className="activity-main-question">
-              Choose your food experience <br />
+                Choose your food experience <br />
                 <br />
-           
               </Typography>
             </div>
-            <div  className="activity-instructions">
-            <Typography
-              variant="h5"
-             
-              style={{ fontWeight: 200 }}
-            >
-                No date is complete without a meal or something sweet, or even just coffee at a cute cafe. Type in the exact name of the establishment where you will partake in your food/beverage experience, or see
-              a list of results based on your search term. For example:
-              "Gelato shops."
-              <br />
-              <br />
-
-            </Typography>
+            <div className="activity-instructions">
+              <Typography variant="h5" style={{ fontWeight: 200 }}>
+                No date is complete without a meal or something sweet, or even
+                just coffee at a cute cafe. Type in the exact name of the
+                establishment where you will partake in your food/beverage
+                experience, or see a list of results based on your search term.
+                For example: "Gelato shops."
+                <br />
+                <br />
+              </Typography>
             </div>
             <div className="form-activity-textfield">
               {/* <TextfieldFL placeholder="Search term or establishment name"/> */}
               <Textfield
-               id="outlined-bare"
-     className={classes.textField}
-   //   defaultValue="string"
-  //  placeholder={placeholder}
-     margin="normal"
-     variant="outlined"
-     style={{width: 700, height: 30}}
-     
-            />
+                onChange={e => props.inputFood(e.target.value)}
+                id="outlined-bare"
+                className={classes.textField}
+                //   defaultValue="string"
+                //  placeholder={placeholder}
+                margin="normal"
+                variant="outlined"
+                style={{ width: 700, height: 30 }}
+              />
             </div>
 
-     
-     <br />
             <br />
             <br />
-            <ExpansionOneActivity/>
             <br />
-              <br />
-         
+            <ExpansionOneActivity onClick={props.getSpecificFood} />
+            <br />
+            <br />
+
             <div className="form-activity-search-results-div" />
             <Typography
               variant="h5"
               className="activity-text-choose-picture"
               style={{ fontWeight: 200 }}
             >
-            Choose a picture to represent your food experience.
+              Choose a picture to represent your food experience.
               <br />
               <br />
               {/* <div className="form-activity-search-results-div" /> */}
-              <ExpansionTwoActivity/>
+              <ExpansionTwoActivity />
               <br />
               <br />
             </Typography>
@@ -101,25 +105,27 @@ function FormFood(props) {
               className="main-question"
               style={{ fontWeight: 200 }}
             >
-                Write one descriptive sentence to give users the main gist of what they can expect on the food/beverage part of the date.
+              Write one descriptive sentence to give users the main gist of what
+              they can expect on the food/beverage part of the date.
               <br />
               <br />
             </Typography>
             <div className="form-activity-textfield">
-            <Textfield
-               id="outlined-bare"
-     className={classes.textField}
-   //   defaultValue="string"
-  //  placeholder={placeholder}
-     margin="normal"
-     variant="outlined"
-     style={{width: 700, height: 30}}
-     
-            />
+              <Textfield
+                onChange={e => props.inputFoodDescription(e.target.value)}
+                id="outlined-bare"
+                className={classes.textField}
+                //   defaultValue="string"
+                //  placeholder={placeholder}
+                margin="normal"
+                variant="outlined"
+                style={{ width: 700, height: 30 }}
+              />
             </div>
             <CardActions className="card-button">
               <Link to={"/create-date-memory"} className="form-link">
                 <Button
+                  onClick={props}
                   size="small"
                   variant="raised"
                   color="primary"
@@ -136,8 +142,35 @@ function FormFood(props) {
   );
 }
 
+const mapStateToProps = state => {
+  const {
+    inputFood,
+    getMatchingFood,
+    getSpecificFood,
+    foodPhotoReference,
+    inputFoodDescription
+  } = state;
+  return {
+    inputFood,
+    getMatchingFood,
+    getSpecificFood,
+    foodPhotoReference,
+    inputFoodDescription
+  };
+};
 FormFood.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(FormFood);
+export default withStyles(styles)(
+  connect(
+    mapStateToProps,
+    {
+      inputFood,
+      getMatchingFood,
+      getSpecificFood,
+      foodPhotoReference,
+      inputFoodDescription
+    }
+  )(FormFood)
+);
