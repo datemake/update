@@ -76,10 +76,10 @@ export default function reducer(state = initialState, action) {
       return { ...state, inputActivity: action.payload };
 
     case `${GET_MATCHING_ACTIVITY_LOCATIONS}_FULFILLED`:
-    console.log(action.payload.data)
+    console.log(action.payload.data.results)
       return {
         ...state,
-        allMatchingActivityLocations: action.payload.data
+        allMatchingActivityLocations: action.payload.data.results
       };
     case `${GET_SPECIFIC_ACTIVITY_LOCATION}_FULFILLED`:
       return {
@@ -168,15 +168,8 @@ export function getMatchingActivities(activity, location) {
   console.log(activity, location);
   return {
     type: GET_MATCHING_ACTIVITY_LOCATIONS,
-    payload: axios.get(
-      `https://maps.googleapis.com/maps/api/place/textsearch/json?key=${
-        process.env.REACT_APP_GOOGLE
-      }&query=${activity}&location=${location}&radius=10000`,
-      {headers: {
-        "Access-Control-Allow-Origin": "*"
+    payload: axios.post(`/api/getMatchingActivites?location=${location}&activity=${activity}`)
 
-      }}
-    )
   };
 }
 

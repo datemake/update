@@ -1,3 +1,7 @@
+require("dotenv").config();
+
+const axios = require('axios')
+
 module.exports = {
   nameDate: (req, res) => {
     const db = req.app.get("db");
@@ -67,6 +71,19 @@ module.exports = {
         res.status(500).send({ errorMessage: "Something went wrong" });
         console.log(err);
       });
-    }
-}
+    },
 
+    getMatchingActivities: (req, res) => {
+      const {location, activity} = req.query
+      axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?key=${process.env.REACT_APP_GOOGLE}&query=${activity}&location=${location}&radius=10000`)
+            .then(response => {
+              // console.log(response.data)
+              res.status(200).json(response.data)
+            })
+            .catch(err => {
+              console.log(err)
+            })
+    } 
+
+
+}
