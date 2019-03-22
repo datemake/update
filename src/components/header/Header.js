@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import {withRouter} from 'react-router-dom'
+import {Link} from 'react-router-dom'
+
 
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase/app';
@@ -11,7 +14,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button'
 import AddBox from '@material-ui/icons/AddBox'
-import {Link} from 'react-router-dom'
+import Person from '@material-ui/icons/Person'
 
 import './header.css'
 
@@ -33,15 +36,19 @@ const uiConfig = {
       CredentialHelper: 'none'
   }
 
-const Header = () => {
+function Header(props) {
 
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     const [signedIn, setSignedIn] = useState(false)
     const [user, setUser] = useState('')
     
     useEffect(() => {
         checkUser()
-    })
+    }, [user])
+
+    function openDialog(){
+        setOpen(true)
+    }
 
     function checkUser(){
         firebase.auth().onAuthStateChanged(function(user) {
@@ -66,45 +73,41 @@ const Header = () => {
 
     return(
         <div>
-        <AppBar position='fixed' style={{backgroundColor: 'rgba(0, 0, 0, 0)', boxShadow: 'none', paddingTop: '10px'}} id='appBar'>
-            <Link to='/' style={{textDecoration: 'none'}}>
-                <Typography variant='h4' style={{color: 'white'}}>up<span style={{color: "#EF4E4E"}}>date</span></Typography>
-            </Link>
-            <Link to='/create-date/' style={{textDecoration: 'none'}}>
-                <div id='create_date'>
-                    {/* <Typography variant='h5' style={{color: 'white'}}>Create</Typography> */}
-                    <AddBox color='primary' fontSize='large'/>
-                    <Typography variant='h6' style={{color: 'white', fontWeight: '900', textDecoration: 'none'}}>Create Date</Typography>
-                </div>
-            </Link>
-            <Dialog
-                open={open}
-                onClose={() => setOpen(false)}
-            >
-                <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
-                <div className='button_div'>
-                    <Button onClick={() => setOpen(false)} color="primary">
-                    Cancel
-                    </Button>
-                </div>
-            </Dialog>
-            {signedIn === true
-                    ?
-                        <div id='loginSignup'>
-                            <Button style={{color: 'white'}} onClick={() => logout()}>Logout</Button>
-                            <Typography variant='h6' style={{color: 'white'}}>Signed in as {user}</Typography>
-                        </div>
-                        
-                    :
-                        <div id='loginSignup'>
-                            <Button style={{color: 'white'}} onClick={() => logout()}>Logout</Button>
-                            <Typography variant='h4' style={{color: 'white', borderRight: '2px solid white', paddingRight: '10px', cursor: 'pointer'}} onClick={() => setOpen(true)}>Login</Typography>
-                            <Typography variant='h4' style={{color: "#EF4E4E", fontFamily: 'Lobster', fontSize: '200%', fontWeight: 'bold', marginLeft: '10px', cursor: 'pointer'}} onClick={() => setOpen(true)}>Signup</Typography>
-                        </div>
-                }
-        </AppBar>
-
-    </div>
+            {console.log(props)}
+            <AppBar position='fixed' style={{backgroundColor: 'rgba(0, 0, 0, 0)', boxShadow: 'none', paddingTop: '10px'}} id='appBar'>
+                <Link to='/' style={{textDecoration: 'none'}}>
+                    <Typography variant='h4' style={{color: 'white'}}>up<span style={{color: "#EF4E4E"}}>date</span></Typography>
+                </Link>
+                <Link to='/create-date/' style={{textDecoration: 'none'}}>
+                    <div id='create_date'>
+                        {/* <Typography variant='h5' style={{color: 'white'}}>Create</Typography> */}
+                        <AddBox color='primary' fontSize='large'/>
+                        <Typography variant='h6' style={{color: 'white', fontWeight: '900', textDecoration: 'none'}}>Create Date</Typography>
+                    </div>
+                </Link>
+                <Dialog
+                    open={open}
+                    onClose={() => setOpen(false)}
+                >
+                    <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+                </Dialog>
+                {signedIn === true
+                        ?
+                            <div id='loginSignup'>
+                                <Button style={{color: 'white'}} onClick={() => logout()}>Logout</Button>
+                                <Person color='primary' fontSize='large'/>
+                                <Typography variant='h6' style={{color: 'white', fontWeight: '900', textDecoration: 'none'}}>Profile</Typography>
+                            </div>
+                            
+                        :
+                            <div id='loginSignup'>
+                                <Button style={{color: 'white'}} onClick={() => logout()}>Logout</Button>
+                                <Typography variant='h4' style={{color: 'white', borderRight: '2px solid white', paddingRight: '10px', cursor: 'pointer'}} onClick={() => setOpen(true)}>Login</Typography>
+                                <Typography variant='h4' style={{color: "#EF4E4E", fontFamily: 'Lobster', fontSize: '200%', fontWeight: 'bold', marginLeft: '10px', cursor: 'pointer'}} onClick={() => setOpen(true)}>Signup</Typography>
+                            </div>
+                    }
+            </AppBar>
+        </div>
     )
 } 
 
@@ -115,4 +118,4 @@ const Header = () => {
     
 
 
-export default Header;
+export default withRouter(Header);

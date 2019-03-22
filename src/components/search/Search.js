@@ -1,9 +1,8 @@
 import React from 'react';
 import SearchBar from './SearchBar'
-import TextField from '@material-ui/core/TextField';
+import Autocomplete from './Autocomplete'
 import Button from '@material-ui/core/Button'
-import SearchIcon from '@material-ui/icons/Search';
-import InputAdornment from '@material-ui/core/InputAdornment';
+
 
 import './search.css'
 
@@ -20,16 +19,7 @@ class Search extends React.Component {
       <div id='search_page'>
         <div id='search_page_dim'>
           <div id='search_div'>
-            <TextField className="TextField-without-border-radius" placeholder='Enter City'  autoCapitalize='true' margin='none' border='none' variant='outlined' style={{backgroundColor: '#ffffff', borderRadius: '0', border: 'none', height: '56px', boxShadow: '0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12)'}}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon style={{color: '#757575'}}/>
-                  </InputAdornment>
-                )
-              }}
-            />
-
+            <Autocomplete/>
             <SearchBar/>
             <Button variant='contained' color='primary' style={{borderRadius: '0', maxHeight: '56px'}}>Search</Button>
           </div>
