@@ -1,6 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { connect } from "react-redux";
+import {
+  inputActivity,
+  getMatchingActivities,
+  getSpecificActivity,
+  activityPhotoReference,
+  inputActivityDescription
+} from "../../ducks/reducer";
 //material-ui
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
@@ -18,6 +25,7 @@ import "./form-activity.css";
 
 import ExpansionOneActivity from "./ExpansionOneActivity";
 import ExpansionTwoActivity from "./ExpansionTwoActivity";
+// import { connect } from "tls";
 
 const styles = {
   card: {
@@ -34,6 +42,7 @@ const styles = {
 
 function FormActivity(props) {
   const { classes } = props;
+  console.log(props);
   return (
     <div className="main-form-activity-div">
       <Card className={classes.card} style={{ backgroundColor: "#white" }}>
@@ -60,7 +69,7 @@ function FormActivity(props) {
                 id="outlined-bare"
                 className={classes.textField}
                 //  onChange={e => function from redux}
-
+                onChange={e => props.inputActivity(e.target.value)}
                 margin="normal"
                 variant="outlined"
                 style={{ width: 700, height: 30 }}
@@ -70,7 +79,7 @@ function FormActivity(props) {
             <br />
             <br />
             <br />
-            <ExpansionOneActivity />
+            <ExpansionOneActivity onClick={props.getMatchingActivities} />
             <br />
             <br />
 
@@ -84,7 +93,7 @@ function FormActivity(props) {
               <br />
               <br />
               {/* <div className="form-activity-search-results-div" /> */}
-              <ExpansionTwoActivity />
+              <ExpansionTwoActivity onClick={props.getSpecificActivity} />
               <br />
               <br />
             </Typography>
@@ -102,6 +111,7 @@ function FormActivity(props) {
             </Typography>
             <div className="form-activity-textfield">
               <Textfield
+                onChange={e => props.inputActivityDescription(e.target.value)}
                 id="outlined-bare"
                 className={classes.textField}
                 //   defaultValue="string"
@@ -129,9 +139,38 @@ function FormActivity(props) {
     </div>
   );
 }
+const mapStateToProps = state => {
+  const {
+    locationData,
+    inputActivity,
+    getMatchingActivities,
+    getSpecificActivity,
+    activityPhotoReference,
+    inputActivityDescription
+  } = state;
+  return {
+    locationData,
+    inputActivity,
+    getMatchingActivities,
+    getSpecificActivity,
+    activityPhotoReference,
+    inputActivityDescription
+  };
+};
 
 FormActivity.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(FormActivity);
+export default withStyles(styles)(
+  connect(
+    mapStateToProps,
+    {
+      inputActivity,
+      getMatchingActivities,
+      getSpecificActivity,
+      activityPhotoReference,
+      inputActivityDescription
+    }
+  )(FormActivity)
+);
