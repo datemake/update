@@ -1,0 +1,1 @@
+SELECT * from saveddates where user_id = $1;

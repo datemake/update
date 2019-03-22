@@ -8,6 +8,7 @@ const app = express();
 const cors = require("cors")
 
 const {nameDate} = require('./controller/dates/createDate')
+const {getProfile,completedDates,savedDates} = require('./controller/profile')
 
 app.use(json());
 app.use(cors())
@@ -32,6 +33,13 @@ massive(process.env.CONNECTION_STRING).then(db => {
 
 //form endpoints
 app.post("/api/nameDate", nameDate)
+
+//profile endpoints
+app.get("/api/profile", getProfile)
+
+//completed/saved dates
+app.get('/api/completedDates',completedDates)
+app.get('/api/completedDates',savedDates)
 
 
    app.listen(4000, () => {

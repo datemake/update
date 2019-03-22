@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -30,24 +30,43 @@ const styles = {
 function CompletedDates(props) {
     const { classes } = props;
     
+    function SavedDates(props) {
+      const { classes } = props;
+      const [savedDates,setSavedDates] = useState([])
+  
+      useEffect(() => {
+        const fetchData = async () => {
+          const result = await axios(
+            '/api/completedDates',
+          );
+          console.log(result.data)
+          setSavedDates(result.data);
+        };
+    
+        fetchData();
+      }, []);
 
-
-
+       const completed = savedDates.map(date => {
+         return <div key={date.id}>
+                    <h2>{date.username}</h2>
+                    <h2>{date.profile_pic}</h2>
+                    <h2>{date.username}</h2>
+                 </div>
+       })
 return(
 
 
       <Card className={classes.card} style={{ backgroundColor: "#white" }}>
         <div className="profile-user-card">
           <CardContent className="profile-user-card-content">
-     
-         
-           
+              {completed}
           </CardContent>
         </div>
       </Card>
     
   
 )
+}
 }
 CompletedDates.propTypes = {
     classes: PropTypes.object.isRequired
