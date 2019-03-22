@@ -48,7 +48,7 @@ const Header = () => {
             if (user) {
               setSignedIn(true)
               setOpen(false)
-              console.log(user)
+              setUser(user.displayName)
             } else {
               setSignedIn(false)
             }
@@ -90,7 +90,11 @@ const Header = () => {
             </Dialog>
             {signedIn === true
                     ?
-                        <Typography variant='h4'>Signed in as {user}</Typography>
+                        <div id='loginSignup'>
+                            <Button style={{color: 'white'}} onClick={() => logout()}>Logout</Button>
+                            <Typography variant='h6' style={{color: 'white'}}>Signed in as {user}</Typography>
+                        </div>
+                        
                     :
                         <div id='loginSignup'>
                             <Button style={{color: 'white'}} onClick={() => logout()}>Logout</Button>
