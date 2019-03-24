@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 import axios from "axios";
-import { getDateName } from "../../ducks/reducer";
+
+//redux
+import { connect } from "react-redux";
+import { inputDateName } from "../../ducks/reducer";
+
 //material-ui
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
@@ -35,8 +38,7 @@ function FormLanding(props) {
   const { classes } = props;
   const [name, SetName] = useState("");
 
-  console.log(props);
-  const { dateName } = props;
+ 
 
   return (
     <div className="main-form-div">
@@ -68,12 +70,13 @@ function FormLanding(props) {
               margin="normal"
               variant="outlined"
               style={{ width: 700, height: 30 }}
-              onChange={e => props.getDateName(e.target.value)}
+              onChange={(e) => props.inputDateName(e.target.value)}
             />
           </CardContent>
           <CardActions className="card-button">
             <Link to={"/create-date-location"} className="form-link">
               <Button
+
                 // onClick={nameDate}
                 size="small"
                 variant="contained"
@@ -90,9 +93,11 @@ function FormLanding(props) {
   );
 }
 const mapStateToProps = state => {
-  const { dateName } = state;
+  const { dateName} = state;
   return {
-    dateName
+    dateName,
+  
+
   };
 };
 
@@ -103,6 +108,6 @@ FormLanding.propTypes = {
 export default withStyles(styles)(
   connect(
     mapStateToProps,
-    { getDateName }
+    { inputDateName }
   )(FormLanding)
 );

@@ -14,15 +14,58 @@
     /* flex-direction: column; */
     padding-right:10vh;
     padding-left:10vh;
-    
+ 
   
    
     
     
 
 }
+.expansion-panel-two-photo-and-checkbox-div{
+    display: flex;
+    width: 60vw;
+    border-style: solid;
+    border-color:  #f0f0f0;
+    border-width: 2px;
+    
+    align-items: center;
+}
 
+.expansion-panel-two{
+    display: flex;
+    justify-content: center;
+    
+}
 
+.expansion-two-photos{
+    display: flex;
+    justify-content: center;
+    
+    padding-top: 5vh;
+    /* width: 30vh; */
+    padding-bottom: 5vh;
+
+}
+
+.expansion-two-photos-div{
+ 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60vw;
+   
+   flex-wrap: wrap;
+   align-items: center;
+
+ 
+}
+
+.expansion-panel-two-photo-and-checkbox-text{
+    display: flex;
+    align-items: center;
+    margin-right:5vw;
+    margin-left:5vw;
+}
 
 
 

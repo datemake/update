@@ -3,8 +3,8 @@ import React from "react";
 //redux
 import { connect } from "react-redux";
 import {
-  getMatchingActivities,
-  getSpecificActivity
+    getMatchingMemories,
+    getSpecificMemory
 } from "../../ducks/reducer";
 
 //material-ui
@@ -30,24 +30,28 @@ const styles = theme => ({
   }
 });
 
+
 /////
 function SimpleExpansionPanel(props) {
-  const { locationData, classes, inputActivity } = props;
+  
+  const { locationData, classes, inputMemory } = props;
 
-  let searchResultsList = props.allMatchingActivityLocations.map(
+  console.log(props.allMatchingMemoryLocations)
+
+  let searchResultsList = props.allMatchingMemoryLocations.map(
     (element, index) => {
       return (
         <div key={element.id} className="matching-activity-locations-div">
           <div>
-            <b>{props.allMatchingActivityLocations[index].name}</b>
+            <b>{props.allMatchingMemoryLocations[index].name}</b>
           </div>
           <div className="matching-activity-locations-address">
-            {props.allMatchingActivityLocations[index].formatted_address}
+            {props.allMatchingMemoryLocations[index].formatted_address}
             <Checkbox
               color="primary"
               onChange={() =>
-                props.getSpecificActivity(
-                  props.allMatchingActivityLocations[index].place_id
+                props.getSpecificMemory(
+                  props.allMatchingMemoryLocations[index].place_id, console.log(props.specificMemory)
                 )
               }
             />
@@ -57,15 +61,21 @@ function SimpleExpansionPanel(props) {
     }
   );
 
-  console.log(props.specificActivity);
+  console.log(props.allMatchingMemoryLocations);
+
+  console.log(props.specificMemory);
+
+  props.allMatchingMemoryLocations[0] &&
+    console.log(props.allMatchingMemoryLocations[0].name);
 
   const getMatching = () => {
+    console.log("hit");
     if (locationData.results.length) {
-      const activityLocation = locationData.results[0].geometry.location;
+      const memoryLocation = locationData.results[0].geometry.location;
 
-      props.getMatchingActivities(
-        inputActivity,
-        activityLocation.lat + "," + activityLocation.lng
+      props.getMatchingMemories(
+        inputMemory,
+        memoryLocation.lat + "," + memoryLocation.lng
       );
     }
   };
@@ -89,7 +99,9 @@ function SimpleExpansionPanel(props) {
           </div>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography variant="h6">{searchResultsList}</Typography>
+          <Typography variant="h6">
+            {searchResultsList}
+          </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
     </div>
@@ -105,15 +117,15 @@ SimpleExpansionPanel.propTypes = {
 const mapStateToProps = state => {
   const {
     locationData,
-    inputActivity,
-    allMatchingActivityLocations,
-    specificActivity
+    inputMemory,
+    allMatchingMemoryLocations,
+    specificMemory
   } = state;
   return {
     locationData,
-    inputActivity,
-    allMatchingActivityLocations,
-    specificActivity
+    inputMemory,
+    allMatchingMemoryLocations,
+    specificMemory
   };
 };
 
@@ -121,8 +133,8 @@ export default withStyles(styles)(
   connect(
     mapStateToProps,
     {
-      getMatchingActivities,
-      getSpecificActivity
+        getMatchingMemories,
+      getSpecificMemory
     }
   )(SimpleExpansionPanel)
 );

@@ -5,7 +5,7 @@ import {
   inputActivity,
   getMatchingActivities,
   getSpecificActivity,
-  activityPhotoReference,
+
   inputActivityDescription, 
   
  
@@ -149,7 +149,8 @@ const mapStateToProps = state => {
     getMatchingActivities,
     getSpecificActivity,
     activityPhotoReference,
-    inputActivityDescription
+    inputActivityDescription,
+    allMatchingActivityLocations
   } = state;
   return {
     locationData,
@@ -157,7 +158,8 @@ const mapStateToProps = state => {
     getMatchingActivities,
     getSpecificActivity,
     activityPhotoReference,
-    inputActivityDescription
+    inputActivityDescription,
+    allMatchingActivityLocations
   };
 };
 
@@ -172,7 +174,7 @@ export default withStyles(styles)(
       inputActivity,
       getMatchingActivities,
       getSpecificActivity,
-      activityPhotoReference,
+    
       inputActivityDescription,
    
     

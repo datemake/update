@@ -1,11 +1,9 @@
 import axios from "axios";
-const cors = require("cors")
-
-
+const cors = require("cors");
 
 const initialState = {
   locationData: [],
-  location:"",
+  location: "",
   date: [],
   dateName: "",
 
@@ -14,69 +12,75 @@ const initialState = {
   allMatchingActivityLocations: [],
   specificActivity: [],
   describeActivity: "",
-  activityPhotoReference: [],
+  activityPhotoURL: [],
 
   //food
   inputFood: "",
   allMatchingFoodLocations: [],
   specificFood: [],
   describeFood: "",
-  foodPhotoReference: [],
+  foodPhotoURL: [],
 
   //memory maker
   inputMemory: "",
   allMatchingMemoryLocations: [],
   specificMemory: [],
   describeMemory: "",
-  memoryPhotoReference: []
+  memoryPhotoURL: []
 };
-const INPUT_LOCATION = "INPUT_LOCATION"
+
+//name of date constants
+const INPUT_DATE_NAME = "INPUT_DATE_NAME";
+
+//location constants
+const INPUT_LOCATION = "INPUT_LOCATION";
 const GET_USER_LOCATION = "GET_USER_LOCATION";
-const GET_DATE_NAME = "GET_DATE_NAME";
 
 // user activities constants
 const INPUT_ACTIVITY = "INPUT_ACTIVITY";
 const GET_MATCHING_ACTIVITY_LOCATIONS = "GET_MATCHING_ACTIVITY_LOCATIONS";
 const GET_SPECIFIC_ACTIVITY_LOCATION = "GET_SPECIFIC_ACTIVITY_LOCATION";
 const DESCRIBE_ACTIVITY = "DESCRIBE_ACTIVITY";
-const ACTIVITY_PHOTO_REFERENCE_ID = "ACTIVITY_PHOTO_REFERENCE_ID";
+const ADD_ACTIVITY_PHOTO_URL = "ADD_ACTIVITY_PHOTO_URL";
 
 //food constants
 const INPUT_FOOD = "INPUT_FOOD";
 const GET_MATCHING_FOOD_LOCATIONS = "GET_MATCHING_FOOD_LOCATIONS";
 const GET_SPECIFIC_FOOD_LOCATION = "GET_SPECIFIC_FOOD_LOCATION";
 const DESCRIBE_FOOD = "DESCRIBE_FOOD";
-const FOOD_PHOTO_REFERENCE_ID = "FOOD_PHOTO_REFERENCE_ID";
+const ADD_FOOD_PHOTO_URL = "ADD_FOOD_PHOTO_URL";
 
 //memory locations
 const INPUT_MEMORY = "INPUT_MEMORY";
 const GET_MATCHING_MEMORY_LOCATIONS = "GET_MATCHING_MEMORY_LOCATIONS";
 const GET_SPECIFIC_MEMORY_LOCATION = "GET_SPECIFIC_MEMORY_LOCATION";
 const DESCRIBE_MEMORY = "DESCRIBE_MEMORY";
-const MEMORY_PHOTO_REFERENCE_ID = "MEMORY_PHOTO_REFERENCE_ID";
+const ADD_MEMORY_PHOTO_URL = "ADD_MEMORY_PHOTO_URL";
+
+
 
 export default function reducer(state = initialState, action) {
-  console.log(action);
+
   switch (action.type) {
-    case GET_DATE_NAME:
+
+
+    case INPUT_DATE_NAME:
       console.log(action.type);
       return { ...state, dateName: action.payload };
-      case INPUT_LOCATION:
+
+    case INPUT_LOCATION:
       console.log(action.type);
       return { ...state, location: action.payload };
 
     case `${GET_USER_LOCATION}_FULFILLED`:
       return { ...state, locationData: action.payload.data };
 
-
-
-
     //activity cases
     case INPUT_ACTIVITY:
       return { ...state, inputActivity: action.payload };
 
     case `${GET_MATCHING_ACTIVITY_LOCATIONS}_FULFILLED`:
-    console.log(action.payload.data.results)
+      console.log(action.payload.data.results);
       return {
         ...state,
         allMatchingActivityLocations: action.payload.data.results
@@ -90,6 +94,9 @@ export default function reducer(state = initialState, action) {
     case DESCRIBE_ACTIVITY:
       return { ...state, describeActivity: action.payload };
 
+    case ADD_ACTIVITY_PHOTO_URL:
+      return { ...state, activityPhotoURL: action.payload };
+
     //food cases
     case INPUT_FOOD:
       return { ...state, inputFood: action.payload };
@@ -97,7 +104,7 @@ export default function reducer(state = initialState, action) {
     case `${GET_MATCHING_FOOD_LOCATIONS}_FULFILLED`:
       return {
         ...state,
-        allMatchingFoodLocations: action.payload.data
+        allMatchingFoodLocations: action.payload.data.results
       };
 
     case `${GET_SPECIFIC_FOOD_LOCATION}_FULFILLED`:
@@ -107,36 +114,54 @@ export default function reducer(state = initialState, action) {
       };
     case DESCRIBE_FOOD:
       return { ...state, describeFood: action.payload };
+
+    case ADD_FOOD_PHOTO_URL:
+      return { ...state, foodPhotoURL: action.payload };
+
     //memory cases
     case INPUT_MEMORY:
       return { ...state, inputMemory: action.payload };
+
     case `${GET_MATCHING_MEMORY_LOCATIONS}_FULFILLED`:
       return {
         ...state,
-        allMatchingMemoryLocations: action.payload.data
+        allMatchingMemoryLocations: action.payload.data.results
       };
+
     case `${GET_SPECIFIC_MEMORY_LOCATION}_FULFILLED`:
-      return {
+    console.log(action.payload.data)  
+    return {
         ...state,
         specificMemory: action.payload.data
+        
       };
+
     case DESCRIBE_MEMORY:
+    console.log(state.specificMemory)
       return { ...state, describeMemory: action.payload };
+
+    case ADD_MEMORY_PHOTO_URL:
+      return { ...state, memoryPhotoURL: action.payload };
+
     default:
       return state;
   }
 }
 //general date name
-export const getDateName = date => {
-  console.log(date);
+export const inputDateName = name => {
+  console.log(name);
   return {
-    type: GET_DATE_NAME,
-    payload: date
+    type: INPUT_DATE_NAME,
+    payload: name
   };
 };
-//initial get location
+
+
+//FORM - LOCATION PAGE FUNCTIONS/////////////////////////////////////////////////////////////////////////////////
+
+//initial get location: puts location in dataLocation (array) in state
 export function getUserLocation(location) {
-  console.log(location)
+  console.log(location);
   return {
     type: GET_USER_LOCATION,
     payload: axios.get(
@@ -147,6 +172,7 @@ export function getUserLocation(location) {
   };
 }
 
+//holds in state the input (what user types as their location) in the location part of the form
 export const inputLocation = location => {
   console.log(location);
   return {
@@ -155,7 +181,9 @@ export const inputLocation = location => {
   };
 };
 
-//activity functions
+// FORM - ACTIVITY PAGE FUNCTIONS///////////////////////////////////////////////////////////////////////////////
+
+//holds in state the input (what user types as their activity) in the activity part of the form
 export const inputActivity = activity => {
   console.log(activity);
   return {
@@ -164,38 +192,35 @@ export const inputActivity = activity => {
   };
 };
 
+//gets a list of establishments based on the 'activity' entered in the inputActivity and the location which was saved in dataLocation. Triggered by "see results" button in expansion form one on activity page
 export function getMatchingActivities(activity, location) {
   console.log(activity, location);
   return {
     type: GET_MATCHING_ACTIVITY_LOCATIONS,
-    payload: axios.post(`/api/getMatchingActivites?location=${location}&activity=${activity}`)
-
+    payload: axios.post(
+      `/api/getMatchingActivites?location=${location}&activity=${activity}`
+    )
   };
 }
 
-export function getSpecificActivity(specific) {
-  console.log(specific);
+//gets a list of photo-reference ids by sending the place_id to google of the selected place. We use the photo-reference ids on the activity page (expansion form two) to display all the photos of the chosen place
+export function getSpecificActivity(place_id) {
+  console.log(place_id);
   return {
     type: GET_SPECIFIC_ACTIVITY_LOCATION,
-    payload: axios.get(
-      `https://maps.googleapis.com/maps/api/geocode/json?key=${
-        process.env.REACT_APP_GOOGLE
-      }&address=${specific}`
-    )
-  };
-}
-export function activityPhotoReference(photo) {
-  console.log(photo);
-  return {
-    type: ACTIVITY_PHOTO_REFERENCE_ID,
-    payload: axios.post(
-      `https://maps.googleapis.com/maps/api/geocode/json?key=${
-        process.env.REACT_APP_GOOGLE
-      }&address=${photo}`
-    )
+    payload: axios.post("/api/getSpecificActivity", { place_id })
   };
 }
 
+//This grabs the photo url when the user checks a checkbox next to the photo. The photoURL will hang out in state until we post it to the database with the create date post
+export function addActivityPhotoURL(photo) {
+  return {
+    type: ADD_ACTIVITY_PHOTO_URL,
+    payload: photo
+  };
+}
+
+//holds in state the input (what user types) in the activity descriptive sentence part of the form (the last input on the page)
 export const inputActivityDescription = activityDescription => {
   console.log(activityDescription);
   return {
@@ -204,7 +229,8 @@ export const inputActivityDescription = activityDescription => {
   };
 };
 
-//food functions
+// FORM - FOOD PAGE FUNCTIONS///////////////////////////////////////////////////////////////////////////////
+
 export const inputFood = food => {
   console.log(food);
   return {
@@ -213,39 +239,35 @@ export const inputFood = food => {
   };
 };
 
-export function getMatchingFood(matchFood) {
-  console.log(matchFood);
+export function getMatchingFood(food, location) {
+  console.log(food, location);
   return {
     type: GET_MATCHING_FOOD_LOCATIONS,
-    payload: axios.get(
-      `https://maps.googleapis.com/maps/api/geocode/json?key=${
-        process.env.REACT_APP_GOOGLE
-      }&address=${matchFood}`
+    payload: axios.post(
+      "/api/getMatchingFood",
+      { location, food }
+      // `/api/getMatchingFood?location=${location}&activity=${food}`
     )
   };
 }
-export function getSpecificFood(specificFood) {
-  console.log(specificFood);
+
+export function getSpecificFood(place_id) {
+  console.log(place_id);
   return {
     type: GET_SPECIFIC_FOOD_LOCATION,
-    payload: axios.get(
-      `https://maps.googleapis.com/maps/api/geocode/json?key=${
-        process.env.REACT_APP_GOOGLE
-      }&address=${specificFood}`
-    )
+    payload: axios.post("/api/getSpecificFood", { place_id })
   };
 }
-export function foodPhotoReference(photo) {
+
+export function addFoodPhotoURL(photo) {
   console.log(photo);
   return {
-    type: FOOD_PHOTO_REFERENCE_ID,
-    payload: axios.post(
-      `https://maps.googleapis.com/maps/api/geocode/json?key=${
-        process.env.REACT_APP_GOOGLE
-      }&address=${photo}`
-    )
+    type: ADD_FOOD_PHOTO_URL,
+    payload: photo
   };
 }
+
+
 export const inputFoodDescription = foodDescription => {
   console.log(foodDescription);
   return {
@@ -254,7 +276,8 @@ export const inputFoodDescription = foodDescription => {
   };
 };
 
-//memory functions
+// FORM - MEMORY MAKER PAGE FUNCTIONS///////////////////////////////////////////////////////////////////////////////
+
 export const inputMemory = memory => {
   console.log(memory);
   return {
@@ -263,39 +286,30 @@ export const inputMemory = memory => {
   };
 };
 
-export function getMatchingMemories(matchFood) {
-  console.log(matchFood);
+export function getMatchingMemories(memory, location) {
+  console.log(memory, location);
   return {
     type: GET_MATCHING_MEMORY_LOCATIONS,
-    payload: axios.get(
-      `https://maps.googleapis.com/maps/api/geocode/json?key=${
-        process.env.REACT_APP_GOOGLE
-      }&address=${matchFood}`
-    )
+    payload: axios.post("/api/getMatchingMemory", { memory, location })
   };
 }
-export function getSpecificMemory(specificMemory) {
-  console.log(specificMemory);
+
+export function getSpecificMemory(place_id) {
+  console.log(place_id);
   return {
     type: GET_SPECIFIC_MEMORY_LOCATION,
-    payload: axios.get(
-      `https://maps.googleapis.com/maps/api/geocode/json?key=${
-        process.env.REACT_APP_GOOGLE
-      }&address=${specificMemory}`
-    )
+    payload: axios.post("/api/getSpecificMemory", { place_id })
   };
 }
-export function memoryPhotoReference(photo) {
+
+export function addMemoryPhotoURL(photo) {
   console.log(photo);
   return {
-    type: MEMORY_PHOTO_REFERENCE_ID,
-    payload: axios.post(
-      `https://maps.googleapis.com/maps/api/geocode/json?key=${
-        process.env.REACT_APP_GOOGLE
-      }&address=${photo}`
-    )
+    type: ADD_MEMORY_PHOTO_URL,
+    payload: photo
   };
 }
+
 export const inputMemoryDescription = memoryDescription => {
   console.log(memoryDescription);
   return {
@@ -303,3 +317,13 @@ export const inputMemoryDescription = memoryDescription => {
     payload: memoryDescription
   };
 };
+
+///FORM FINAL POST TO DATABASE
+
+// export const createDate = dateName => {
+//   console.log(dateName);
+//   return {
+//     type: DESCRIBE_MEMORY,
+//     payload: axios.post("/api/createDate", { dateName })
+//   };
+// };
