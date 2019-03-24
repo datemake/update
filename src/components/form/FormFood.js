@@ -6,7 +6,6 @@ import {
   inputFood,
   getMatchingFood,
   getSpecificFood,
-  foodPhotoReference,
   inputFoodDescription
 } from "../../ducks/reducer";
 
@@ -24,8 +23,8 @@ import Textfield from "@material-ui/core/TextField";
 import "./form-activity.css";
 
 //other components
-import ExpansionOneActivity from "./ExpansionOneActivity";
-import ExpansionTwoActivity from "./ExpansionTwoActivity";
+import ExpansionOneFood from "./ExpansionOneFood";
+import ExpansionTwoFood from "./ExpansionTwoFood";
 
 const styles = {
   card: {
@@ -81,7 +80,7 @@ function FormFood(props) {
             <br />
             <br />
             <br />
-            <ExpansionOneActivity onClick={props.getSpecificFood} />
+            <ExpansionOneFood onClick={props.getSpecificFood} />
             <br />
             <br />
 
@@ -95,7 +94,7 @@ function FormFood(props) {
               <br />
               <br />
               {/* <div className="form-activity-search-results-div" /> */}
-              <ExpansionTwoActivity />
+              <ExpansionTwoFood />
               <br />
               <br />
             </Typography>
@@ -125,9 +124,9 @@ function FormFood(props) {
             <CardActions className="card-button">
               <Link to={"/create-date-memory"} className="form-link">
                 <Button
-                  onClick={props}
+                  // onClick={props}
                   size="small"
-                  variant="raised"
+                  variant="contained"
                   color="primary"
                   style={{ color: "white", fontWeight: 600, fontSize: 16 }}
                 >
@@ -147,14 +146,14 @@ const mapStateToProps = state => {
     inputFood,
     getMatchingFood,
     getSpecificFood,
-    foodPhotoReference,
+
     inputFoodDescription
   } = state;
   return {
     inputFood,
     getMatchingFood,
     getSpecificFood,
-    foodPhotoReference,
+
     inputFoodDescription
   };
 };
@@ -169,7 +168,7 @@ export default withStyles(styles)(
       inputFood,
       getMatchingFood,
       getSpecificFood,
-      foodPhotoReference,
+    
       inputFoodDescription
     }
   )(FormFood)

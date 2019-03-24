@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 //redux
 import { connect } from "react-redux";
-import { addActivityPhotoURL } from "../../ducks/reducer";
+import { addFoodPhotoURL } from "../../ducks/reducer";
 
 //material-ui
 import { withStyles } from "@material-ui/core/styles";
@@ -13,7 +13,7 @@ import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Checkbox from "@material-ui/core/Checkbox";
-import Button from "@material-ui/core/Button";
+
 
 //css
 import "./form-activity.css";
@@ -31,24 +31,7 @@ const styles = theme => ({
 function SimpleExpansionPanel(props) {
   const { classes } = props;
 
-  // console.log(props.specificActivity);
 
-  // props.specificActivity.result && console.log(props.specificActivity.result);
-
-  // let photosDisplay = () => {props.specificActivity.result.map((element, index) => {
-  //   return (
-  //     <div key={element.id}>
-  //       <img
-  //         className="photos-display"
-  //         alt="photos"
-  //         src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-  //           props.specificActivity.result.photos[index].photo_reference
-  //         }&key=AIzaSyBLWvDffmZzsXjFnRtcflsxTFsBxbZyiDA`}
-  //       />
-  //     </div>
-  //   );
-  // })
-  // return photosDisplay}
 
   return (
     <div className={classes.root}>
@@ -64,22 +47,22 @@ function SimpleExpansionPanel(props) {
               <div className="expansion-panel-two-photo-and-checkbox-div">
                 <div className="expansion-panel-two-photo-and-checkbox-text">
                   Choose this photo
-                  {props.specificActivity.result &&
+                  {props.specificFood.result &&
                   <Checkbox
                     id="0"
                     color="primary"
-                    onClick={() => props.addActivityPhotoURL(
+                    onClick={() => props.addFoodPhotoURL(
                       `https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                        props.specificActivity.result.photos[0].photo_reference
+                        props.specificFood.result.photos[0].photo_reference
                       }&key=${process.env.REACT_APP_GOOGLE}`
                     )}
                   />}
                 </div>
-                {props.specificActivity.result && (
+                {props.specificFood.result && (
                   <img
                     className="expansion-two-photos"
                     src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                      props.specificActivity.result.photos[0].photo_reference
+                      props.specificFood.result.photos[0].photo_reference
                     }&key=${process.env.REACT_APP_GOOGLE}`}
                   />
                 )}
@@ -89,22 +72,22 @@ function SimpleExpansionPanel(props) {
                 <div className="expansion-panel-two-photo-and-checkbox-div">
                 <div className="expansion-panel-two-photo-and-checkbox-text">
                   Choose this photo
-                  {props.specificActivity.result &&
+                  {props.specificFood.result &&
                   <Checkbox
                     id="1"
                     color="primary"
-                    onClick={() => props.addActivityPhotoURL(
+                    onClick={() => props.addFoodPhotoURL(
                       `https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                        props.specificActivity.result.photos[1].photo_reference
+                        props.specificFood.result.photos[1].photo_reference
                       }&key=${process.env.REACT_APP_GOOGLE}`
                     )}
                   />}
                 </div>
-                {props.specificActivity.result && (
+                {props.specificFood.result && (
                   <img
                     className="expansion-two-photos"
                     src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                      props.specificActivity.result.photos[1].photo_reference
+                      props.specificFood.result.photos[1].photo_reference
                     }&key=${process.env.REACT_APP_GOOGLE}`}
                   />
                 )}
@@ -114,22 +97,22 @@ function SimpleExpansionPanel(props) {
                 <div className="expansion-panel-two-photo-and-checkbox-div">
                 <div className="expansion-panel-two-photo-and-checkbox-text">
                   Choose this photo
-                  {props.specificActivity.result &&
+                  {props.specificFood.result &&
                   <Checkbox
                     id="2"
                     color="primary"
-                    onClick={() => props.addActivityPhotoURL(
+                    onClick={() => props.addFoodPhotoURL(
                       `https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                        props.specificActivity.result.photos[2].photo_reference
+                        props.specificFood.result.photos[2].photo_reference
                       }&key=${process.env.REACT_APP_GOOGLE}`
                     )}
                   />}
                 </div>
-                {props.specificActivity.result && (
+                {props.specificFood.result && (
                   <img
                     className="expansion-two-photos"
                     src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                      props.specificActivity.result.photos[2].photo_reference
+                      props.specificFood.result.photos[2].photo_reference
                     }&key=${process.env.REACT_APP_GOOGLE}`}
                   />
                 )}
@@ -139,22 +122,22 @@ function SimpleExpansionPanel(props) {
                 <div className="expansion-panel-two-photo-and-checkbox-div">
                 <div className="expansion-panel-two-photo-and-checkbox-text">
                   Choose this photo
-                  {props.specificActivity.result &&
+                  {props.specificFood.result &&
                   <Checkbox
                     id="3"
                     color="primary"
-                    onClick={() => props.addActivityPhotoURL(
+                    onClick={() => props.addFoodPhotoURL(
                       `https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                        props.specificActivity.result.photos[3].photo_reference
+                        props.specificFood.result.photos[3].photo_reference
                       }&key=${process.env.REACT_APP_GOOGLE}`
                     )}
                   />}
                 </div>
-                {props.specificActivity.result && (
+                {props.specificFood.result && (
                   <img
                     className="expansion-two-photos"
                     src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                      props.specificActivity.result.photos[3].photo_reference
+                      props.specificFood.result.photos[3].photo_reference
                     }&key=${process.env.REACT_APP_GOOGLE}`}
                   />
                 )}
@@ -164,22 +147,22 @@ function SimpleExpansionPanel(props) {
                 <div className="expansion-panel-two-photo-and-checkbox-div">
                 <div className="expansion-panel-two-photo-and-checkbox-text">
                   Choose this photo
-                  {props.specificActivity.result &&
+                  {props.specificFood.result &&
                   <Checkbox
                     id="4"
                     color="primary"
-                    onClick={() => props.addActivityPhotoURL(
+                    onClick={() => props.addFoodPhotoURL(
                       `https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                        props.specificActivity.result.photos[4].photo_reference
+                        props.specificFood.result.photos[4].photo_reference
                       }&key=${process.env.REACT_APP_GOOGLE}`
                     )}
                   />}
                 </div>
-                {props.specificActivity.result && (
+                {props.specificFood.result && (
                   <img
                     className="expansion-two-photos"
                     src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                      props.specificActivity.result.photos[4].photo_reference
+                      props.specificFood.result.photos[4].photo_reference
                     }&key=${process.env.REACT_APP_GOOGLE}`}
                   />
                 )}
@@ -189,22 +172,22 @@ function SimpleExpansionPanel(props) {
                 <div className="expansion-panel-two-photo-and-checkbox-div">
                 <div className="expansion-panel-two-photo-and-checkbox-text">
                   Choose this photo
-                  {props.specificActivity.result &&
+                  {props.specificFood.result &&
                   <Checkbox
                     id="5"
                     color="primary"
-                    onClick={() => props.addActivityPhotoURL(
+                    onClick={() => props.addFoodPhotoURL(
                       `https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                        props.specificActivity.result.photos[5].photo_reference
+                        props.specificFood.result.photos[5].photo_reference
                       }&key=${process.env.REACT_APP_GOOGLE}`
                     )}
                   />}
                 </div>
-                {props.specificActivity.result && (
+                {props.specificFood.result && (
                   <img
                     className="expansion-two-photos"
                     src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                      props.specificActivity.result.photos[5].photo_reference
+                      props.specificFood.result.photos[5].photo_reference
                     }&key=${process.env.REACT_APP_GOOGLE}`}
                   />
                 )}
@@ -214,22 +197,22 @@ function SimpleExpansionPanel(props) {
                 <div className="expansion-panel-two-photo-and-checkbox-div">
                 <div className="expansion-panel-two-photo-and-checkbox-text">
                   Choose this photo
-                  {props.specificActivity.result &&
+                  {props.specificFood.result &&
                   <Checkbox
                     id="6"
                     color="primary"
-                    onClick={() => props.addActivityPhotoURL(
+                    onClick={() => props.addFoodPhotoURL(
                       `https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                        props.specificActivity.result.photos[6].photo_reference
+                        props.specificFood.result.photos[6].photo_reference
                       }&key=${process.env.REACT_APP_GOOGLE}`
                     )}
                   />}
                 </div>
-                {props.specificActivity.result && (
+                {props.specificFood.result && (
                   <img
                     className="expansion-two-photos"
                     src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                      props.specificActivity.result.photos[6].photo_reference
+                      props.specificFood.result.photos[6].photo_reference
                     }&key=${process.env.REACT_APP_GOOGLE}`}
                   />
                 )}
@@ -239,22 +222,22 @@ function SimpleExpansionPanel(props) {
                 <div className="expansion-panel-two-photo-and-checkbox-div">
                 <div className="expansion-panel-two-photo-and-checkbox-text">
                   Choose this photo
-                  {props.specificActivity.result &&
+                  {props.specificFood.result &&
                   <Checkbox
                     id="7"
                     color="primary"
-                    onClick={() => props.addActivityPhotoURL(
+                    onClick={() => props.addFoodPhotoURL(
                       `https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                        props.specificActivity.result.photos[7].photo_reference
+                        props.specificFood.result.photos[7].photo_reference
                       }&key=${process.env.REACT_APP_GOOGLE}`
                     )}
                   />}
                 </div>
-                {props.specificActivity.result && (
+                {props.specificFood.result && (
                   <img
                     className="expansion-two-photos"
                     src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                      props.specificActivity.result.photos[7].photo_reference
+                      props.specificFood.result.photos[7].photo_reference
                     }&key=${process.env.REACT_APP_GOOGLE}`}
                   />
                 )}
@@ -264,22 +247,22 @@ function SimpleExpansionPanel(props) {
                 <div className="expansion-panel-two-photo-and-checkbox-div">
                 <div className="expansion-panel-two-photo-and-checkbox-text">
                   Choose this photo
-                  {props.specificActivity.result &&
+                  {props.specificFood.result &&
                   <Checkbox
                     id="8"
                     color="primary"
-                    onClick={() => props.addActivityPhotoURL(
+                    onClick={() => props.addFoodPhotoURL(
                       `https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                        props.specificActivity.result.photos[8].photo_reference
+                        props.specificFood.result.photos[8].photo_reference
                       }&key=${process.env.REACT_APP_GOOGLE}`
                     )}
                   />}
                 </div>
-                {props.specificActivity.result && (
+                {props.specificFood.result && (
                   <img
                     className="expansion-two-photos"
                     src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                      props.specificActivity.result.photos[8].photo_reference
+                      props.specificFood.result.photos[8].photo_reference
                     }&key=${process.env.REACT_APP_GOOGLE}`}
                   />
                 )}
@@ -289,22 +272,22 @@ function SimpleExpansionPanel(props) {
                 <div className="expansion-panel-two-photo-and-checkbox-div">
                 <div className="expansion-panel-two-photo-and-checkbox-text">
                   Choose this photo
-                  {props.specificActivity.result &&
+                  {props.specificFood.result &&
                   <Checkbox
                     id="9"
                     color="primary"
-                    onClick={() => props.addActivityPhotoURL(
+                    onClick={() => props.addFoodPhotoURL(
                       `https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                        props.specificActivity.result.photos[9].photo_reference
+                        props.specificFood.result.photos[9].photo_reference
                       }&key=${process.env.REACT_APP_GOOGLE}`
                     )}
                   />}
                 </div>
-                {props.specificActivity.result && (
+                {props.specificFood.result && (
                   <img
                     className="expansion-two-photos"
                     src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                      props.specificActivity.result.photos[9].photo_reference
+                      props.specificFood.result.photos[9].photo_reference
                     }&key=${process.env.REACT_APP_GOOGLE}`}
                   />
                 )}
@@ -324,18 +307,16 @@ SimpleExpansionPanel.propTypes = {
 
 const mapStateToProps = state => {
   const {
-    location,
-    locationData,
-    inputActivity,
-    allMatchingActivityLocations,
-    specificActivity
+    
+    inputFood,
+    allMatchingFoodLocations,
+    specificFood
   } = state;
   return {
-    location,
-    locationData,
-    inputActivity,
-    allMatchingActivityLocations,
-    specificActivity
+    
+    inputFood,
+    allMatchingFoodLocations,
+    specificFood
   };
 };
 
@@ -343,7 +324,7 @@ export default withStyles(styles)(
   connect(
     mapStateToProps,
     {
-      addActivityPhotoURL
+      addFoodPhotoURL
     }
   )(SimpleExpansionPanel)
 );

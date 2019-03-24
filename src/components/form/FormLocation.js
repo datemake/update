@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+
+//redux
 import { connect } from "react-redux";
-import { getUserLocation,inputLocation  } from "../../ducks/reducer";
+import { getUserLocation, inputLocation  } from "../../ducks/reducer";
 
 //material-ui
 import PropTypes from "prop-types";
@@ -17,7 +19,7 @@ import Textfield from "@material-ui/core/TextField";
 //css
 import "./form.css";
 
-//other components
+
 
 const styles = {
   card: {
@@ -34,7 +36,7 @@ const styles = {
 
 function FormLocation(props) {
   const { classes } = props;
-  const [data, setData] = useState([]);
+  
 
   const getLocation = () => {
     props.getUserLocation(props.location);
@@ -74,6 +76,7 @@ function FormLocation(props) {
           </CardContent>
           <CardActions className="card-button">
             <Link to={"/create-date-activity"} className="form-link">
+              
               <Button
                 onClick={getLocation}
                 size="small"
@@ -83,9 +86,9 @@ function FormLocation(props) {
               >
                 Next
               </Button>
-              {data.map(item => (
+              {/* {data.map(item => (
                 <div key={item}>{item}</div>
-              ))}
+              ))} */}
             </Link>
           </CardActions>
         </div>

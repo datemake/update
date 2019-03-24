@@ -3,8 +3,8 @@ import React from "react";
 //redux
 import { connect } from "react-redux";
 import {
-  getMatchingActivities,
-  getSpecificActivity
+  getMatchingFood,
+  getSpecificFood
 } from "../../ducks/reducer";
 
 //material-ui
@@ -30,24 +30,28 @@ const styles = theme => ({
   }
 });
 
+
 /////
 function SimpleExpansionPanel(props) {
-  const { locationData, classes, inputActivity } = props;
+  
+  const { locationData, classes, inputFood } = props;
 
-  let searchResultsList = props.allMatchingActivityLocations.map(
+  
+
+  let searchResultsList = props.allMatchingFoodLocations.map(
     (element, index) => {
       return (
         <div key={element.id} className="matching-activity-locations-div">
           <div>
-            <b>{props.allMatchingActivityLocations[index].name}</b>
+            <b>{props.allMatchingFoodLocations[index].name}</b>
           </div>
           <div className="matching-activity-locations-address">
-            {props.allMatchingActivityLocations[index].formatted_address}
+            {props.allMatchingFoodLocations[index].formatted_address}
             <Checkbox
               color="primary"
               onChange={() =>
-                props.getSpecificActivity(
-                  props.allMatchingActivityLocations[index].place_id
+                props.getSpecificFood(
+                  props.allMatchingFoodLocations[index].place_id
                 )
               }
             />
@@ -57,15 +61,16 @@ function SimpleExpansionPanel(props) {
     }
   );
 
-  console.log(props.specificActivity);
+
 
   const getMatching = () => {
-    if (locationData.results.length) {
-      const activityLocation = locationData.results[0].geometry.location;
 
-      props.getMatchingActivities(
-        inputActivity,
-        activityLocation.lat + "," + activityLocation.lng
+    if (locationData.results.length) {
+      const foodLocation = locationData.results[0].geometry.location;
+
+      props.getMatchingFood(
+        inputFood,
+        foodLocation.lat + "," + foodLocation.lng
       );
     }
   };
@@ -89,7 +94,9 @@ function SimpleExpansionPanel(props) {
           </div>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography variant="h6">{searchResultsList}</Typography>
+          <Typography variant="h6">
+            {searchResultsList}
+          </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
     </div>
@@ -105,15 +112,15 @@ SimpleExpansionPanel.propTypes = {
 const mapStateToProps = state => {
   const {
     locationData,
-    inputActivity,
-    allMatchingActivityLocations,
-    specificActivity
+    inputFood,
+    allMatchingFoodLocations,
+    specificFood
   } = state;
   return {
     locationData,
-    inputActivity,
-    allMatchingActivityLocations,
-    specificActivity
+    inputFood,
+    allMatchingFoodLocations,
+    specificFood
   };
 };
 
@@ -121,8 +128,8 @@ export default withStyles(styles)(
   connect(
     mapStateToProps,
     {
-      getMatchingActivities,
-      getSpecificActivity
+      getMatchingFood,
+      getSpecificFood
     }
   )(SimpleExpansionPanel)
 );

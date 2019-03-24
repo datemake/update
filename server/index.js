@@ -7,7 +7,7 @@ const bcrypt = require("bcryptjs");
 const app = express();
 const cors = require("cors")
 
-const {nameDate, getMatchingActivities} = require('./controller/dates/createDate')
+const {createDate, getMatchingActivities, getPhotos, getMatchingFood, getMatchingMemory, createDateActivity, createDateFood, createDateMemory} = require('./controller/dates/createDate')
 const {getProfile,completedDates,savedDates} = require('./controller/profile')
 
 app.use(json());
@@ -32,9 +32,17 @@ massive(process.env.CONNECTION_STRING).then(db => {
 
 
 //form endpoints
-app.post("/api/nameDate", nameDate)
-
+// app.post('/api/nameDate', nameDate)
 app.post('/api/getMatchingActivites', getMatchingActivities)
+app.post('/api/getSpecificActivity', getPhotos)
+app.post('/api/getMatchingFood', getMatchingFood)
+app.post('/api/getSpecificFood', getPhotos)
+app.post('/api/getMatchingMemory', getMatchingMemory)
+app.post('/api/getSpecificMemory', getPhotos)
+app.post('/api/createDate', createDate)
+app.post('/api/createDateActivity', createDateActivity)
+app.post('/api/createDateFood', createDateFood)
+app.post('/api/createDateMemory', createDateMemory)
 
 //profile endpoints
 app.get("/api/profile", getProfile)
