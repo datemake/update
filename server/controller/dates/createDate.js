@@ -2,20 +2,27 @@ require("dotenv").config();
 
 const axios = require("axios");
 
-const activityID = []
-const foodID = []
-const memoryID = []
+const activityID = [];
+const foodID = [];
+const memoryID = [];
 
 module.exports = {
-
   createDate: (req, res) => {
-    let activity_id = activityID[0]
-    let food_id = foodID[0]
-    let memory_id = memoryID[0]
+    let activity_id = activityID[0];
+    let food_id = foodID[0];
+    let memory_id = memoryID[0];
     const db = req.app.get("db");
-    const { user_id, date_name, lat_lng } = req.body;
+    const { user_id, date_name, lat_lng, date_description } = req.body;
     console.log(req.body);
-    db.create_date([food_id, activity_id, memory_id, user_id, date_name, lat_lng])
+    db.create_date([
+      food_id,
+      activity_id,
+      memory_id,
+      user_id,
+      date_name,
+      lat_lng,
+      date_description
+    ])
       .then(response => res.status(200).json(response.pop()))
       .catch(err => {
         res.status(500).send({ errorMessage: "Something went wrong" });
@@ -36,10 +43,11 @@ module.exports = {
       activity_google_place_id
     ])
       .then(response => {
-        activityID.push(response[0].activity_id)
-        console.log(activityID)
-        console.log(response)
-        res.status(200).json(response.pop())})
+        activityID.push(response[0].activity_id);
+        console.log(activityID);
+        console.log(response);
+        res.status(200).json(response.pop());
+      })
       .catch(err => {
         res.status(500).send({ errorMessage: "Something went wrong" });
         console.log(err);
@@ -50,11 +58,12 @@ module.exports = {
     const { food_description, food_photo, food_google_place_id } = req.body;
     console.log(req.body);
     db.create_date_food([food_description, food_photo, food_google_place_id])
-      .then(response => 
-        { foodID.push(response[0].food_id)
-          console.log(foodID)
-          console.log(response)
-          res.status(200).json(response.pop())})
+      .then(response => {
+        foodID.push(response[0].food_id);
+        console.log(foodID);
+        console.log(response);
+        res.status(200).json(response.pop());
+      })
       .catch(err => {
         res.status(500).send({ errorMessage: "Something went wrong" });
         console.log(err);
@@ -73,11 +82,12 @@ module.exports = {
       memory_photo,
       memory_google_place_id
     ])
-      .then(response => 
-        {memoryID.push(response[0].memory_id)
-          console.log(memoryID)
-          console.log(response)
-          res.status(200).json(response.pop())})
+      .then(response => {
+        memoryID.push(response[0].memory_id);
+        console.log(memoryID);
+        console.log(response);
+        res.status(200).json(response.pop());
+      })
       .catch(err => {
         res.status(500).send({ errorMessage: "Something went wrong" });
         console.log(err);

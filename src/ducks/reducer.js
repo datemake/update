@@ -6,6 +6,7 @@ const initialState = {
   location: "",
   date: [],
   dateName: "",
+  inputDescription:"",
 
   //activities
   inputActivity: "",
@@ -29,8 +30,9 @@ const initialState = {
   memoryPhotoURL: []
 };
 
-//name of date constants
+//general date constants
 const INPUT_DATE_NAME = "INPUT_DATE_NAME";
+const INPUT_DATE_DESCRIPTION = "INPUT_DATE_DESCRIPTION";
 
 //location constants
 const INPUT_LOCATION = "INPUT_LOCATION";
@@ -62,7 +64,9 @@ const ADD_MEMORY_PHOTO_URL = "ADD_MEMORY_PHOTO_URL";
 export default function reducer(state = initialState, action) {
 
   switch (action.type) {
-
+    case INPUT_DATE_DESCRIPTION:
+    console.log(action.type);
+    return { ...state, inputDescription: action.payload };
 
     case INPUT_DATE_NAME:
       console.log(action.type);
@@ -147,12 +151,20 @@ export default function reducer(state = initialState, action) {
       return state;
   }
 }
-//general date name
+//general date 
 export const inputDateName = name => {
   console.log(name);
   return {
     type: INPUT_DATE_NAME,
     payload: name
+  };
+};
+
+export const inputDateDescription = description => {
+  console.log(description);
+  return {
+    type: INPUT_DATE_DESCRIPTION,
+    payload: description
   };
 };
 

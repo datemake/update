@@ -36,7 +36,7 @@ const styles = {
 
 function FormLanding(props) {
   const { classes } = props;
-  const [name, SetName] = useState("");
+ 
 
  
 
@@ -71,6 +71,7 @@ function FormLanding(props) {
               variant="outlined"
               style={{ width: 700, height: 30 }}
               onChange={(e) => props.inputDateName(e.target.value)}
+
             />
           </CardContent>
           <CardActions className="card-button">

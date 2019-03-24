@@ -49,34 +49,34 @@ props.locationData.length &&
 console.log(props.locationData.results[0].geometry.location)
 
 
-  const createDate = (
-    activity_description,
-    activity_photo,
-    activity_google_place_id,
-    food_description,
-    food_photo,
-    food_google_place_id,
-    memory_description,
-    memory_photo,
-    memory_google_place_id,
-    date_name,
-    lat_lng
-  ) => {
+  // const createDate = (
+  //   activity_description,
+  //   activity_photo,
+  //   activity_google_place_id,
+  //   food_description,
+  //   food_photo,
+  //   food_google_place_id,
+  //   memory_description,
+  //   memory_photo,
+  //   memory_google_place_id,
+  //   date_name,
+  //   lat_lng
+  // ) => {
    
-    axios
-      .post("/api/createDateActivity", { activity_description, activity_photo, activity_google_place_id })
-      .then(() =>
-        axios.post("/api/createDateFood", { food_description, food_photo, food_google_place_id })
-      )
-      .then(() =>
-        axios.post("/api/createDateMemory", {
-          memory_description,
-          memory_photo,
-          memory_google_place_id
-        })
-      )
-      .then(() => axios.post("/api/createDate", { date_name,  lat_lng }));
-  };
+  //   axios
+  //     .post("/api/createDateActivity", { activity_description, activity_photo, activity_google_place_id })
+  //     .then(() =>
+  //       axios.post("/api/createDateFood", { food_description, food_photo, food_google_place_id })
+  //     )
+  //     .then(() =>
+  //       axios.post("/api/createDateMemory", {
+  //         memory_description,
+  //         memory_photo,
+  //         memory_google_place_id
+  //       })
+  //     )
+  //     .then(() => axios.post("/api/createDate", { date_name,  lat_lng }));
+  // };
 
   return (
     <div className="main-form-activity-div">
@@ -95,12 +95,12 @@ console.log(props.locationData.results[0].geometry.location)
                 soon be forgetten. Add a memory maker - that special something
                 that will make your date unique. It could be as simple as
                 finding a photo-booth and making silly faces together.
-                <p>
+                {/* <p>
                   {" "}
                   Type in the location for your memory maker, or if you don't
                   need to add an address, just give your memory maker a name and
                   check the 'no address' box.
-                </p>
+                </p> */}
               </Typography>
             </div>
             <div className="form-memory-textfield">
@@ -116,9 +116,9 @@ console.log(props.locationData.results[0].geometry.location)
                 style={{ width: 700, height: 30 }}
               />
             </div>
-            <div className="form-checkbox">
+            {/* <div className="form-checkbox">
               <FormCheckbox label="No address" />
-            </div>
+            </div> */}
 
             <br />
             <ExpansionOneMemory onClick={props.getSpecificMemory} />
@@ -164,34 +164,16 @@ console.log(props.locationData.results[0].geometry.location)
               />
             </div>
             <CardActions className="card-button">
-              <Link to={"/create-date-review"} className="form-link">
-
-              {props.specificActivity.result &&
+            <Link to={"/create-date-description"} className="form-link">
                 <Button
-                  onClick={
-                    ()=>
-                    createDate(
-                    
-                      props.specificActivity.result.name,
-                      props.activityPhotoURL,
-                      props.specificActivity.result.place_id,
-                      props.specificFood.result.name,
-                      props.foodPhotoURL,
-                      props.specificFood.result.place_id,
-                      props.specificMemory.result.name,
-                      props.memoryPhotoURL,
-                      props.specificMemory.result.place_id,
-                      props.dateName,
-                      props.locationData.results[0].geometry.location
-                    )
-                  }
+                  // onClick={props}
                   size="small"
                   variant="contained"
                   color="primary"
                   style={{ color: "white", fontWeight: 600, fontSize: 16 }}
                 >
                   Next
-                </Button>}
+                </Button>
               </Link>
             </CardActions>
           </CardContent>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -36,7 +36,7 @@ const styles = {
 
 function FormLocation(props) {
   const { classes } = props;
-  // const [data, setData] = useState([]);
+  
 
   const getLocation = () => {
     props.getUserLocation(props.location);
