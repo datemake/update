@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import deburr from 'lodash/deburr';
 import Downshift from 'downshift';
+
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
@@ -12,6 +13,8 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import FilterList from '@material-ui/icons/FilterList'
 import Typography from '@material-ui/core/Typography'
+import Slider from '@material-ui/lab/Slider';
+
 import './search_bar.css'
 
 const suggestions = [
@@ -115,10 +118,14 @@ function getSuggestions(value) {
 }
 
 class DownshiftMultiple extends React.Component {
-  state = {
-    inputValue: '',
-    selectedItem: [],
-  };
+  constructor(props){
+    super(props)
+    this.state = {
+      inputValue: '',
+      selectedItem: [],
+    }
+    this.handleSlider = this.handleSlider.bind(this)
+  }
 
   handleKeyDown = event => {
     const { inputValue, selectedItem } = this.state;
@@ -134,10 +141,15 @@ class DownshiftMultiple extends React.Component {
   };
 
   handleChange = item => {
+    // console.log('hit')
     let { selectedItem } = this.state;
 
+    // if (selectedItem.indexOf(item) === -1) {
+    //   this.props.selectedItem.push(item)
+    // }
     if (selectedItem.indexOf(item) === -1) {
       selectedItem = [...selectedItem, item];
+      this.props.setSelectedItem([...this.props.selectedItem, item]);
     }
 
     this.setState({
@@ -153,8 +165,13 @@ class DownshiftMultiple extends React.Component {
       return { selectedItem };
     });
   };
+  handleSlider(event, value){
+    this.props.setWithin(value)
+    console.log('change', value)
+  }
 
   render() {
+    console.log(this.props.within)
     const { classes } = this.props;
     const { inputValue, selectedItem } = this.state;
     // console.log(selectedItem)
@@ -165,12 +182,15 @@ class DownshiftMultiple extends React.Component {
             <Typography className={classes.heading} style={{paddingTop: '6px'}}>Filter</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
+            
+            
             <Downshift
                 id="downshift-multiple"
                 inputValue={inputValue}
                 onChange={this.handleChange}
                 selectedItem={selectedItem}
               >
+              
                 {({
                   getInputProps,
                   getItemProps,
@@ -180,6 +200,19 @@ class DownshiftMultiple extends React.Component {
                   highlightedIndex,
                 }) => (
                   <div className={classes.container}>
+                  <div style={{marginBottom: '15px'}}>
+                   <Typography id="label">Distance</Typography>
+                    <Slider
+                      aria-labelledby="label"
+                      classes={{ container: classes.slider }}
+                      // fullWidth='true'
+                      min={5}
+                      max={50}
+                      value={+this.props.within}
+                      // onChange={(e) => this.props.setWithin(e.target.value)}
+                      onChange={this.handleSlider}
+                    />
+                  </div>
                     {renderInput({
                       fullWidth: false,
                       classes,

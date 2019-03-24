@@ -19,7 +19,10 @@ export default class AutoComplete extends React.Component {
     this.setState({address: address})
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
-      .then(latLng => console.log('Success', latLng))
+      .then(latLng => {
+        console.log('Success', latLng)
+        this.props.setLocation(latLng)
+      })
       .catch(error => console.error('Error', error));
   };
   
@@ -31,6 +34,7 @@ export default class AutoComplete extends React.Component {
         // radius: 2000,
         types: ['(cities)']
       }
+      // console.log(this.state.address)
     return (
       <PlacesAutocomplete
         value={this.state.address}

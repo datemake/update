@@ -73,7 +73,7 @@ function Header(props) {
 
     return(
         <div>
-            {console.log(props)}
+            {/* {console.log(props)} */}
             <AppBar position='fixed' style={{backgroundColor: 'rgba(0, 0, 0, 0)', boxShadow: 'none', paddingTop: '10px'}} id='appBar'>
                 <Link to='/' style={{textDecoration: 'none'}}>
                     <Typography variant='h4' style={{color: 'white'}}>up<span style={{color: "#EF4E4E"}}>date</span></Typography>
@@ -95,8 +95,10 @@ function Header(props) {
                         ?
                             <div id='loginSignup'>
                                 <Button style={{color: 'white'}} onClick={() => logout()}>Logout</Button>
-                                <Person color='primary' fontSize='large'/>
-                                <Typography variant='h6' style={{color: 'white', fontWeight: '900', textDecoration: 'none'}}>Profile</Typography>
+                                <Link to='/profile' style={{textDecoration: 'none', display:'flex', flexDirection: 'row', alignItems: 'center'}}>
+                                    <Person color='primary' fontSize='large'/>
+                                    <Typography variant='h6' style={{color: 'white', fontWeight: '900', textDecoration: 'none'}}>Profile</Typography>
+                                </Link>
                             </div>
                             
                         :
