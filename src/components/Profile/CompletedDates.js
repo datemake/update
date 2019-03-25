@@ -13,6 +13,8 @@ import Typography from "@material-ui/core/Typography";
 //css
 import "./Profile.css"
 
+import ExpansionCompletedDates from "./ExpansionCompletedDates"
+
 const styles = {
     card: {
       width: 1200,
@@ -30,8 +32,7 @@ const styles = {
 function CompletedDates(props) {
     const { classes } = props;
     
-    function SavedDates(props) {
-      const { classes } = props;
+    
       const [savedDates,setSavedDates] = useState([])
   
       useEffect(() => {
@@ -48,18 +49,27 @@ function CompletedDates(props) {
 
        const completed = savedDates.map(date => {
          return <div key={date.id}>
-                    <h2>{date.username}</h2>
+                    {/* <h2>{date.username}</h2>
                     <h2>{date.profile_pic}</h2>
-                    <h2>{date.username}</h2>
+                    <h2>{date.username}</h2> */}
                  </div>
        })
 return(
 
 
       <Card className={classes.card} style={{ backgroundColor: "#white" }}>
-        <div className="profile-user-card">
-          <CardContent className="profile-user-card-content">
-              {completed}
+        <div className="profile-completed-dates-card">
+          <CardContent className="profile-completed-card-content">
+          <Typography className="saved-dates"
+              variant="h3"
+              color= 'primary'
+              style={{ fontWeight: 600 }}
+            >
+              Completed Dates
+             
+            </Typography>
+            <ExpansionCompletedDates/>
+              {/* {completed} */}
           </CardContent>
         </div>
       </Card>
@@ -67,7 +77,7 @@ return(
   
 )
 }
-}
+
 CompletedDates.propTypes = {
     classes: PropTypes.object.isRequired
   }

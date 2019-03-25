@@ -27,8 +27,8 @@ const styles = {
     width: 1000,
 
     minheight: 1245,
-    marginTop: 65,
-    marginBottom: 65
+    marginTop: 55,
+    marginBottom: 55
   },
 
   title: {

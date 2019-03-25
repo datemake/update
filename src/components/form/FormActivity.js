@@ -34,7 +34,8 @@ const styles = {
     width: 1000,
     minheight: 1145,
     marginTop: 65,
-    marginBottom: 65
+    marginBottom: 65,
+  
   },
 
   title: {
