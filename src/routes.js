@@ -36,7 +36,7 @@ export default (
     <Route path="/create-date-review" exact component={FormReview} />
     <Route path="/profile" exact component={Profile} />
     <Route path="/search" exact component={Search} />
-    {/* <Route path="/" exact component={Landing} /> */}
+    <Route path="/date/:dateId" exact component={DateLanding} />
     <Route path="/date" exact component={DateLanding} />
     {/* <Route path="/search" exact component={Search} /> */}
     <Route path="/" exact component={Landing} />
