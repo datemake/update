@@ -30,7 +30,10 @@ const initialState = {
   memoryPhotoURL: [],
 
   //search results
-  searchResults: []
+  searchResults: [],
+
+  //review page
+  reviewInput: ""
 };
 
 
@@ -65,6 +68,9 @@ const GET_MATCHING_MEMORY_LOCATIONS = "GET_MATCHING_MEMORY_LOCATIONS";
 const GET_SPECIFIC_MEMORY_LOCATION = "GET_SPECIFIC_MEMORY_LOCATION";
 const DESCRIBE_MEMORY = "DESCRIBE_MEMORY";
 const ADD_MEMORY_PHOTO_URL = "ADD_MEMORY_PHOTO_URL";
+
+//review page
+const INPUT_REVIEW = 'INPUT_REVIEW'
 
 
 
@@ -157,6 +163,9 @@ export default function reducer(state = initialState, action) {
 
     case ADD_MEMORY_PHOTO_URL:
       return { ...state, memoryPhotoURL: action.payload };
+      case INPUT_REVIEW:
+      console.log(action.type);
+      return { ...state, reviewInput: action.payload };
 
     default:
       return state;
@@ -349,6 +358,14 @@ export const inputMemoryDescription = memoryDescription => {
   };
 };
 
+//review page
+export const inputReview = review => {
+  console.log(review);
+  return {
+    type: INPUT_REVIEW,
+    payload: review
+  };
+};
 ///FORM FINAL POST TO DATABASE
 
 // export const createDate = dateName => {
