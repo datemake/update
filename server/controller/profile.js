@@ -13,10 +13,10 @@ module.exports = {
     addUser: async (req, res) => {
       const db = req.app.get("db");
       const {displayName, email, firebaseId, profileImg} = req.body
-      console.log(req.body);
+      // console.log(req.body);
       const user = await db.get_user(firebaseId)
       if(user[0]){
-        console.log(user)
+        // console.log(user)
         res.status(200)
       }
     else {

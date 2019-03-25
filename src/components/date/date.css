@@ -3,13 +3,24 @@
   background-size: cover;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
   height: 100vh;
   padding-right:10vw;
   padding-left:10vw;
 }
-
-.date-inner-card{
+.date_cards{
+    padding-top: 100px;   
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.short_description_div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+/* .date-inner-card{
     display: flex;
     flex-direction: column;
     padding-right:10vh;
@@ -20,8 +31,7 @@
 .date-card-content{
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    /* justify-content: center; */
+
   
 }
 
@@ -40,10 +50,8 @@
 }
  .spec_dates {
     height: 775,
-    /* background-color: blue; */
 } 
 .date_summary {
-    /* height: 50%; */
     border-bottom: 1px dotted grey;
 }
 .date_description {
@@ -51,7 +59,6 @@
     height: 50%
 }
 .summaries {
-    /* margin-top: 7vh; */
    display: flex;
    flex-direction: column;
    align-content: space-between;
@@ -65,4 +72,4 @@
     width: 70%;
     margin: 0 auto;
     margin-top: 10;
-}
+} */
