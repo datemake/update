@@ -34,17 +34,17 @@ function SavedDates(props) {
     const { classes } = props;
     const [savedDates,setSavedDates] = useState([])
 
-    useEffect(() => {
-      const fetchData = async () => {
-        const result = await axios(
-          '/api/completedDates',
-        );
-        console.log(result.data)
-        setSavedDates(result.data);
-      };
+    // useEffect(() => {
+    //   const fetchData = async () => {
+    //     const result = await axios(
+    //       '/api/completedDates',
+    //     );
+    //     console.log(result.data)
+    //     setSavedDates(result.data);
+    //   };
   
-      fetchData();
-    }, []);
+    //   fetchData();
+    // }, []);
 
 
 

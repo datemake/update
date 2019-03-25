@@ -19,29 +19,16 @@ import hotChocolate from "../../photos/hotChocolate.jpg"
 const styles = {
     card: {
       width: 700,
-    }
-  //   title: {
-  //     fontSize: 12
-  //   },
-  //   media: {
-  //     height: "40%",
-  //     // paddingTop: '56.25%', // 16:9
-  //     // display: "in-line",
-  //     width: "90%",
-  //   },
-  //   media2: {
-  //     height: "50%",
-  //     // paddingTop: '56.25%', // 16:9
-  //     marginRight: "1%",
-  //     width: "45%",
-  //     // display: "in-line",
-  //   },
-  //   media3: {
-  //     height: "50%",
-  //     // paddingTop: '56.25%', // 16:9
-  //     marginLeft: "1%",
-  //     width: "45%"
-  //   }
+      display: 'block'
+    },
+    media: {
+      height: 400,
+      objectFit: 'cover'
+    },
+    media2: {
+      height: 200,
+      width: 300,
+    },
   };
   
 
@@ -52,28 +39,39 @@ return(
 
  <div className='date_cards'>
       <Card className={classes.card} style={{ backgroundColor: "#white" }}>
-        <CardMedia
-            className={classes.media}
-            image={hotChocolate}
-            title="Paella dish"
-          />
-        <div>
-          <CardContent>
-            <Typography variant="h4" gutterBottom>
-              Activity Description
-            </Typography>
-          </CardContent>
-        </div>
-        <CardMedia
-          className={classes.media2}
-          image={hotChocolate}
-          title="Paella dish"
-        />
-        <CardMedia
-          className={classes.media3}
-          image={hotChocolate}
-          title="Paella dish"
-        />
+        <CardContent>
+          <Typography variant="h4" gutterBottom>
+                {props.date.activity_description}
+          </Typography>
+          <CardMedia
+                className={classes.media}
+                image={props.date.activity_photo}
+                title="Paella dish"
+              />
+            <div id='bottom_images_div'>
+              <div>
+              <Typography variant="h4" gutterBottom>
+                {props.date.food_description}
+              </Typography>
+                <CardMedia
+                  className={classes.media2}
+                  image={props.date.food_photo}
+                  title="Paella dish"
+                />
+              </div>
+              <div>
+              <Typography variant="h4" gutterBottom>
+                {props.date.memory_description}
+              </Typography>
+                <CardMedia
+                  className={classes.media2}
+                  image={props.date.memory_photo}
+                  title="Paella dish"
+                />
+              </div>
+            </div>
+            
+        </CardContent>
       </Card>
     </div>
 )
