@@ -19,78 +19,56 @@ import hotChocolate from "../../photos/hotChocolate.jpg"
 const styles = {
     card: {
       width: 700,
-      height: 775,
-      marginTop: 95,
-      marginBottom: 65,
-      display: "flex",
-      flexWrap: "wrap",
-    overflowY: "scroll",
-      justifyContent: "center"
-    },
-    title: {
-      fontSize: 12
-    },
-    media: {
-      height: "40%",
-      // paddingTop: '56.25%', // 16:9
-      display: "in-line",
-      width: "90%",
-    },
-    media2: {
-      height: "50%",
-      // paddingTop: '56.25%', // 16:9
-      marginRight: "1%",
-      width: "45%",
-      display: "in-line",
-    },
-    media3: {
-      height: "50%",
-      // paddingTop: '56.25%', // 16:9
-      marginLeft: "1%",
-      width: "45%"
-    },
-    others2: {
-      display: "flex"
-    },
-    type: {
-      display: "block"
     }
+  //   title: {
+  //     fontSize: 12
+  //   },
+  //   media: {
+  //     height: "40%",
+  //     // paddingTop: '56.25%', // 16:9
+  //     // display: "in-line",
+  //     width: "90%",
+  //   },
+  //   media2: {
+  //     height: "50%",
+  //     // paddingTop: '56.25%', // 16:9
+  //     marginRight: "1%",
+  //     width: "45%",
+  //     // display: "in-line",
+  //   },
+  //   media3: {
+  //     height: "50%",
+  //     // paddingTop: '56.25%', // 16:9
+  //     marginLeft: "1%",
+  //     width: "45%"
+  //   }
   };
   
 
 function DateImages(props) {
     const { classes } = props;
     
-
-
-
 return(
 
- <div>
-       {/* <img src={hotChocolate} className="date-main-image"></img> */}
+ <div className='date_cards'>
       <Card className={classes.card} style={{ backgroundColor: "#white" }}>
-      <div className={classes.first}>
-      </div>
-
-      <CardMedia
-          className={classes.media}
-          image={hotChocolate}
-          title="Paella dish"
-        />
+        <CardMedia
+            className={classes.media}
+            image={hotChocolate}
+            title="Paella dish"
+          />
         <div>
-
-        <CardContent>
-        <Typography variant="h4" gutterBottom>
-        Activity Description
-      </Typography>
-        </CardContent>
+          <CardContent>
+            <Typography variant="h4" gutterBottom>
+              Activity Description
+            </Typography>
+          </CardContent>
         </div>
         <CardMedia
           className={classes.media2}
           image={hotChocolate}
           title="Paella dish"
         />
-        
         <CardMedia
           className={classes.media3}
           image={hotChocolate}

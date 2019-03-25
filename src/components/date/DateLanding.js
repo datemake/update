@@ -28,24 +28,27 @@ const styles = {
   
 
 function DateLanding(props) {
-    const { classes } = props;
-    console.log(props)
+  const { classes } = props;
+  // console.log(props)
   const [date,setDate] = useState([])
-    useEffect(() => {
-      axios.get(`/api/dates/${props.match.params.id}`).then(response => {
-        console.log(response.data)
-        setDate(response.data)
-        console.log(date)
-      })
-    })
 
+  useEffect(() => {
+    axios
+      .get(`/api/dates/${props.match.params.dateId}`)
+      .then(response => {
+        // console.log(response.data)
+        setDate(response.data)
+    })
+  }, [props.match.params.dateId])
+
+  console.log(date)
 
 return(
     
     <div className="main-date-div">
-<DateDescription/>
-<DateImages/>
-</div>
+      <DateDescription date={date}/>
+      <DateImages date={date}/>
+    </div>
 
 )
 }

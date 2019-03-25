@@ -52,7 +52,7 @@ function Header(props) {
 
     function checkUser(){
         firebase.auth().onAuthStateChanged(function(user) {
-            console.log(user)
+            // console.log(user)
             if (user) {
                 const info = {
                     displayName: user.displayName,

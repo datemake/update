@@ -38,18 +38,17 @@ module.exports = {
             res.status(404).json('No dates found with given criteria')
         }
     },
-    specificDate: (req, res) => {
+
+    specificDate: async (req, res) => {
         const db = req.app.get("db");
-        console.log(req.params.id);
-        db.specific_date([req.params.id])
-          .then(response => {
-            console.log(response);
-            res.status(200).json(response);
-          })
-    
-          .catch(err => {
-            res.status(500).send({ errorMessage: "Something went wrong" });
-            console.log(err);
-          });
+        // console.log(req.params.id);
+        const date = await db.specific_date(req.params.id)
+        // console.log(date)
+        if(date.length){
+            res.status(200).json(date[0])
+        }
+        else{
+            res.status(404).json('Date Not Found')
+        }
       }
 }
