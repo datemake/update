@@ -101,7 +101,7 @@ function FormLanding(props) {
 
             <TextField
               id="filled-multiline-flexible"
-              label="Write your review"
+              label="Write your description"
               multiline
               rowsMax="15"
               value={props.dateDescription}

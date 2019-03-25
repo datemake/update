@@ -5,6 +5,7 @@ import { Switch, Route } from "react-router-dom";
 
 //date
 import DateLanding from "../src/components/date/DateLanding";
+import ReviewMain from "../src/components/reviews/ReviewMain"
 
 //form
 import FormLanding from "../src/components/form/FormLanding";
@@ -21,7 +22,6 @@ import Landing from "../src/components/landing/Landing";
 import Profile from "../src/components/Profile/Profile";
 
 //search
-
 import Search from "../src/components/search/Search";
 
 export default (
@@ -38,7 +38,8 @@ export default (
     <Route path="/search" exact component={Search} />
     <Route path="/date/:dateId" exact component={DateLanding} />
     <Route path="/date" exact component={DateLanding} />
-    {/* <Route path="/search" exact component={Search} /> */}
     <Route path="/" exact component={Landing} />
+    <Route path="/review" exact component={ReviewMain}/>
+
   </Switch>
 );

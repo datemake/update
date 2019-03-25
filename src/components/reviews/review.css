@@ -1,0 +1,50 @@
+.review-form-component{
+  
+    margin-top: 5vh;
+    display: flex;
+    justify-content: center;
+}
+
+.review-component{
+    margin-top: 5vh;
+    display: flex;
+    justify-content: center;
+}
+
+.review-main-card-content{
+display: flex;
+flex-direction: column;
+width: 100%;
+}
+
+.review-textfield-and-button-div{
+    display: flex;
+    flex-direction: column;
+}
+
+.review-submit-button{
+    width: 5vw;
+}
+
+.review-upload-button{
+    width: 5vw;
+    
+}
+
+.review-buttons-div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.review-avatar-and-username{
+display: flex;
+width: 15vw;
+
+
+}
+
+.review-text{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
