@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from "react-dom";
+import axios from 'axios'
 import SearchBar from './SearchBar'
 import Autocomplete from './Autocomplete'
 import Results from './Results'
@@ -16,9 +16,19 @@ function Search(){
   const [selectedItem, setSelectedItem] = useState('')
   const [location, setLocation] = useState({lat: '', lng: ''})
   const [within, setWithin] = useState(25)
+  const [dates, setDates] = useState([])
 
   function handleClick(){
-    console.log('click')
+    const search = {
+      location: location,
+      within: within,
+      tags: selectedItem
+    }
+    axios
+      .post('/api/getDates', search)
+      .then(response => {
+        setDates(response.data)
+      })
   }
 
 // const TestContext = React.createContext(null);
@@ -43,8 +53,7 @@ function Search(){
           </div>
           {/* <TestContext.Provider value={'test'}> */}
             <Results 
-              test={test}
-              setTest={setTest}
+              dates={dates}
             />
           {/* </TestContext.Provider> */}
         </div>
