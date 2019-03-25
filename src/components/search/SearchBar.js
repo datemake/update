@@ -201,7 +201,7 @@ class DownshiftMultiple extends React.Component {
                 }) => (
                   <div className={classes.container}>
                   <div style={{marginBottom: '15px'}}>
-                   <Typography id="label">Distance</Typography>
+                   <Typography id="label">Distance (5 - 50 miles)</Typography>
                     <Slider
                       aria-labelledby="label"
                       classes={{ container: classes.slider }}
