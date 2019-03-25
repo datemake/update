@@ -13,9 +13,7 @@ export default function App() {
           name: name,
           age:age,
           growAYearOlder: () => setAge( age + 1)
-        }}>
-         
-          
+        }}> 
       <div className="person">
             <React.Fragment>
               <Header/>

@@ -30,3 +30,39 @@
     border-radius: 98px;
   
 }
+.others {
+    display: "block";
+    justify-content: "space-around"
+}
+.others2 {
+    width: 50px;
+    display: 'block',
+}
+ .spec_dates {
+    height: 775,
+    /* background-color: blue; */
+} 
+.date_summary {
+    /* height: 50%; */
+    border-bottom: 1px dotted grey;
+}
+.date_description {
+    
+    height: 50%
+}
+.summaries {
+    /* margin-top: 7vh; */
+   display: flex;
+   flex-direction: column;
+   align-content: space-between;
+}
+.summaries i {
+    margin-right: 1vw;
+    color: #EF4E4E;
+    font-size: 150%;
+}
+.describe {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 10;
+}
