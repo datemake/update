@@ -37,5 +37,19 @@ module.exports = {
         else{
             res.status(404).json('No dates found with given criteria')
         }
-    }
+    },
+    specificDate: (req, res) => {
+        const db = req.app.get("db");
+        console.log(req.params.id);
+        db.specific_date([req.params.id])
+          .then(response => {
+            console.log(response);
+            res.status(200).json(response);
+          })
+    
+          .catch(err => {
+            res.status(500).send({ errorMessage: "Something went wrong" });
+            console.log(err);
+          });
+      }
 }

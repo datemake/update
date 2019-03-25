@@ -9,7 +9,7 @@ const cors = require("cors")
 
 const {createDate, getMatchingActivities, getPhotos, getMatchingFood, getMatchingMemory, createDateActivity, createDateFood, createDateMemory} = require('./controller/dates/createDate')
 const {addUser,completedDates,savedDates} = require('./controller/profile')
-const {getDates} = require('./controller/dates/getDates')
+const {getDates,specificDate} = require('./controller/dates/getDates')
 
 app.use(json());
 app.use(cors())
@@ -48,7 +48,7 @@ app.post('/api/createDateMemory', createDateMemory)
 //search endpoints
 
 app.post('/api/getDates', getDates)
-
+app.get("/api/dates/:id",specificDate)
 //profile endpoints
 app.post('/api/profile', addUser)
 
