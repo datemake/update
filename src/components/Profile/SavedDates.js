@@ -12,6 +12,9 @@ import Typography from "@material-ui/core/Typography";
 
 //css
 import "./Profile.css"
+// import { ExpansionPanel } from "@material-ui/core";
+
+import ExpansionSavedDates from "./ExpansionSavedDates"
 
 const styles = {
     card: {
@@ -49,10 +52,17 @@ return(
 
 
       <Card className={classes.card} style={{ backgroundColor: "#white" }}>
-        <div className="profile-user-card">
-          <CardContent className="profile-user-card-content">
-     
-         
+        <div className="profile-saved-dates-card">
+          <CardContent className="profile-saved-dates-card-content">
+          <Typography className="saved-dates"
+              variant="h3"
+              color= 'primary'
+              style={{ fontWeight: 600 }}
+            >
+              Saved Dates
+             
+            </Typography>
+  <ExpansionSavedDates/>
            
           </CardContent>
         </div>
