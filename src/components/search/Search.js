@@ -5,11 +5,13 @@ import Autocomplete from './Autocomplete'
 import Results from './Results'
 import Button from '@material-ui/core/Button'
 
+import { updateSearchResults } from "../../ducks/reducer";
+import { connect } from "react-redux";
 
 import './search.css'
 
 
-function Search(){
+function Search(props){
   const [test, setTest] = useState('Howdy');
 
   const [inputValue, setInputValue] = useState('')
@@ -27,7 +29,8 @@ function Search(){
     axios
       .post('/api/getDates', search)
       .then(response => {
-        setDates(response.data)
+        // setDates(response.data)
+        props.updateSearchResults(response.data)
       })
   }
 
@@ -53,13 +56,19 @@ function Search(){
           </div>
           {/* <TestContext.Provider value={'test'}> */}
             <Results 
-              dates={dates}
+              // dates={dates}
             />
           {/* </TestContext.Provider> */}
         </div>
       </div>
   );
 }
+const mapStateToProps = state => {
+  return {
+    dates: state.searchResults
+  };
+}
 
+export default connect(mapStateToProps, {updateSearchResults})(Search)
 
-export default Search;
+// export default Search;
