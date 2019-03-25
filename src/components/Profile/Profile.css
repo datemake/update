@@ -11,17 +11,12 @@
 }
 
 
-/* 
-.main-date-div {
-  background-image: url("../../photos/abstractBlur.jpg");
-  background-size: cover;
+.profile-saved-dates-card-content, .profile-saved-dates-card, .profile-completed-dates-card, .profile-completed-card-content {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  height: 100vh;
-  padding-right:10vw;
-  padding-left:10vw;
-} */
+}
 
 .profile-user-card{
     display: flex;
@@ -70,4 +65,8 @@
 
 .dates-completed-num{
 margin-left: 5vw;
+}
+
+.saved-dates{
+  padding-bottom: 5vh;
 }

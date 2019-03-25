@@ -1,5 +1,9 @@
 import React  from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom'
+
+import { connect } from "react-redux";
+
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -27,23 +31,25 @@ function Results(props) {
         <div id='results_div'>
             {props.dates.map((e, i) => {
                 return (
-                    <Card className='results_card'>
-                        <CardActionArea>
-                            <CardMedia
-                            className={classes.media}
-                            image={e.activity_photo}
-                            title="Contemplative Reptile"
-                            />
-                            <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                {e.date_name}
-                            </Typography>
-                            <Typography component="p">
-                                {e.username}
-                            </Typography>
-                            </CardContent>
-                        </CardActionArea>
-                    </Card>
+                    <Link to={`/date/${e.date_id}`} key={i} style={{textDecoration: 'none'}}>
+                         <Card className='results_card'>
+                            <CardActionArea>
+                                <CardMedia
+                                className={classes.media}
+                                image={e.activity_photo}
+                                title="Contemplative Reptile"
+                                />
+                                <CardContent>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    {e.date_name}
+                                </Typography>
+                                <Typography component="p">
+                                    {e.username}
+                                </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                    </Link>
                 )
             })}
         </div>
@@ -54,4 +60,12 @@ Results.propTypes = {
     classes: PropTypes.object.isRequired,
   }
 
-export default withStyles(styles)(Results);
+  const mapStateToProps = state => {
+    return {
+      dates: state.searchResults
+    };
+  }
+
+// export default withStyles(styles)(Results);
+
+export default connect(mapStateToProps)(withStyles(styles)(Results))

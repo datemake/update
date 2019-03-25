@@ -27,8 +27,15 @@ const initialState = {
   allMatchingMemoryLocations: [],
   specificMemory: [],
   describeMemory: "",
-  memoryPhotoURL: []
+  memoryPhotoURL: [],
+
+  //search results
+  searchResults: []
 };
+
+
+//search results
+const UPDATE_SEARCH_RESULTS = "UPDATE_SEARCH_RESULTS"
 
 //general date constants
 const INPUT_DATE_NAME = "INPUT_DATE_NAME";
@@ -64,6 +71,10 @@ const ADD_MEMORY_PHOTO_URL = "ADD_MEMORY_PHOTO_URL";
 export default function reducer(state = initialState, action) {
 
   switch (action.type) {
+
+    case UPDATE_SEARCH_RESULTS:
+    return {...state, searchResults: action.payload}
+
     case INPUT_DATE_DESCRIPTION:
     console.log(action.type);
     return { ...state, inputDescription: action.payload };
@@ -151,6 +162,14 @@ export default function reducer(state = initialState, action) {
       return state;
   }
 }
+//search results
+export const updateSearchResults = dates => {
+  return {
+    type: UPDATE_SEARCH_RESULTS,
+    payload: dates
+  }
+}
+
 //general date 
 export const inputDateName = name => {
   console.log(name);
