@@ -1,0 +1,26 @@
+#results_div{
+    margin-top: 40px;
+    height: 65vh;
+    overflow-y: scroll;
+}
+
+#results_div::-webkit-scrollbar {
+    width: 2px;
+  }
+  
+#results_div::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+#results_div::-webkit-scrollbar-corner {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0);
+}
+
+#results_div::-webkit-scrollbar-thumb {
+    background-color: rgb(37, 37, 37);
+    outline: 0px solid slategrey;
+}
+
+.results_card{
+    margin-bottom: 40px;
+}

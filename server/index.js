@@ -8,7 +8,8 @@ const app = express();
 const cors = require("cors")
 
 const {createDate, getMatchingActivities, getPhotos, getMatchingFood, getMatchingMemory, createDateActivity, createDateFood, createDateMemory} = require('./controller/dates/createDate')
-const {getProfile,completedDates,savedDates} = require('./controller/profile')
+const {addUser,completedDates,savedDates} = require('./controller/profile')
+const {getDates} = require('./controller/dates/getDates')
 
 app.use(json());
 app.use(cors())
@@ -44,8 +45,12 @@ app.post('/api/createDateActivity', createDateActivity)
 app.post('/api/createDateFood', createDateFood)
 app.post('/api/createDateMemory', createDateMemory)
 
+//search endpoints
+
+app.post('/api/getDates', getDates)
+
 //profile endpoints
-app.get("/api/profile", getProfile)
+app.post('/api/profile', addUser)
 
 //completed/saved dates
 app.get('/api/completedDates',completedDates)

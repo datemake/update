@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {withRouter} from 'react-router-dom'
 import {Link} from 'react-router-dom'
-
+import axios from 'axios'
 
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase/app';
@@ -52,10 +52,18 @@ function Header(props) {
 
     function checkUser(){
         firebase.auth().onAuthStateChanged(function(user) {
+            console.log(user)
             if (user) {
+                const info = {
+                    displayName: user.displayName,
+                    email: user.email,
+                    firebaseId: user.uid,
+                    profileImg: user.photoURL
+                }
+                axios.post('/api/profile', info)
               setSignedIn(true)
               setOpen(false)
-              setUser(user.displayName)
+            //   setUser(user.displayName)
             } else {
               setSignedIn(false)
             }
