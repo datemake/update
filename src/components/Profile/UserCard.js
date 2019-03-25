@@ -36,12 +36,7 @@ const styles = {
 function UserCard(props) {
     const { classes } = props;
     
-
-
-
 return(
-
- 
       <Card className={classes.card} style={{ backgroundColor: "#white" }}>
         <div className="profile-user-card">
           <CardContent className="profile-user-card-content">

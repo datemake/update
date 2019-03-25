@@ -1,15 +1,18 @@
 module.exports = {
-    getProfile: (req, res) => {
+  getProfile: async (req, res) => {
         const db = req.app.get("db");
-        console.log(req.body);
-        db.get_profile()
-          .then(response => res.status(200).json(response))
-          .catch(err => {
-            res.status(500).send({ errorMessage: "Something went wrong" });
-            console.log(err);
-          });
-    },
-    
+        const id = req.params.id
+        console.log(req.params)
+        const profile = await db.get_profile(id)
+
+        if(profile[0]){
+          res.status(200).json(profile[0])
+        }
+        else{
+          res.status(500).send({ errorMessage: "Something went wrong" })
+        }
+      },
+
     addUser: async (req, res) => {
       const db = req.app.get("db");
       const {displayName, email, firebaseId, profileImg} = req.body

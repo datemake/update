@@ -20,56 +20,10 @@
     flex-direction: row;
     align-items: center;
 }
-/* .date-inner-card{
+
+#bottom_images_div{
     display: flex;
-    flex-direction: column;
-    padding-right:10vh;
-    padding-left:10vh;
-    height: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 25px
 }
-
-.date-card-content{
-    display: flex;
-    flex-direction: column;
-
-  
-}
-
-.date-main-image{
-    height: 35vh;
-    border-radius: 98px;
-  
-}
-.others {
-    display: "block";
-    justify-content: "space-around"
-}
-.others2 {
-    width: 50px;
-    display: 'block',
-}
- .spec_dates {
-    height: 775,
-} 
-.date_summary {
-    border-bottom: 1px dotted grey;
-}
-.date_description {
-    
-    height: 50%
-}
-.summaries {
-   display: flex;
-   flex-direction: column;
-   align-content: space-between;
-}
-.summaries i {
-    margin-right: 1vw;
-    color: #EF4E4E;
-    font-size: 150%;
-}
-.describe {
-    width: 70%;
-    margin: 0 auto;
-    margin-top: 10;
-} */

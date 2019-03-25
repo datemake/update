@@ -37,7 +37,7 @@ function Results(props) {
                                 <CardMedia
                                 className={classes.media}
                                 image={e.activity_photo}
-                                title="Contemplative Reptile"
+                                title="Activity Photo"
                                 />
                                 <CardContent>
                                 <Typography gutterBottom variant="h5" component="h2">

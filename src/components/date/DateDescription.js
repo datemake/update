@@ -73,7 +73,7 @@ function DateDescription(props) {
       </Card>
       <Card className={classes.card} style={{marginTop: '25px'}}>
         <CardContent>
-          <Typography variant='h5' gutterBottom style={{ textAlign: 'left'}}>
+          <Typography variant='h5' gutterBottom style={{ textAlign: 'left', fontWeight: '400'}}>
             {props.date.date_description}
           </Typography>
         </CardContent>
