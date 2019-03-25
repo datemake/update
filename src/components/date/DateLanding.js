@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -29,8 +29,15 @@ const styles = {
 
 function DateLanding(props) {
     const { classes } = props;
-    
-
+    console.log(props)
+  const [date,setDate] = useState([])
+    useEffect(() => {
+      axios.get(`/api/dates/${props.match.params.id}`).then(response => {
+        console.log(response.data)
+        setDate(response.data)
+        console.log(date)
+      })
+    })
 
 
 return(
