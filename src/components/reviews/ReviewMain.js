@@ -30,7 +30,7 @@ function ReviewMain(props) {
   return (
     <div className="review-main-component">
       <ReviewForm/>
-      <Review/>
+      <Review />
     </div>
   );
 }
