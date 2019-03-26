@@ -22,7 +22,7 @@ import "./review.css";
 
 const styles = {
   card: {
-    minWidth: 800,
+    width: '40vw',
     // marginBottom: "150px",
     // marginTop: "150px",
     display: "flex",

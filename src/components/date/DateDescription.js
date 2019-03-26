@@ -11,30 +11,12 @@ import {Restaurant, LocalActivity, PhotoCamera} from '@material-ui/icons'
 //css
 import "./date.css";
 
-// const styles = {
-//   card: {
-//     width: 700,
-//     height: 400,
-//     // marginTop: 95,
-//     // marginBottom: 65,
-//     textAlign: "left",
-//     paddingLeft: 50
 
-//   },
-
-//   title: {
-//     fontSize: 12
-//   },
-//   avatar: {
-//     margin: 10,
-//     width: 60,
-//     height: 60
-//   }
-// };
 const styles = {
   card: {
     // minWidth: 375,
-    width: 700
+    width: '45vw',
+    // maxHeight: '80vh'
 
 
   },
