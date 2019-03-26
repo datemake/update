@@ -19,8 +19,8 @@ import "./review.css";
 
 const styles = {
   card: {
-    minWidth: 800,
-    // marginBottom: "150px",
+    width: '40vw',
+    marginBottom: "15px",
     // marginTop: "150px",
     display: "flex"
   },
@@ -56,6 +56,52 @@ function Review(props) {
 
   return (
     <div className="review-component">
+      <Card className={classes.card} style={{ backgroundColor: "#white" }}>
+        <CardContent className="review-main-card-content">
+          <div className="review-avatar-and-username">
+            <Avatar />
+
+            <Typography
+              variant="h5"
+              className="write-a-review"
+              style={{ color: "gray" }}
+            >
+              Username
+              <br />
+            </Typography>
+          </div>
+          <div className="review-text">
+            <Typography variant="h6" className="write-a-review">
+              Review
+              <br />
+            </Typography>
+          </div>
+        </CardContent>
+        <CardActions className="description-card-button" />
+      </Card>
+      <Card className={classes.card} style={{ backgroundColor: "#white" }}>
+        <CardContent className="review-main-card-content">
+          <div className="review-avatar-and-username">
+            <Avatar />
+
+            <Typography
+              variant="h5"
+              className="write-a-review"
+              style={{ color: "gray" }}
+            >
+              Username
+              <br />
+            </Typography>
+          </div>
+          <div className="review-text">
+            <Typography variant="h6" className="write-a-review">
+              Review
+              <br />
+            </Typography>
+          </div>
+        </CardContent>
+        <CardActions className="description-card-button" />
+      </Card>
       <Card className={classes.card} style={{ backgroundColor: "#white" }}>
         <CardContent className="review-main-card-content">
           <div className="review-avatar-and-username">

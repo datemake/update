@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import ReviewMain from '../reviews/ReviewMain'
 //material-ui
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
@@ -10,6 +10,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import CardMedia from '@material-ui/core/CardMedia';
+import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown'
 
 //css
 import "./date.css"
@@ -18,8 +19,9 @@ import hotChocolate from "../../photos/hotChocolate.jpg"
 
 const styles = {
     card: {
-      width: 700,
-      display: 'block'
+      width: '45vw',
+      backgroundColor: "#white",
+      marginBottom: 125
     },
     media: {
       height: 400,
@@ -34,12 +36,13 @@ const styles = {
 
 function DateImages(props) {
     const { classes } = props;
+
     
 return(
 
- <div className='date_cards'>
-      <Card className={classes.card} style={{ backgroundColor: "#white" }}>
-        <CardContent>
+ <div className='date_images_cards'>
+      <Card className={classes.card}>
+        <CardContent style={{paddingBottom: 0}}>
           <Typography variant="h4" gutterBottom>
                 {props.date.activity_description}
           </Typography>
@@ -70,9 +73,15 @@ return(
                 />
               </div>
             </div>
-            
+            <div id='see_reviews'>
+              <Typography variant='h6'>See</Typography>
+              <KeyboardArrowDown/>
+              <Typography variant='h6'>Reviews</Typography>
+            </div>
         </CardContent>
       </Card>
+      <ReviewMain/>
+
     </div>
 )
 }
