@@ -35,47 +35,45 @@ const styles = {
   
 function UserCard(props) {
     const { classes } = props;
-    
-return(
-      <Card className={classes.card} style={{ backgroundColor: "#white" }}>
-        <div className="profile-user-card">
-          <CardContent className="profile-user-card-content">
-          <div className= "profile-user-avatar">
-          <Avatar alt="Remy Sharp" src="https://content-static.upwork.com/uploads/2014/10/01073427/profilephoto1.jpg" className={classes.bigAvatar} />
-         
-          </div>
-          <div className="profile-user-card-text">
-          <Typography
-              variant="h3"
-              color= 'primary'
-              style={{ fontWeight: 600 }}
-            >
-              Becky
-             
-            </Typography>
-            <div className="profile-user-card-text-inner">
-            <Typography
-              variant="h4"
-              
-              style={{ fontWeight: 600 }}
-            >
-            <div className="dates-completed">
-              Dates Completed 
-              <div className="dates-completed-num" style={{fontFamily: 'Lobster', color:'#EF4E4E', fontSize: 50}}>12</div></div>
-              <br/>
-              <div className="dates-completed">
-              Dates Created 
-              <div className="dates-completed-num" style={{fontFamily: 'Lobster', color:'#EF4E4E', fontSize: 50}}>12</div></div>
-            
-            </Typography>
-            </div>
-            </div>
-          </CardContent>
+    console.log(props)
+  return(
+    <Card className={classes.card} style={{ backgroundColor: "#white" }}>
+      <div className="profile-user-card">
+        <CardContent className="profile-user-card-content">
+        <div className= "profile-user-avatar">
+        <Avatar alt="Profile Picture" src={props.profile.profile_pic ? props.profile.profile_pic : require('../../photos/user.png')} className={classes.bigAvatar} />
+        
         </div>
-      </Card>
-    
-
-)
+        <div className="profile-user-card-text">
+        <Typography
+            variant="h3"
+            color= 'primary'
+            style={{ fontWeight: 600 }}
+          >
+            {props.profile.username}
+            
+          </Typography>
+          <div className="profile-user-card-text-inner">
+          <Typography
+            variant="h4"
+            
+            style={{ fontWeight: 600 }}
+          >
+          <div className="dates-completed">
+            Dates Completed 
+            <div className="dates-completed-num" style={{fontFamily: 'Lobster', color:'#EF4E4E', fontSize: 50}}>12</div></div>
+            <br/>
+            <div className="dates-completed">
+            Dates Created 
+            <div className="dates-completed-num" style={{fontFamily: 'Lobster', color:'#EF4E4E', fontSize: 50}}>12</div></div>
+          
+          </Typography>
+          </div>
+          </div>
+        </CardContent>
+      </div>
+    </Card>
+  )
 }
 UserCard.propTypes = {
     classes: PropTypes.object.isRequired

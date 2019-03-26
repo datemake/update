@@ -40,15 +40,8 @@ const styles = {
 function Profile(props) {
   const { classes } = props;
   const [profile,setProfile] = useState([])
-  
-  function fetchData(id){
-    axios
-      .get(`/api/get/profile/${id}`)
-      .then(response =>{ 
-        console.log(response.data)
-        setProfile(response.data)
-      });
-  }
+  console.log(profile)
+ 
   useEffect(() => {
     checkUser()
   }, [])
@@ -70,7 +63,7 @@ function Profile(props) {
       .get(`/api/get/profile/${id}`)
       .then(response =>{ 
         console.log(response.data)
-        setProfile(response.data[0])
+        setProfile(response.data)
       });
   }
 
