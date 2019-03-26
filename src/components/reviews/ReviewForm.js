@@ -75,7 +75,7 @@ function ReviewForm(props) {
     const leaveReview = () => {
       console.log(myUser)
 
-    // axios.post("/api/review",{reviewInput,props.match.params.dateId,user.uid}).then(response => {
+    // axios.post("/api/review",{reviewInput,id:props.match.params.dateId,user_id:user.uid}).then(response => {
     //   console.log(response)
     //   setReviews(response.data)
     // })
