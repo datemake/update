@@ -16,6 +16,7 @@ export default function App() {
         }}> 
       <div className="person">
             <React.Fragment>
+              
               <Header/>
               {routes}
             {/* {console.log(context)} */}
