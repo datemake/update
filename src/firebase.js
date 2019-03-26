@@ -9,7 +9,9 @@ var config = {
         storageBucket: "group-project-e903d.appspot.com",
         messagingSenderId: "689677486989"
     };
-    firebase.initializeApp(config);
+    if(!firebase.apps.length){
+        firebase.initializeApp(config);
+    }
     // export const googleProvider = new firebase.auth.GoogleAuthProvider()
     // export const provider = new firebase.auth.GoogleAuthProvider();
     // export const auth = firebase.auth();
