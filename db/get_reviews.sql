@@ -1,0 +1,1 @@
+SELECT * FROM users JOIN reviews on users.firebase_id = reviews.user_id;
