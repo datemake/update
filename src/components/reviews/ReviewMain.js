@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios'
 
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
@@ -13,24 +14,27 @@ const styles = {
 
 };
 function ReviewMain(props) {
+
   const { classes } = props;
 
-  //   useEffect(() => {
-  //     const fetchData = async () => {
-  //       const result = await axios(
-  //         '/api/profile',
-  //       );
-  //       console.log(result.data)
-  //       setProfile(result.data);
-  //     };
+  const [reviews, setReviews] = useState([])
 
-  //     fetchData();
-  //   }, []);
+  useEffect(() => {
+    getReviews()
+  }, [props.date_id])
+
+  function getReviews(){
+    axios
+      .get(`/api/reviews/${props.date_id}`)
+      .then(response => {
+        setReviews(response.data)
+      })
+  }
 
   return (
     <div className="review-main-component">
-      <ReviewForm/>
-      <Review />
+      <ReviewForm getReviews={getReviews} date_id={props.date_id} setReviews={setReviews}/>
+      <Review reviews={reviews}/>
     </div>
   );
 }

@@ -1,5 +1,8 @@
+.review-main-component{
+    margin-bottom: 50px
+}
+
 .review-form-component{
-  
     margin-top: 5vh;
     display: flex;
     flex-direction: column;

@@ -80,7 +80,7 @@ return(
             </div>
         </CardContent>
       </Card>
-      <ReviewMain/>
+      <ReviewMain date_id={props.date.date_id}/>
 
     </div>
 )

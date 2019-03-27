@@ -59,8 +59,8 @@ app.get('/api/completedDates',completedDates)
 app.get('/api/completedDates',savedDates)
 
 //review
-app.get("/api/reviews", getReviews)
-app.get("/api/reviews", postReview)
+app.get("/api/reviews/:dateId", getReviews)
+app.post("/api/reviews", postReview)
    app.listen(4000, () => {
     console.log(`Listening on ${process.env.EXPRESS_PORT}`);
    });
