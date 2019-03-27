@@ -1,2 +1,2 @@
-INSERT INTO food(food_description,food_photo,food_google_place_id)
-VALUES($1,$2,$3) RETURNING food_id;
+INSERT INTO food(food_name,food_photo,food_google_place_id, food_description)
+VALUES($1,$2,$3, $4) RETURNING food_id;
