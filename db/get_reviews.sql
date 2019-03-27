@@ -1,1 +1,3 @@
-SELECT * FROM users JOIN reviews on users.firebase_id = reviews.user_id;
+SELECT * FROM reviews 
+JOIN users ON reviews.user_id = users.user_id
+WHERE reviews.dates_id = $1
