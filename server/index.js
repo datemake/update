@@ -8,7 +8,7 @@ const app = express();
 const cors = require("cors")
 
 const {createDate, getMatchingActivities, getPhotos, getMatchingFood, getMatchingMemory, createDateActivity, createDateFood, createDateMemory} = require('./controller/dates/createDate')
-const {addUser,getProfile,completedDates,savedDates} = require('./controller/profile')
+const {addUser,getProfile,completedDates,savedDates,savedADate} = require('./controller/profile')
 const {getDates,specificDate} = require('./controller/dates/getDates')
 const {getReviews,postReview} = require('./controller/dates/reviews')
 
@@ -56,11 +56,13 @@ app.get('/api/get/profile/:id', getProfile)
 
 //completed/saved dates
 app.get('/api/completedDates',completedDates)
-app.get('/api/completedDates',savedDates)
+app.get('/api/savedDates/:id',savedDates)
+app.post('/api/savedADate',savedADate)
 
 //review
 app.get("/api/reviews/:dateId", getReviews)
 app.post("/api/reviews", postReview)
+
    app.listen(4000, () => {
     console.log(`Listening on ${process.env.EXPRESS_PORT}`);
    });
