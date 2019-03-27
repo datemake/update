@@ -3,11 +3,11 @@ import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import firebase from "firebase/app";
-import "firebase/auth";
-import "../../firebase";
-import "./firebaseui-styling.global.css";
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import firebase from 'firebase/app';
+import 'firebase/auth'
+import '../../firebase'
+import './firebaseui-styling.global.css'
 
 import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
@@ -16,7 +16,7 @@ import Button from "@material-ui/core/Button";
 import AddBox from "@material-ui/icons/AddBox";
 import Person from "@material-ui/icons/Person";
 
-import "./header.css";
+import './header.css'
 
 const uiConfig = {
   // Popup signin flow rather than redirect flow.

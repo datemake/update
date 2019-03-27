@@ -10,7 +10,7 @@ const reducer = require("../ducks/reducer")
 
 describe("Tests reducer functions", () => {
  it("should return initial state", () => {
-   expect(reducer.updateSearchResults(undefined, {})).toEqual({"payload": undefined, "type": "UPDATE_SEARCH_RESULTS"})
+   expect(reducer.inputActivity(undefined, {})).toEqual({"payload": undefined, "type": "INPUT_ACTIVITY"})
  })
  it("should return memory", () => {
    let memory;
@@ -18,14 +18,14 @@ describe("Tests reducer functions", () => {
  })
  it("should return review", () => {
    let review;
-   expect(reducer.inputReview(review, {})).toEqual({"payload": review, "type": "INPUT_REVIEW"})
+   expect(reducer.inputActivityDescription('activity', {})).toEqual({"payload": 'activity', "type": "DESCRIBE_ACTIVITY"})
  })
  it("should return food description", () => {
-   expect(reducer.inputMemoryDescription("love", {})).toEqual({"payload": "love", "type": "DESCRIBE_MEMORY"})
+   expect(reducer.inputFoodDescription("love", {})).toEqual({"payload": "love", "type": "DESCRIBE_FOOD"})
  })
  it("should return photo info", () => {
   let photo;
-   expect(reducer.addMemoryPhotoURL(photo, {})).toEqual({"payload": photo, "type": "ADD_MEMORY_PHOTO_URL"})
+   expect(reducer.addFoodPhotoURL(photo, {})).toEqual({"payload": photo, "type": "ADD_FOOD_PHOTO_URL"})
  })
 })
 
