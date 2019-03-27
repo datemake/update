@@ -38,19 +38,36 @@ const styles = {
   }
 };
 function Profile(props) {
+  console.log(props)
+
   const { classes } = props;
   const [profile,setProfile] = useState([])
+  const [savedDates,setSavedDates] = useState([])
+
   console.log(profile)
- 
+  console.log(savedDates)
   useEffect(() => {
     checkUser()
+
   }, [])
+
+  // useEffect(() => {
+  //   firebase.auth().onAuthStateChanged(function(user) {
+  //     if(user){
+  //       axios.get(`/api/savedDates/${user.uid}`).then(response => {
+  //         console.log(response.data)
+  //         setSavedDates(response.data)
+  //       })
+  //     }
+  //   })
+  // }, [])
   
   function checkUser(){
     firebase.auth().onAuthStateChanged(function(user) {
       if(user){
         fetchData(user.uid)
-        console.log(user)
+        console.log(profile)
+        getSavedDates(user.uid)
       }
       else{
         props.history.push('/')
@@ -58,19 +75,29 @@ function Profile(props) {
     })
   }
 
+  
   function fetchData(id){
     axios
-      .get(`/api/get/profile/${id}`)
-      .then(response =>{ 
-        console.log(response.data)
-        setProfile(response.data)
-      });
+    .get(`/api/get/profile/${id}`)
+    .then(response =>{ 
+      console.log(response.data)
+      setProfile(response.data)
+    });
   }
+  function getSavedDates(id){
+    axios
+    .get(`/api/savedDates/${id}`)
+    .then(response =>{ 
+      console.log(response.data)
+      setSavedDates(response.data)
+    });
+  }
+  
 
   return (
     <div className="profile-component">
       <UserCard profile={profile}/>
-      <SavedDates profile={profile}/>
+      <SavedDates savedDates={savedDates}/>
       <CompletedDates profile={profile}/>
     </div>
   );
