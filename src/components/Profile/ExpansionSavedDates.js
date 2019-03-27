@@ -55,7 +55,7 @@ function SimpleExpansionPanel(props) {
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
         <Typography variant="h6"    style={{ fontWeight: 600 }}>View your Saved Dates</Typography>
         </ExpansionPanelSummary>
-       
+    
       </ExpansionPanel>
     </div>
   );

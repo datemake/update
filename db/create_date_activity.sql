@@ -1,2 +1,2 @@
-INSERT INTO activity(activity_description,activity_photo,activity_google_place_id)
-VALUES($1,$2,$3) RETURNING activity_id;
+INSERT INTO activity(activity_name,activity_photo,activity_google_place_id, activity_description)
+VALUES($1,$2,$3, $4) RETURNING activity_id;

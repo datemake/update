@@ -33,14 +33,16 @@ module.exports = {
   createDateActivity: (req, res) => {
     const db = req.app.get("db");
     const {
-      activity_description,
+      activity_name,
       activity_photo,
-      activity_google_place_id
+      activity_google_place_id,
+      activity_description
     } = req.body;
     db.create_date_activity([
-      activity_description,
+      activity_name,
       activity_photo,
-      activity_google_place_id
+      activity_google_place_id,
+      activity_description
     ])
       .then(response => {
         activityID.push(response[0].activity_id);
@@ -55,9 +57,9 @@ module.exports = {
   },
   createDateFood: (req, res) => {
     const db = req.app.get("db");
-    const { food_description, food_photo, food_google_place_id } = req.body;
+    const { food_name, food_photo, food_google_place_id, food_description } = req.body;
     console.log(req.body);
-    db.create_date_food([food_description, food_photo, food_google_place_id])
+    db.create_date_food([food_name, food_photo, food_google_place_id, food_description])
       .then(response => {
         foodID.push(response[0].food_id);
         console.log(foodID);
@@ -72,15 +74,17 @@ module.exports = {
   createDateMemory: (req, res) => {
     const db = req.app.get("db");
     const {
-      memory_description,
+      memory_name,
       memory_photo,
-      memory_google_place_id
+      memory_google_place_id,
+      memory_description
     } = req.body;
     console.log(req.body);
     db.create_date_memory([
-      memory_description,
+      memory_name,
       memory_photo,
-      memory_google_place_id
+      memory_google_place_id,
+      memory_description
     ])
       .then(response => {
         memoryID.push(response[0].memory_id);
