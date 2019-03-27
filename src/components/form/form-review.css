@@ -1,0 +1,52 @@
+.main-form-review-div{
+    background-image: url("../../photos/cityDark.jpg");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+  padding-right:3vw;
+  padding-left: 3vw;
+    height: 100%;
+    padding-top:10vh;
+  
+}
+
+.form-review-date-div{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.big-image{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-review-images-card{
+  
+
+}
+
+.Review-instructions{
+    display: flex;
+    justify-content: center;
+}
+
+.form-review-submit-button-div{
+    display: flex;
+    justify-content: center;
+}
+
+.box-one, .box-two{
+    display: flex;
+    flex-direction: column;
+
+    padding: 5vw;
+}
+
+.form-review-img-card-content{
+   
+ 
+}

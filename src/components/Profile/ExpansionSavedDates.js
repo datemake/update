@@ -72,6 +72,7 @@ function SimpleExpansionPanel(props) {
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
         <Typography variant="h6"    style={{ fontWeight: 600 }}>View your Saved Dates</Typography>
         </ExpansionPanelSummary>
+
         <ExpansionPanelDetails>
         <div id='results_div'>
             {props.savedDates.map((e, i) => {
@@ -99,6 +100,7 @@ function SimpleExpansionPanel(props) {
             })}
         </div>
         </ExpansionPanelDetails>
+
       </ExpansionPanel>
     </div>
   );
