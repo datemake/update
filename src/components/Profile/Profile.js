@@ -43,6 +43,7 @@ function Profile(props) {
   const { classes } = props;
   const [profile,setProfile] = useState([])
   const [savedDates,setSavedDates] = useState([])
+  const [completedDates,setCompletedDates] = useState([])
 
   console.log(profile)
   console.log(savedDates)
@@ -68,6 +69,7 @@ function Profile(props) {
         fetchData(user.uid)
         console.log(profile)
         getSavedDates(user.uid)
+        getCompletedDates(user.uid)
       }
       else{
         props.history.push('/')
@@ -92,13 +94,21 @@ function Profile(props) {
       setSavedDates(response.data)
     });
   }
+  function getCompletedDates(id){
+    axios
+    .get(`/api/completedDates/${id}`)
+    .then(response =>{ 
+      console.log(response.data)
+      setCompletedDates(response.data)
+    });
+  }
   
 
   return (
     <div className="profile-component">
       <UserCard profile={profile}/>
       <SavedDates savedDates={savedDates}/>
-      <CompletedDates profile={profile}/>
+      <CompletedDates completedDates={completedDates}/>
     </div>
   );
 }

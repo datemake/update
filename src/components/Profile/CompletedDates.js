@@ -18,7 +18,7 @@ import ExpansionCompletedDates from "./ExpansionCompletedDates"
 const styles = {
     card: {
       width: 1200,
-      height: 275,
+      // height: 275,
       marginTop: 45,
       marginBottom: 65
     },
@@ -31,7 +31,7 @@ const styles = {
   
 function CompletedDates(props) {
     const { classes } = props;
-    
+    console.log(props)
     
       const [savedDates,setSavedDates] = useState([])
   
@@ -68,7 +68,7 @@ return(
               Completed Dates
              
             </Typography>
-            <ExpansionCompletedDates/>
+            <ExpansionCompletedDates completedDates={props.completedDates}/>
               {/* {completed} */}
           </CardContent>
         </div>

@@ -52,6 +52,20 @@ module.exports = {
     }
   },
   completedDates: async (req, res) => {
+    const db = req.app.get("db");
+    console.log(req.params);
+    const user = await db.get_user(req.params.id);
+    // console.log(user);
+    if (user.length) {
+      db.completed_dates([user[0].user_id])
+        .then(response => res.status(200).json(response))
+        .catch(err => {
+          res.status(500).send({ errorMessage: "Something went wrong" });
+          console.log(err);
+        });
+    }
+  },
+  postcompletedDates: async (req, res) => {
 
     const db = req.app.get("db");
     const { userFid,review,exif, url, dateId } = req.body;

@@ -7,27 +7,54 @@ const foodID = [];
 const memoryID = [];
 
 module.exports = {
-  createDate: (req, res) => {
+  // createDate: (req, res) => {
+  //   let activity_id = activityID[0];
+  //   let food_id = foodID[0];
+  //   let memory_id = memoryID[0];
+  //   const db = req.app.get("db");
+  //   const { user_id, date_name, lat_lng, date_description } = req.body;
+  //   console.log(req.body);
+  //   db.create_date([
+  //     food_id,
+  //     activity_id,
+  //     memory_id,
+  //     user_id,
+  //     date_name,
+  //     lat_lng,
+  //     date_description
+  //   ])
+  //     .then(response => res.status(200).json(response.pop()))
+  //     .catch(err => {
+  //       res.status(500).send({ errorMessage: "Something went wrong" });
+  //       console.log(err);
+  //     });
+  // },
+  createDate: async (req, res) => {
+   
     let activity_id = activityID[0];
     let food_id = foodID[0];
     let memory_id = memoryID[0];
     const db = req.app.get("db");
     const { user_id, date_name, lat_lng, date_description } = req.body;
     console.log(req.body);
-    db.create_date([
-      food_id,
-      activity_id,
-      memory_id,
-      user_id,
-      date_name,
-      lat_lng,
-      date_description
-    ])
-      .then(response => res.status(200).json(response.pop()))
-      .catch(err => {
-        res.status(500).send({ errorMessage: "Something went wrong" });
-        console.log(err);
-      });
+    try{
+      const user = await db.get_user(user_id)
+      if(user.length){
+        console.log(user)
+        const date = await db.create_date([food_id,activity_id,memory_id,user[0].user_id,date_name,lat_lng,date_description ])
+        if(date.length){
+          const complete = await db.get_dates(user[0].user_id)
+          res.status(200).json(complete)
+        }
+        else{
+          res.status(500).send({ errorMessage: "Something went wrong" });
+        }
+      }
+    }
+    catch(err){
+      console.log(err)
+    }
+    
   },
 
   createDateActivity: (req, res) => {
