@@ -1,6 +1,7 @@
 import React, { useState, useEffect }  from 'react'
 import { Link } from "react-router-dom";
 import axios from "axios";
+import firebase from 'firebase/app';
 
 //redux
 import { connect } from "react-redux";
@@ -63,21 +64,26 @@ width: 700,
       lat_lng,
       date_description
     ) => {
-     
-      axios
-        .post("/api/createDateActivity", { activity_name, activity_photo, activity_google_place_id, activity_description })
-        .then(() =>
-          axios.post("/api/createDateFood", { food_name, food_photo, food_google_place_id, food_description })
-        )
-        .then(() =>
-          axios.post("/api/createDateMemory", {
-            memory_name,
-            memory_photo,
-            memory_google_place_id,
-            memory_description
-          })
-        )
-        .then(() => axios.post("/api/createDate", { date_name,  lat_lng, date_description }));
+      firebase.auth().onAuthStateChanged(function(user) {
+        if(user){
+          axios
+          .post("/api/createDateActivity", { activity_name, activity_photo, activity_google_place_id, activity_description })
+          .then(() =>
+            axios.post("/api/createDateFood", { food_name, food_photo, food_google_place_id, food_description })
+          )
+          .then(() =>
+            axios.post("/api/createDateMemory", {
+              memory_name,
+              memory_photo,
+              memory_google_place_id,
+              memory_description
+            })
+          )
+          .then(() => axios.post("/api/createDate", { user_id: user.uid,date_name,  lat_lng, date_description }));
+        }
+       
+      })
+      
     };
 
 

@@ -1,6 +1,8 @@
 import React from "react";
 
 //redux
+import {Link} from 'react-router-dom'
+
 import { connect } from "react-redux";
 import {
   getMatchingActivities,
@@ -17,7 +19,10 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 // import Button from "@material-ui/core/Button";
 // import Checkbox from "@material-ui/core/Checkbox";
-
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia'
 //css
 import "../form/form-activity.css";
 
@@ -28,6 +33,17 @@ const styles = theme => ({
   heading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular
+  },
+  card: {
+    // maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
+  dates: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-around"
   }
 });
 
@@ -55,8 +71,33 @@ function SimpleExpansionPanel(props) {
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
         <Typography variant="h6"    style={{ fontWeight: 600 }}>View your Completed Dates</Typography>
         </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography variant="h6"></Typography>
+        <ExpansionPanelDetails >
+        <div className={classes.dates}>
+            {props.completedDates.map((e, i) => {
+                return (
+                  <Link to={`/date/${e.date_id}`} key={i} style={{textDecoration: 'none'}}>
+                         <Card>
+                            <CardActionArea >
+                                <CardMedia
+                                className={classes.media}
+                                image={e.memory_photo}
+                                title="Activity Photo"
+                                />
+                                <CardContent>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    {e.date_name}
+                                </Typography>
+                                <Typography component="p">
+                                    {e.username}
+                                </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                      </Link>
+        
+                )
+            })}
+        </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
     </div>

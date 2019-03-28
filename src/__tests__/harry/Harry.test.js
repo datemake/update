@@ -1,5 +1,5 @@
-const reducer = require('../../ducks/reducer')
 import axios from "axios";
+const reducer = require('../../ducks/reducer')
 
 
 describe('Tests reducer functions', () => {
