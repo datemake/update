@@ -20,7 +20,9 @@ import Dialog from "@material-ui/core/Dialog";
 
 //css
 import "../date/date.css";
-import hotChocolate from "../../photos/hotChocolate.jpg";
+
+import ExpansionOneActivity from "./ExpansionOneActivity";
+import ExpansionTwoActivity from "./ExpansionTwoActivity";
 
 const styles = {
   root: {
@@ -146,6 +148,40 @@ function FormReviewImages(props) {
               variant="outlined"
               placeholder={props.describeActivity}
             />
+            <div className="form-activity-textfield">
+              {/* <TextfieldFL placeholder="Search term or establishment name"/> */}
+              <Textfield
+                id="outlined-bare"
+                className={classes.textField}
+                //  onChange={e => function from redux}
+                onChange={e => props.inputActivity(e.target.value)}
+                margin="normal"
+                variant="outlined"
+                style={{ width: 700, height: 30 }}
+              />
+            </div>
+
+            <br />
+            <br />
+            <br />
+            <ExpansionOneActivity  />
+            <br />
+            <br />
+
+            <div className="form-activity-search-results-div" />
+            <Typography
+              variant="h5"
+              className="activity-text-choose-picture"
+              style={{ fontWeight: 200 }}
+            >
+              Choose a photo to represent your activity.
+              <br />
+              <br />
+              {/* <div className="form-activity-search-results-div" /> */}
+              <ExpansionTwoActivity />
+              <br />
+              <br />
+            </Typography>
 
             <Textfield
               onChange={e => props.inputFood(e.target.value)}

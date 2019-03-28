@@ -7,6 +7,11 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar"
 
+import Rating from "react-rating";
+import AddImage from "./AddImage";
+import outlineHeart from "../../photos/outline-heart.png";
+import fullHeart from "../../photos/full-heart.png";
+
 //css
 import "./review.css";
 
@@ -37,6 +42,30 @@ function Review(props) {
         return(
           <Card className={classes.card} style={{ backgroundColor: "#white" }} key={i}>
             <CardContent className="review-main-card-content">
+              <Rating
+                initialRating={e.rating}
+                readonly
+                emptySymbol={
+                    <img
+                      src={outlineHeart}
+                      className="icon"
+                      style={{ height: 40 }}
+                    />
+                  }
+                placeholderSymbol={
+                    <img
+                      src={fullHeart}
+                      className="icon"
+                      style={{ height: 40 }}
+                    />
+                  }
+                fullSymbol={
+                    <img
+                      src={fullHeart}
+                      className="icon"
+                      style={{ height: 40, color: "red" }}
+                    />}
+              />
               <div className="review-avatar-and-username">
                 <Avatar src={e.profile_pic ? e.profile_pic : require('../../photos/user.png')}/>
                 <Typography variant="h5" className="write-a-review" style={{ color: "gray" }}>
