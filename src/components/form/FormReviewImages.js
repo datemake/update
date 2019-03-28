@@ -23,10 +23,21 @@ import "../date/date.css";
 
 import ExpansionOneActivity from "./ExpansionOneActivity";
 import ExpansionTwoActivity from "./ExpansionTwoActivity";
+import ExpansionOneFood from "./ExpansionOneFood";
+import ExpansionTwoFood from "./ExpansionTwoFood";
+import ExpansionOneMemory from "./ExpansionOneMemory";
+import ExpansionTwoMemory from "./ExpansionTwoMemory";
 
 const styles = {
+  dialogue: {
+    display: "flex",
+    flexDirection: "column",
+    maxWidth: "5000px"
+  },
+
+  textField: {},
+
   root: {
-    width: 900,
     minheight: 700,
     marginLeft: 10
   },
@@ -84,7 +95,7 @@ function FormReviewImages(props) {
           <div className="bottom_images_div">
             <div className="activity-description-fri">
               <Typography variant="h5" gutterBottom>
-                Food description: <br /> {props.describeFood}
+                Food description: {props.describeFood}
               </Typography>
               <div className="lower-imgs">
                 <CardMedia
@@ -95,7 +106,10 @@ function FormReviewImages(props) {
               </div>
             </div>
             <div className="activity-description-fri">
-              <Typography variant="h5" gutterBottom />
+              <Typography variant="h5" gutterBottom>
+                Memory Maker description: {props.describeMemory}
+              </Typography>
+              >
               <div className="lower-imgs">
                 <CardMedia
                   className={classes.media2}
@@ -123,21 +137,20 @@ function FormReviewImages(props) {
           </div>
         </CardContent>
 
-{/* ////Still need to add ability to edit photos into this dialog */}
+        {/* ////Still need to add ability to edit photos into this dialog */}
         <Dialog
           className={classes.dialogue}
           open={boxOne}
           onClose={() => setBoxOne(false)}
         >
           <div className="box-one">
+            {/* ////////////Activity Edit////////////////////////// */}
             <Typography
               variant="h5"
               className="main-question"
               style={{ fontWeight: 200 }}
             >
-              Edit name, activity, food, memory description.
-              <br />
-              <br />
+              Choose activity location:
             </Typography>
 
             <Textfield
@@ -147,27 +160,9 @@ function FormReviewImages(props) {
               margin="normal"
               variant="outlined"
               placeholder={props.describeActivity}
+              value={props.inputActivity}
             />
-            <div className="form-activity-textfield">
-              {/* <TextfieldFL placeholder="Search term or establishment name"/> */}
-              <Textfield
-                id="outlined-bare"
-                className={classes.textField}
-                //  onChange={e => function from redux}
-                onChange={e => props.inputActivity(e.target.value)}
-                margin="normal"
-                variant="outlined"
-                style={{ width: 700, height: 30 }}
-              />
-            </div>
-
-            <br />
-            <br />
-            <br />
-            <ExpansionOneActivity  />
-            <br />
-            <br />
-
+            <ExpansionOneActivity />
             <div className="form-activity-search-results-div" />
             <Typography
               variant="h5"
@@ -175,12 +170,37 @@ function FormReviewImages(props) {
               style={{ fontWeight: 200 }}
             >
               Choose a photo to represent your activity.
-              <br />
-              <br />
               {/* <div className="form-activity-search-results-div" /> */}
               <ExpansionTwoActivity />
-              <br />
-              <br />
+            </Typography>
+            <Typography
+              variant="h5"
+              className="main-question"
+              style={{ fontWeight: 200 }}
+              
+            >
+              Edit activity descriptive sentence:
+            </Typography>
+
+            <Textfield
+              onChange={e => props.inputActivityDescription(e.target.value)}
+              id="outlined-bare"
+              className={classes.textField}
+              //   defaultValue="string"
+              //  placeholder={placeholder}
+              // margin="normal"
+              variant="outlined"
+              value={props.describeActivity}
+              // style={{ width: 700, height: 30 }}
+            />
+
+            {/* ////////////Food Edit////////////////////////// */}
+            <Typography
+              variant="h5"
+              className="main-question"
+              style={{ fontWeight: 200 }}
+            >
+              Choose food location:
             </Typography>
 
             <Textfield
@@ -190,16 +210,89 @@ function FormReviewImages(props) {
               margin="normal"
               placeholder={props.describeFood}
               variant="outlined"
+              value={props.inputFood}
             />
 
+            <ExpansionOneFood onClick={props.getSpecificFood} />
+            <Typography
+              variant="h5"
+              className="activity-text-choose-picture"
+              style={{ fontWeight: 200 }}
+            >
+              Choose a picture to represent your food experience.
+              {/* <div className="form-activity-search-results-div" /> */}
+              <ExpansionTwoFood />
+            </Typography>
+
+            <Typography
+              variant="h5"
+              className="main-question"
+              style={{ fontWeight: 200 }}
+            >
+              Edit food descriptive sentence:
+            </Typography>
+            <Textfield
+                onChange={e => props.inputFoodDescription(e.target.value)}
+                id="outlined-bare"
+              
+                className={classes.textField}
+                //   defaultValue="string"
+                //  placeholder={placeholder}
+         
+                variant="outlined"
+                value={props.describeFood}
+            
+              />
+
+              {/* ////////////Memory Edit////////////////////////// */}
+              <Typography
+              variant="h5"
+              className="main-question"
+              style={{ fontWeight: 200 }}
+            >
+              Choose memory-maker location:
+            </Typography>
+
+             <Textfield
+                onChange={e => props.inputMemory(e.target.value)}
+                id="outlined-bare"
+                className={classes.textField}
+                //   defaultValue="string"
+                //  placeholder={placeholder}
+       
+                variant="outlined"
+                value={props.inputMemory}
+      
+              />
+               <ExpansionOneMemory onClick={props.getSpecificMemory} />
+               <Typography
+              variant="h5"
+              className="activity-text-choose-picture"
+              style={{ fontWeight: 200 }}
+            >
+              Choose a picture to represent your memory-maker experience.
+              {/* <div className="form-activity-search-results-div" /> */}
+              <ExpansionTwoMemory />
+            </Typography>
+               <Typography
+              variant="h5"
+              className="main-question"
+              style={{ fontWeight: 200 }}
+            >
+              Edit memory-maker descriptive sentence:
+            </Typography>
+            
             <Textfield
               onChange={e => props.inputMemoryDescription(e.target.value)}
               id="outlined-bare"
-              placeholder={props.describeMemory}
+         
               className={classes.textField}
               margin="normal"
               variant="outlined"
+              value={props.describeMemory}
             />
+
+            
           </div>
         </Dialog>
       </Card>
