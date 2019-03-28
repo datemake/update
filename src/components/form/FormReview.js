@@ -25,7 +25,8 @@ import "./form-review.css"
 
 const styles = {
 card: {
-width: 1000,
+width: 700,
+
 
 },
   
@@ -33,7 +34,7 @@ width: 1000,
       fontSize: 12
     },
     textField: {
-      width: 500
+      width: 800
     },
   };
   
@@ -43,7 +44,7 @@ width: 1000,
     const { classes } = props;
 
 
-    console.log(props.inputDescription)
+    console.log(props)
   
     const createDate = (
       activity_name,
@@ -89,7 +90,7 @@ width: 1000,
             <Typography
             variant="h3"
             gutterBottom
-            style={{ textDecoration: "underline", textAlign: "center" }}
+            style={{  textAlign: "center" }}
           >Submit Your Date
             {/* {props.date_name} */}
           </Typography>
@@ -98,11 +99,11 @@ width: 1000,
               variant="h5"
               style={{ width: "80%", marginTop: "5px", fontWeight: "400" }}
             >
-            Review everything you wrote. If you would like to edit anything, this is your final chance to do so. Then submit your date to be posted as a date for other users to explore.
-            <br/>
-           <br/>
+            Review everything you wrote. If you would like to edit anything, this is your final chance to do so. 
+        
+       
            If you feel that everything looks good, click the submit button and you will create a date!
-
+           <br/>
   
             </Typography>
             
@@ -139,10 +140,10 @@ width: 1000,
             </CardContent>
         </Card>
         </div>
-        <div className="form-review-date-div">
+
          <FormReviewDescription/>
          <FormReviewImages/>
-         </div>
+ 
    
         </div>
     )

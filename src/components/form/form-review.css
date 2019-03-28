@@ -3,13 +3,56 @@
     background-size: cover;
     display: flex;
     flex-direction: column;
-    
+    width: 100%;
     align-items: center;
-  padding-right:3vw;
-  padding-left: 3vw;
-    height: 100%;
-    padding-top:10vh;
+
+   
+
+    padding-top:15vh;
   
+}
+
+.form-review-description-card, .form-review-images-card{
+    margin-top: 5vh;
+ 
+}
+
+.form-review-images-card{
+   
+}
+
+
+.form-review-description-card-cc{
+ 
+}
+
+.review-short_description_div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 5vw;
+
+}
+
+.description-div, .activity-food-memory-names{
+    padding-right: 5vw;
+    padding-left: 5vw;
+    padding-top: 2vw;
+}
+
+.date-cards{
+    width: 50%;
+    height: 50%;
+}
+
+.lower-imgs{
+    display: flex;
+    justify-content: center;
+}
+
+.first-review-submit-button{
+    display: flex;
+    justify-content: flex-end;
 }
 
 .form-review-date-div{
@@ -22,16 +65,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 900;
 }
 
-.form-review-images-card{
-  
 
-}
 
 .Review-instructions{
     display: flex;
     justify-content: center;
+    padding:1vh;
 }
 
 .form-review-submit-button-div{
@@ -43,10 +85,16 @@
     display: flex;
     flex-direction: column;
 
+height: 30vh;
     padding: 5vw;
 }
 
 .form-review-img-card-content{
    
  
+}
+
+.activity-description-fri{
+    display: flex;
+    flex-direction: column;
 }
