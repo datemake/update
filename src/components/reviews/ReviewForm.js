@@ -87,6 +87,10 @@ function ReviewForm(props) {
           console.log(response)
         setReviews(response.data)
       })
+      axios.post('/api/completedDates', data).then(response => {
+        // console.log(response.data)
+        
+      })
   }
   return (
     <div className="review-form-component">
