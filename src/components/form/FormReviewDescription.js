@@ -95,24 +95,38 @@ function FormReviewDescription(props) {
               </Typography>
               
             
-              {/* //Modal to date description: */}
+              {/* //Modal to show/edit date name and date description: */}
               <Dialog open={boxTwo} onClose={() => setBoxTwo(false)}>
                 <div className="box-two">
-
+                <Typography
+              variant="h5"
+              // style={{ width: "100%", marginTop: "5px", fontWeight: "400" }}
+            >
+              
+              Date Name: {props.dateName}
+        
+              </Typography>
        <Textfield
                     id="outlined-bare"
                     className={classes.textField}
                   
-                    placeholder={props.dateName}
+                    placeholder={`Edit date name`}
                 
                     margin="normal"
                     variant="outlined"
                     onChange={e => props.inputDateName(e.target.value)}
                   />
-
+    <Typography
+              variant="h5"
+              // style={{ width: "100%", marginTop: "5px", fontWeight: "400" }}
+            >
+              
+              Date Description:
+        
+              </Typography>
                   <TextField
                     id="filled-multiline-flexible"
-                    label="Write your description"
+                    label="Edit date description"
                     multiline
                     rowsMax="15"
                     placeholder={props.inputDescription}
