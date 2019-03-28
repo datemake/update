@@ -27,16 +27,16 @@ module.exports = {
     }
   },
 
-  completedDates: (req, res) => {
-    const db = req.app.get("db");
-    console.log(req.body);
-    db.completed_dates()
-      .then(response => res.status(200).json(response))
-      .catch(err => {
-        res.status(500).send({ errorMessage: "Something went wrong" });
-        console.log(err);
-      });
-  },
+  // completedDates: (req, res) => {
+  //   const db = req.app.get("db");
+  //   console.log(req.body);
+  //   db.completed_dates()
+  //     .then(response => res.status(200).json(response))
+  //     .catch(err => {
+  //       res.status(500).send({ errorMessage: "Something went wrong" });
+  //       console.log(err);
+  //     });
+  // },
   savedDates: async (req, res) => {
     const db = req.app.get("db");
     console.log(req.params);
@@ -50,6 +50,30 @@ module.exports = {
           console.log(err);
         });
     }
+  },
+  completedDates: async (req, res) => {
+
+    const db = req.app.get("db");
+    const { userFid,review,exif, url, dateId } = req.body;
+    console.log(req.body);
+    try{
+      const user = await db.get_user(userFid)
+      if(user.length){
+        console.log(user)
+        const completed = await db.post_completed([ dateId, user[0].user_id])
+        if(completed.length){
+          const complete = await db.completed_dates(user[0].user_id)
+          res.status(200).json(complete)
+        }
+        else{
+          res.status(500).send({ errorMessage: "Something went wrong" });
+        }
+      }
+    }
+    catch(err){
+      console.log(err)
+    }
+    
   },
   savedADate: async (req, res) => {
     const db = req.app.get("db");

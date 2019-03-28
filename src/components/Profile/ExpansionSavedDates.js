@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom'
 
 //redux
 import { connect } from "react-redux";
@@ -43,7 +44,9 @@ const styles = theme => ({
     height: 140,
   },
   dates: {
-    display: "flex"
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-around"
   }
 });
 
@@ -73,13 +76,13 @@ function SimpleExpansionPanel(props) {
         <Typography variant="h6"    style={{ fontWeight: 600 }}>View your Saved Dates</Typography>
         </ExpansionPanelSummary>
 
-        <ExpansionPanelDetails>
-        <div id='results_div'>
+        <ExpansionPanelDetails >
+        <div className={classes.dates}>
             {props.savedDates.map((e, i) => {
                 return (
-                 
-                         <Card className={classes.dates}>
-                            <CardActionArea>
+                  <Link to={`/date/${e.date_id}`} key={i} style={{textDecoration: 'none'}}>
+                         <Card>
+                            <CardActionArea >
                                 <CardMedia
                                 className={classes.media}
                                 image={e.activity_photo}
@@ -95,6 +98,7 @@ function SimpleExpansionPanel(props) {
                                 </CardContent>
                             </CardActionArea>
                         </Card>
+                      </Link>
         
                 )
             })}
