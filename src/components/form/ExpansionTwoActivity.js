@@ -59,37 +59,45 @@ function SimpleExpansionPanel(props) {
         <div className="expansion-panel-two">
           <ExpansionPanelDetails className="expansion-two-photos-div">
             <Typography variant="h6">
-              {props.specificActivity.result 
-                ? 
-                  <div>
-                    {props.specificActivity.result.photos.map((e, i) => {
-                      return(
-                        <div className="expansion-panel-two-photo-and-checkbox-div" key={i}>
-                          <div className="expansion-panel-two-photo-and-checkbox-text">
-                            Choose this photo
-                            <Checkbox
-                              id="0"
-                              color="primary"
-                              onClick={() => props.addActivityPhotoURL(
-                                `https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                                  e.photo_reference
-                                }&key=${process.env.REACT_APP_GOOGLE}`
-                              )}
-                            />
+            {props.specificActivity.result 
+                  ? 
+                    <div>
+                      {props.specificActivity.result.photos
+                        ?
+                          <div>
+                            {props.specificActivity.result.photos.map((e, i) => {
+                              return(
+                                <div className="expansion-panel-two-photo-and-checkbox-div" key={i}>
+                                  <div className="expansion-panel-two-photo-and-checkbox-text">
+                                    Choose this photo
+                                    <Checkbox
+                                      id="0"
+                                      color="primary"
+                                      onClick={() => props.addActivityPhotoURL(
+                                        `https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
+                                          e.photo_reference
+                                        }&key=${process.env.REACT_APP_GOOGLE}`
+                                      )}
+                                    />
+                                  </div>
+                                    <img
+                                      className="expansion-two-photos"
+                                      src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
+                                        e.photo_reference
+                                      }&key=${process.env.REACT_APP_GOOGLE}`}
+                                    />
+                                </div>
+                              )
+                            })}
                           </div>
-                            <img
-                              className="expansion-two-photos"
-                              src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                                e.photo_reference
-                              }&key=${process.env.REACT_APP_GOOGLE}`}
-                            />
-                        </div>
-                      )
-                    })}
-                  </div>
-                :
+                        :
+                          <div></div>
+                      }
+                      
+                    </div>
+                  :
                     <div></div>
-              }
+                }
             </Typography>
           </ExpansionPanelDetails>
         </div>
