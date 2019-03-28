@@ -100,22 +100,28 @@ function Header(props) {
             up<span style={{ color: "#EF4E4E" }}>date</span>
           </Typography>
         </Link>
-        <Link to="/create-date/" style={{ textDecoration: "none" }}>
-          <div id="create_date">
-            {/* <Typography variant='h5' style={{color: 'white'}}>Create</Typography> */}
-            <AddBox color="primary" fontSize="large" />
-            <Typography
-              variant="h6"
-              style={{
-                color: "white",
-                fontWeight: "900",
-                textDecoration: "none"
-              }}
-            >
-              Create Date
-            </Typography>
-          </div>
-        </Link>
+        {signedIn
+          ?
+            <Link to="/create-date/" style={{ textDecoration: "none" }}>
+              <div id="create_date">
+                {/* <Typography variant='h5' style={{color: 'white'}}>Create</Typography> */}
+                <AddBox color="primary" fontSize="large" />
+                <Typography
+                  variant="h6"
+                  style={{
+                    color: "white",
+                    fontWeight: "900",
+                    textDecoration: "none"
+                  }}
+                >
+                  Create Date
+                </Typography>
+              </div>
+            </Link>
+          :
+            <div></div>
+          }
+        
         <Dialog open={open} onClose={() => setOpen(false)}>
           <StyledFirebaseAuth
             uiConfig={uiConfig}
