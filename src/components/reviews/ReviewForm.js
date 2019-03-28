@@ -86,6 +86,7 @@ function ReviewForm(props) {
         .then(response => {
           console.log(response)
         setReviews(response.data)
+        setReview('')
       })
   }
   return (
