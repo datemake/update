@@ -2,6 +2,10 @@ import React  from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom'
 
+import Rating from "react-rating";
+import outlineHeart from "../../photos/outline-heart.png";
+import fullHeart from "../../photos/full-heart.png";
+
 import { connect } from "react-redux";
 
 import { withStyles } from '@material-ui/core/styles';
@@ -26,10 +30,12 @@ function Results(props) {
     // const test = React.useContext(TestContext)
     console.log(props.dates)
     const { classes } = props;
-
+    const sorted = props.dates.sort(function(a, b){
+        return b.rating - a.rating
+    })
     return (
         <div id='results_div'>
-            {props.dates.map((e, i) => {
+            {sorted.map((e, i) => {
                 return (
                     <Link to={`/date/${e.date_id}`} key={i} style={{textDecoration: 'none'}}>
                          <Card className='results_card'>
@@ -46,6 +52,30 @@ function Results(props) {
                                 <Typography component="p">
                                     {e.username}
                                 </Typography>
+                                <Rating
+                                    initialRating={e.rating}
+                                    readonly
+                                    emptySymbol={
+                                        <img
+                                        src={outlineHeart}
+                                        className="icon"
+                                        style={{ height: 40 }}
+                                        />
+                                    }
+                                    placeholderSymbol={
+                                        <img
+                                        src={fullHeart}
+                                        className="icon"
+                                        style={{ height: 40 }}
+                                        />
+                                    }
+                                    fullSymbol={
+                                        <img
+                                        src={fullHeart}
+                                        className="icon"
+                                        style={{ height: 40, color: "red" }}
+                                        />}
+                                />
                                 </CardContent>
                             </CardActionArea>
                         </Card>

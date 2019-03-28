@@ -55,7 +55,7 @@ app.post('/api/profile', addUser)
 app.get('/api/get/profile/:id', getProfile)
 
 //completed/saved dates
-app.get('/api/completedDates',completedDates)
+app.post('/api/completedDates',completedDates)
 app.get('/api/savedDates/:id',savedDates)
 app.post('/api/savedADate',savedADate)
 
