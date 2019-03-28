@@ -45,65 +45,43 @@ function SimpleExpansionPanel(props) {
               {props.specificMemory.result 
                   ? 
                     <div>
-                      {props.specificMemory.result.photos.map((e, i) => {
-                        return(
-                          <div className="expansion-panel-two-photo-and-checkbox-div" key={i}>
-                            <div className="expansion-panel-two-photo-and-checkbox-text">
-                              Choose this photo
-                              <Checkbox
-                                id="0"
-                                color="primary"
-                                onClick={() => props.addMemoryPhotoURL(
-                                  `https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                                    e.photo_reference
-                                  }&key=${process.env.REACT_APP_GOOGLE}`
-                                )}
-                              />
-                            </div>
-                              <img
-                                className="expansion-two-photos"
-                                src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                                  e.photo_reference
-                                }&key=${process.env.REACT_APP_GOOGLE}`}
-                              />
+                      {props.specificMemory.result.photos
+                        ?
+                          <div>
+                            {props.specificMemory.result.photos.map((e, i) => {
+                              return(
+                                <div className="expansion-panel-two-photo-and-checkbox-div" key={i}>
+                                  <div className="expansion-panel-two-photo-and-checkbox-text">
+                                    Choose this photo
+                                    <Checkbox
+                                      id="0"
+                                      color="primary"
+                                      onClick={() => props.addMemoryPhotoURL(
+                                        `https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
+                                          e.photo_reference
+                                        }&key=${process.env.REACT_APP_GOOGLE}`
+                                      )}
+                                    />
+                                  </div>
+                                    <img
+                                      className="expansion-two-photos"
+                                      src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
+                                        e.photo_reference
+                                      }&key=${process.env.REACT_APP_GOOGLE}`}
+                                    />
+                                </div>
+                              )
+                            })}
                           </div>
-                        )
-                      })}
+                        :
+                          <div></div>
+                      }
+                      
                     </div>
                   :
-                      <div></div>
+                    <div></div>
                 }
-              {/* Photo 0 */}
-              {/* <div className="expansion-panel-two-photo-and-checkbox-div">
-                <div className="expansion-panel-two-photo-and-checkbox-text">
-                  Choose this photo
-                  {props.specificMemory.result && (
-                    <Checkbox
-                      id="0"
-                      color="primary"
-                      onClick={() =>
-                        props.addMemoryPhotoURL(
-                          `https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                            props.specificMemory.result.photos[0]
-                              .photo_reference
-                          }&key=${process.env.REACT_APP_GOOGLE}`
-                        )
-                      }
-                    />
-                  )}
-                </div>
-                {props.specificMemory.result && (
-                  <img
-                    className="expansion-two-photos"
-                    src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                      props.specificMemory.result.photos[0].photo_reference
-                    }&key=${process.env.REACT_APP_GOOGLE}`}
-                  />
-                )}
-              </div> */}
 
-              {/* Photo 1 */}
-             
             </Typography>
           </ExpansionPanelDetails>
         </div>

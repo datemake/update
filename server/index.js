@@ -55,17 +55,14 @@ app.post('/api/profile', addUser)
 app.get('/api/get/profile/:id', getProfile)
 
 //completed/saved dates
-// app.post('/api/completedDates',postCompletedDates)
-// app.post('/api/savedADate',savedADate)
 
-// app.get('/api/savedDates/:id',savedDates)
-// app.get('/api/savedDates/:id',completedDates)
 
 app.post("/api/completedDates",postcompletedDates)
 app.post("/api/savedADate",savedADate)
 
 app.get("/api/savedDates/:id",savedDates)
 app.get("/api/completedDates/:id",completedDates)
+
 
 //review
 app.get("/api/reviews/:dateId", getReviews)

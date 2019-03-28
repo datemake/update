@@ -84,8 +84,7 @@
 .box-one, .box-two{
     display: flex;
     flex-direction: column;
-
-height: 30vh;
+    /* height: 30vh; */
     padding: 5vw;
 }
 
@@ -97,4 +96,10 @@ height: 30vh;
 .activity-description-fri{
     display: flex;
     flex-direction: column;
+}
+
+
+
+.MuiDialog-paperWidthSm-81{
+    max-width: 5000px !important;
 }
