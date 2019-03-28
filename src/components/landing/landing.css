@@ -21,3 +21,22 @@
     flex-direction: row;
     align-items: center;
 }
+
+#is{
+    animation: is 3s;
+    animation-delay: 3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes is{
+    0%{
+    }
+    50%{
+        font-size: 150%;
+        color: #EF4E4E
+    }
+    100%{
+        font-size: 100%;
+        color: white
+    }
+}

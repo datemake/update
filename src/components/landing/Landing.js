@@ -9,7 +9,7 @@ const Landing = () => {
     <div id="landing_page">
       <div id="landing_dim">
         <Typography variant="h2" style={{ color: "white", marginTop: "200px" }}>
-          There is such a thing as a perfect date
+          There <span id='is'>is</span> such a thing as a perfect date
         </Typography>
         <div id="landing_button_div">
           <Typography

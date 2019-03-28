@@ -72,34 +72,7 @@ function SimpleExpansionPanel(props) {
                     </div>
                   :
                       <div></div>
-                }
-        
-        {/* Photo 0 */}
-              {/* <div className="expansion-panel-two-photo-and-checkbox-div">
-                <div className="expansion-panel-two-photo-and-checkbox-text">
-                  Choose this photo
-                  {props.specificFood.result &&
-                  <Checkbox
-                    id="0"
-                    color="primary"
-                    onClick={() => props.addFoodPhotoURL(
-                      `https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                        props.specificFood.result.photos[0].photo_reference
-                      }&key=${process.env.REACT_APP_GOOGLE}`
-                    )}
-                  />}
-                </div>
-                {props.specificFood.result && (
-                  <img
-                    className="expansion-two-photos"
-                    src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-                      props.specificFood.result.photos[0].photo_reference
-                    }&key=${process.env.REACT_APP_GOOGLE}`}
-                  />
-                )}
-              </div> */}
-
-                
+                } 
             </Typography>
           </ExpansionPanelDetails>
         </div>
