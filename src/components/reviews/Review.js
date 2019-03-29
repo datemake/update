@@ -35,7 +35,7 @@ const styles = {
 };
 function Review(props) {
   const { classes, reviews } = props;
-  
+  console.log(reviews)
   return (
     <div className="review-component">
       {reviews.map((e,i) => {

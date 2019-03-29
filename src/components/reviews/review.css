@@ -69,3 +69,28 @@ width: 100%;
 .MuiInputBase-root-217::placeholder{
     font-family: Vollkorn !important;
 }
+
+.review_image_2{
+    -webkit-transform:rotateY(180deg);
+}
+.review_image_3{
+    -webkit-transform:rotate(180deg);
+}
+.review_image_4{
+    -webkit-transform:rotateY(180deg);
+    -webkit-transform:rotate(180deg);
+}
+.review_image_5{
+    -webkit-transform:rotateY(180deg);
+    -webkit-transform:rotate(-90deg);
+}
+.review_image_6{
+    -webkit-transform:rotate(90deg);
+}
+.review_image_7{
+    -webkit-transform:rotateY(180deg);
+    -webkit-transform:rotate(90deg);
+}
+.review_image_8{
+    -webkit-transform:rotate(-90deg);
+}
