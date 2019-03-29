@@ -39,14 +39,21 @@ const styles = theme => ({
   },
   card: {
     // maxWidth: 345,
+    margin: 50,
+  marginBottom: 50
   },
   media: {
     height: 140,
   },
+  inside: {
+  margin: 50,
+  marginBottom: 50
+  },
   dates: {
     width: "100%",
     display: "flex",
-    justifyContent: "space-around"
+    justifyContent: "space-around",
+    flexWrap: "wrap"
   }
 });
 
@@ -82,7 +89,7 @@ function SimpleExpansionPanel(props) {
                 return (
                   <Link to={`/date/${e.date_id}`} key={i} style={{textDecoration: 'none'}}>
                          <Card>
-                            <CardActionArea >
+                            <CardActionArea className={classes.inside} >
                                 <CardMedia
                                 className={classes.media}
                                 image={e.activity_photo}
