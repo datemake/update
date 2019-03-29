@@ -3,6 +3,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Rating from "react-rating";
+import Loader from 'react-loader-spinner'
 
 import AddImage from "./AddImage";
 import outlineHeart from "../../photos/outline-heart.png";
@@ -10,14 +11,12 @@ import fullHeart from "../../photos/full-heart.png";
 
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
-import Input from "@material-ui/core/Input";
+
 import firebase from "firebase/app";
 
 //components
@@ -46,7 +45,8 @@ const styles = {
     marginBottom: 12
   },
   textField: {
-    width: 700,
+    width: '39vw',
+    marginLeft: '.5vw'
   }
 };
 function ReviewForm(props) {
@@ -69,9 +69,11 @@ function ReviewForm(props) {
   //   }, []);
   const [myUser, setMyUser] = useState("");
   const [review, setReview] = useState("");
-  const [exif, setExif] = useState("");
-  const [url, setUrl] = useState("");
+  // const [exif, setExif] = useState("");
+  // const [url, setUrl] = useState("");
+  const [images, setImages] = useState([])
   const [rating, setRating] = useState(0);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     checkUser();
@@ -85,13 +87,12 @@ function ReviewForm(props) {
     const data = {
       userFid: myUser.uid,
       review: review,
-      exif: exif,
-      url: url,
+      images: images,
       dateId: props.date_id,
       rating: rating
     };
     axios.post("/api/reviews", data).then(response => {
-      console.log(response);
+      // console.log(response);
       setReviews(response.data);
       setReview("");
     });
@@ -99,6 +100,8 @@ function ReviewForm(props) {
       // console.log(response.data)
     });
   };
+
+  console.log(images)
   return (
     <div className="review-form-component">
       <Card className={classes.card} style={{ backgroundColor: "#white" }}>
@@ -156,19 +159,34 @@ function ReviewForm(props) {
               />
               <br />
               <div className="review-buttons-div">
-                <AddImage setExif={setExif} setUrl={setUrl} />
-                <Button
-                  className="review-submit-button"
-                  size="small"
-                  variant="contained"
-                  color="primary"
-                  style={{ color: "white", fontWeight: 600, fontSize: 16 }}
-                  onClick={leaveReview}
-                >
-                  Submit
-                </Button>
+                <AddImage images={images} setImages={setImages} setLoading={setLoading} loading={loading}/>
+                {loading
+                  ?
+                    <Loader 
+                      type="Hearts"
+                      color="#EF4E4E"
+                      height="25"	
+                      width="25"
+                    />
+                  :
+                    <Button
+                      className="review-submit-button"
+                      size="small"
+                      variant="contained"
+                      color="primary"
+                      style={{ color: "white", fontWeight: 600, fontSize: 16 }}
+                      onClick={leaveReview}
+                    >
+                      Submit
+                    </Button>
+                }
               </div>
             </div>
+            {images.map((e, i) => {
+              return(
+                <img key={i} src={e.url} alt='review image' style={{height: '50px', margin: '10px'}} className={`review_image_${e.exif}`}/>
+              )
+            })}
           </CardContent>
         ) : (
           <CardContent

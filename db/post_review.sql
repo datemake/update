@@ -1,4 +1,4 @@
-INSERT INTO reviews(review, dates_id, user_id, image_url, rating)
+INSERT INTO reviews(review, dates_id, user_id, images, rating)
 VALUES($1,$2,$3, $4, $5);
 
 
