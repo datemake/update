@@ -46,8 +46,10 @@ function DateLanding(props) {
 return(
     
     <div className="main-date-div">
-      <DateDescription date={date}/>
-      <DateImages date={date}/>
+      <div id='date_landing_dim'>
+        <DateDescription date={date}/>
+        <DateImages date={date}/>
+      </div>
     </div>
 
 )

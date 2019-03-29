@@ -13,11 +13,11 @@ module.exports = {
 
         const db = req.app.get("db");
         const { userFid,review,exif, url, dateId, rating } = req.body;
-        console.log(req.body);
+        // console.log(req.body);
         try{
           const user = await db.get_user(userFid)
           if(user.length){
-            console.log(user)
+            // console.log(user)
             const submitted = await db.post_review([review, dateId, user[0].user_id, url, rating])
             if(submitted.length){
               const reviews = await db.get_reviews(dateId)

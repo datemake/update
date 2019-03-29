@@ -31,6 +31,7 @@ const styles = {
 function DateDescription(props) {
   const { classes,date_id,user_id } = props;
   const [check,setCheck] = useState(false)
+  
   const handleChange = name => event => {
     firebase.auth().onAuthStateChanged(function(user) {
       if(user){
@@ -56,12 +57,8 @@ function DateDescription(props) {
             <LocalActivity color='primary' style={{marginRight: '15px'}}/>
             <Typography variant="h4" >Activity-</Typography>
             <Typography variant='h5' style={{width: '100%', marginTop: '5px', fontWeight: '400'}}>{props.date.activity_description}</Typography>
-            {/* <Checkbox
-          checked={check}
-          onChange={handleChange('checkedA')}
-          value="checkedA"
-        /> */}
-        <FormControlLabel
+
+            <FormControlLabel
               control={
                 <Checkbox checked={check} onChange={handleChange('checkedA')} value="checkedA" />
               }

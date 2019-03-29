@@ -44,14 +44,28 @@ width: 100%;
 }
 
 .review-avatar-and-username{
-display: flex;
-width: 15vw;
-
-
+    display: flex;
+    width: 15vw;
+    flex-direction: row;
+    align-items: center;
 }
 
 .review-text{
     display: flex;
     justify-content: center;
     width: 100%;
+}
+
+#review_div_rating{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.MuiInputBase-root-217{
+    font-family: Vollkorn !important;
+}
+
+.MuiInputBase-root-217::placeholder{
+    font-family: Vollkorn !important;
 }

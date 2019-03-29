@@ -4,6 +4,12 @@
     overflow-y: scroll;
 }
 
+#search_card_bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 #results_div::-webkit-scrollbar {
     width: 2px;
   }
