@@ -2,6 +2,8 @@ import axios from "axios";
 const cors = require("cors");
 
 const initialState = {
+  tag: "",
+  tags: [],
   locationData: [],
   location: "",
   date: [],
@@ -36,7 +38,8 @@ const initialState = {
   reviewInput: ""
 };
 
-
+//tags
+const INPUT_TAGS = "INPUT_TAGS"
 //search results
 const UPDATE_SEARCH_RESULTS = "UPDATE_SEARCH_RESULTS"
 
@@ -84,6 +87,9 @@ export default function reducer(state = initialState, action) {
     case INPUT_DATE_DESCRIPTION:
     console.log(action.type);
     return { ...state, inputDescription: action.payload };
+    case INPUT_TAGS:
+    console.log(action.type);
+    return { ...state, tags: [...action.payload] };
 
     case INPUT_DATE_NAME:
       console.log(action.type);
@@ -169,6 +175,13 @@ export default function reducer(state = initialState, action) {
 
     default:
       return state;
+  }
+}
+//tags 
+export const inputTags = tags => {
+  return {
+    type: INPUT_TAGS,
+    payload: tags
   }
 }
 //search results
