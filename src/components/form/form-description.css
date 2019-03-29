@@ -15,7 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
   
 
 }
@@ -27,4 +27,12 @@
   margin-top:10vh;
   margin-bottom:7vh;
  
+}
+
+.form-description-inner-card{
+  display: flex;
+  flex-direction: column;
+  padding-right:10vh;
+  padding-left:10vh;
+  height: 100%;
 }

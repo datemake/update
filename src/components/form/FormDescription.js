@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 //redux
 import { connect } from "react-redux";
-import { inputDateDescription } from "../../ducks/reducer";
+import { inputDateDescription,inputTags} from "../../ducks/reducer";
 
 //material-ui
 import PropTypes from "prop-types";
@@ -14,6 +14,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
+import Textfield from "@material-ui/core/TextField";
 
 //css
 import "./form.css";
@@ -22,11 +23,10 @@ import "./form-description.css";
 //other components
 
 const styles = {
-  card: {
+  describe: {
     width: 1000,
-
-    minheight: 1245,
-    marginTop: 55,
+    height: 875,
+    marginTop: 100,
     marginBottom: 55
   },
 
@@ -39,12 +39,22 @@ const styles = {
 };
 
 function FormLanding(props) {
-  const { classes } = props;
-
+  console.log(props)
+  const { classes,tag } = props;
+  const [input,setInput] = useState("")
+  const addTag = () => {
+    setInput("")
+  }
+const addingTags = (e) => {
+  console.log(e)
+   props.inputTags(e.target.value)
+ 
+  
+}
   return (
     <div className="main-form-description-div">
-      <Card className={classes.card} style={{ backgroundColor: "#white" }}>
-        <div className="form-inner-card">
+      <Card className={classes.describe} style={{ backgroundColor: "#white" }}>
+        <div className="form-description-inner-card">
           <CardContent className="form-description-card-content">
             <Typography variant="h3" className="main-question">
               Describe Your Date <br />
@@ -74,6 +84,26 @@ function FormLanding(props) {
               style={{ backgroundColor: "white" }}
               variant="filled"
             />
+            <Textfield
+                onChange={addingTags}
+                // id=
+                // className={classes.textField}
+                // //   defaultValue="string"
+                value={props.tag}
+                 placeholder="Add"
+                //  name={input}
+                // margin="normal"
+                // variant="outlined"
+                // style={{ width: 700, height: 30 }}
+              />
+              <Button onClick={addTag}
+                size="small"
+                variant="contained"
+                color="primary"
+                style={{ color: "white", fontWeight: 600, fontSize: 16 }}
+              >
+                Add Tag
+              </Button>
           </CardContent>
           <CardActions className="description-card-button">
             <Link to={"/create-date-review"} className="form-link">
@@ -101,6 +131,6 @@ FormLanding.propTypes = {
 export default withStyles(styles)(
   connect(
     mapStateToProps,
-    { inputDateDescription }
+    { inputDateDescription,inputTags }
   )(FormLanding)
 );
