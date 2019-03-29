@@ -46,7 +46,7 @@ const styles = {
     marginBottom: 12
   },
   textField: {
-    width: 700
+    width: 700,
   }
 };
 function ReviewForm(props) {
@@ -104,14 +104,15 @@ function ReviewForm(props) {
       <Card className={classes.card} style={{ backgroundColor: "#white" }}>
         {myUser ? (
           <CardContent className="profile-main-card-content">
-            <Typography
-              variant="h2"
-              className="write-a-review"
-              color="primary"
-              style={{ fontSize: 36 }}
-            >
-              <div> Leave a review</div>
-              <div>
+              <div id='review_div_rating'>
+                <Typography
+                  variant="h2"
+                  className="write-a-review"
+                  color="primary"
+                  style={{ fontSize: 36 }}
+                >
+                  Leave a Review            
+                </Typography>
                 <Rating
                   onClick={handleRatingChange}
                   // placeholderRating={3.5}
@@ -141,7 +142,6 @@ function ReviewForm(props) {
                 />
               </div>
               <br />
-            </Typography>
             <div className="review-textfield-and-button-div">
               <TextField
                 id="filled-multiline-flexible"
@@ -151,8 +151,8 @@ function ReviewForm(props) {
                 onChange={e => setReview(e.target.value)}
                 className={classes.textField}
                 margin="normal"
-                style={{ backgroundColor: "white" }}
-                variant="filled"
+                style={{ backgroundColor: "white", fontFamily: 'Vollkorn' }}
+                variant='filled'
               />
               <br />
               <div className="review-buttons-div">

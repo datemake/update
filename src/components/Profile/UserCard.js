@@ -61,7 +61,7 @@ function UserCard(props) {
           >
           <div className="dates-completed">
             Dates Completed 
-            <div className="dates-completed-num" style={{fontFamily: 'Lobster', color:'#EF4E4E', fontSize: 50}}>12</div></div>
+            <div className="dates-completed-num" style={{fontFamily: 'Lobster', color:'#EF4E4E', fontSize: 50}}>{props.completedDates.length}</div></div>
             <br/>
             <div className="dates-completed">
             Dates Created 

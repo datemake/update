@@ -20,7 +20,9 @@ function ReviewMain(props) {
   const [reviews, setReviews] = useState([])
 
   useEffect(() => {
-    getReviews()
+    if(props.date_id){
+      getReviews()
+    }
   }, [props.date_id])
 
   function getReviews(){

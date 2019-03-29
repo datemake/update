@@ -42,6 +42,13 @@ function Review(props) {
         return(
           <Card className={classes.card} style={{ backgroundColor: "#white" }} key={i}>
             <CardContent className="review-main-card-content">
+            <div id='review_div_rating'>
+              <div className="review-avatar-and-username">
+                <Avatar src={e.profile_pic ? e.profile_pic : require('../../photos/user.png')}/>
+                <Typography variant="h5" className="write-a-review" style={{ color: "gray", paddingLeft: '10px'}}>
+                  {e.username}
+                </Typography>
+              </div>
               <Rating
                 initialRating={e.rating}
                 readonly
@@ -66,12 +73,9 @@ function Review(props) {
                       style={{ height: 40, color: "red" }}
                     />}
               />
-              <div className="review-avatar-and-username">
-                <Avatar src={e.profile_pic ? e.profile_pic : require('../../photos/user.png')}/>
-                <Typography variant="h5" className="write-a-review" style={{ color: "gray" }}>
-                  {e.username}
-                </Typography>
-              </div>
+            </div>
+            
+              
               <div className="review-text">
                 <Typography variant="h6" className="write-a-review">
                   {e.review}

@@ -106,7 +106,7 @@ function Profile(props) {
 
   return (
     <div className="profile-component">
-      <UserCard profile={profile}/>
+      <UserCard profile={profile} completedDates={completedDates}/>
       <SavedDates savedDates={savedDates}/>
       <CompletedDates completedDates={completedDates}/>
     </div>

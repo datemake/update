@@ -46,36 +46,38 @@ function Results(props) {
                                 title="Activity Photo"
                                 />
                                 <CardContent>
-                                <Typography gutterBottom variant="h5" component="h2">
-                                    {e.date_name}
-                                </Typography>
-                                <Typography component="p">
-                                    {e.username}
-                                </Typography>
-                                <Rating
-                                    initialRating={e.rating}
-                                    readonly
-                                    emptySymbol={
-                                        <img
-                                        src={outlineHeart}
-                                        className="icon"
-                                        style={{ height: 40 }}
+                                    <Typography gutterBottom variant="h5" component="h2">
+                                        {e.date_name}
+                                    </Typography>
+                                    <div id='search_card_bottom'>
+                                        <Typography component="p">
+                                            {e.username}
+                                        </Typography>
+                                        <Rating
+                                            initialRating={e.rating}
+                                            readonly
+                                            emptySymbol={
+                                                <img
+                                                src={outlineHeart}
+                                                className="icon"
+                                                style={{ height: 20 }}
+                                                />
+                                            }
+                                            placeholderSymbol={
+                                                <img
+                                                src={fullHeart}
+                                                className="icon"
+                                                style={{ height: 20 }}
+                                                />
+                                            }
+                                            fullSymbol={
+                                                <img
+                                                src={fullHeart}
+                                                className="icon"
+                                                style={{ height: 20, color: "red" }}
+                                             />}
                                         />
-                                    }
-                                    placeholderSymbol={
-                                        <img
-                                        src={fullHeart}
-                                        className="icon"
-                                        style={{ height: 40 }}
-                                        />
-                                    }
-                                    fullSymbol={
-                                        <img
-                                        src={fullHeart}
-                                        className="icon"
-                                        style={{ height: 40, color: "red" }}
-                                        />}
-                                />
+                                    </div>
                                 </CardContent>
                             </CardActionArea>
                         </Card>

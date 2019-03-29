@@ -49,27 +49,27 @@ return(
           <CardMedia
                 className={classes.media}
                 image={props.date.activity_photo}
-                title="Paella dish"
+                title="Activity"
               />
             <div id='bottom_images_div'>
-              <div>
-              <Typography variant="h4" gutterBottom>
+              <div style={{display: 'flex', flexDirection: 'column', alignItems: 'left'}}>
+              <Typography variant="h5" gutterBottom style={{width: '250px', wordWrap: 'break-word', textAlign: 'center'}}>
                 {props.date.food_description}
               </Typography>
                 <CardMedia
                   className={classes.media2}
                   image={props.date.food_photo}
-                  title="Paella dish"
+                  title="Food"
                 />
               </div>
-              <div>
-              <Typography variant="h4" gutterBottom>
+              <div style={{display: 'flex', flexDirection: 'column', alignItems: 'right'}}>
+              <Typography variant="h5" gutterBottom style={{width: '250px', wordWrap: 'break-word', textAlign: 'center'}}>
                 {props.date.memory_description}
               </Typography>
                 <CardMedia
                   className={classes.media2}
                   image={props.date.memory_photo}
-                  title="Paella dish"
+                  title="Memory"
                 />
               </div>
             </div>
