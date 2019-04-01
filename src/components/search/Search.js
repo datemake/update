@@ -51,7 +51,7 @@ function Search(props){
               within = {within}
               setWithin = {setWithin}
             />
-            <Button variant='contained' color='primary' style={{borderRadius: '0', maxHeight: '56px'}} onClick={handleClick}>Search</Button>
+            <Button variant='contained' color='primary' style={{borderRadius: '0', height: '56px'}} onClick={handleClick}>Search</Button>
           </div>
           {/* <TestContext.Provider value={'test'}> */}
             <Results 

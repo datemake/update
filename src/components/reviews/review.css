@@ -30,7 +30,7 @@ width: 100%;
 }
 
 .review-submit-button{
-    width: 5vw;
+    /* width: 5vw; */
 }
 
 .review-upload-button{
@@ -68,6 +68,10 @@ width: 100%;
 
 .MuiInputBase-root-217::placeholder{
     font-family: Vollkorn !important;
+}
+#review_images_div{
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 .review_image_2{

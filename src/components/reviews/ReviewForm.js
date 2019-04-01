@@ -26,7 +26,7 @@ import "./review.css";
 
 const styles = {
   card: {
-    width: "40vw",
+    width: "42vw",
     // marginBottom: "150px",
     // marginTop: "150px",
     display: "flex",
@@ -45,7 +45,7 @@ const styles = {
     marginBottom: 12
   },
   textField: {
-    width: '39vw',
+    width: '40vw',
     marginLeft: '.5vw'
   }
 };
@@ -174,7 +174,7 @@ function ReviewForm(props) {
                       size="small"
                       variant="contained"
                       color="primary"
-                      style={{ color: "white", fontWeight: 600, fontSize: 16 }}
+                      style={{ color: "white", fontWeight: 600, fontSize: 16, paddingLeft: '15px', paddingRight: '15px' }}
                       onClick={leaveReview}
                     >
                       Submit

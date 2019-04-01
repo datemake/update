@@ -49,38 +49,53 @@ function AddImage(props){
 
     useEffect(() => {
       if(loading){
-        handleFileUpload()
+        handleOrientation()
       }
     }, [loading])
+
+    useEffect(() => {
+      if(exif){
+        handleFileUpload()
+      }
+    }, [exif])
 
     function handleFileChange(file){
       setFile(file)
       // console.log(file)
     }
 
-    function handleFileUpload(){
+    function handleOrientation(){
       // console.log(file)
       getOrientation(file, function(orientation) {
         setExif(orientation)
-     });
-     if(file){
-      const storageRef = firebase.storage().ref()
-      const imageFolderRef = storageRef.child('review_images/'+file.name)
-      // const imageRef = storageRef.child(file.name)
-      const pic = file
-      const metadata = {
-          name: file.name,
-      }
-      imageFolderRef.put(pic, metadata).then(function(snapshot){
-          // console.log(snapshot)
-          imageFolderRef.getDownloadURL().then(url => {
-              setImages([...images, {url: url, exif: exif}])
+      });
+    }
+    function handleFileUpload(){
+      if(file){
+        const storageRef = firebase.storage().ref()
+        const imageFolderRef = storageRef.child('review_images/'+file.name)
+        // const imageRef = storageRef.child(file.name)
+        const pic = file
+        const metadata = {
+            name: file.name,
+        }
+        imageFolderRef
+          .put(pic, metadata)
+          .then(function(snapshot){
+            // console.log(snapshot)
+            imageFolderRef.getDownloadURL().then(url => {
+                setImages([...images, {url: url, exif: exif}])
+            })
           })
-      }, () => console.log(), setLoading(false), setFile(''))
-  }
-  else {
-      alert('Please select a image')
-  }
+          .then(function(){
+            console.log('hit') 
+            setLoading(false) 
+            setFile('')
+          })
+      }
+      else {
+          alert('Please select a image')
+      }
     }
 
     function getOrientation(file, callback) {
