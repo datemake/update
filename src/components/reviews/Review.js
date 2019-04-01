@@ -17,7 +17,7 @@ import "./review.css";
 
 const styles = {
   card: {
-    width: '40vw',
+    width: '42vw',
     marginBottom: "15px",
     display: "flex"
   },
@@ -39,6 +39,21 @@ function Review(props) {
   return (
     <div className="review-component">
       {reviews.map((e,i) => {
+        let fixedImagesSecond = ''
+        if(e.images){
+          let fixedImagesInitial = e.images.replace(/[\\"]/gi, '').split('},{')
+          fixedImagesSecond = fixedImagesInitial.map((e, i) => {
+            let cleanedUp1 = e.replace(/(url:)/gi, '')
+            let cleanedUp2 = cleanedUp1.replace(/[{}]/gi, '').split(',')
+            let exif1 = ''
+            let url1 = ''
+            if(cleanedUp2[0] !== ''){
+              exif1 = cleanedUp2[1].replace(/^[^_]*:/, '')
+            return {exif: exif1, url: cleanedUp2[0]}
+            }
+          })
+        }
+        console.log(fixedImagesSecond)
         return(
           <Card className={classes.card} style={{ backgroundColor: "#white" }} key={i}>
             <CardContent className="review-main-card-content">
@@ -82,6 +97,19 @@ function Review(props) {
                   <br />
                 </Typography>
               </div>
+              {fixedImagesSecond[0]
+                ?
+                  <div id='review_images_div'>
+                    {fixedImagesSecond.map((e, i) => {
+                      return (
+                        <img key={i} src={e.url} style={{width: '150px'}} className={`review_image_${e.exif}`}/>
+                      )
+                    })}
+                   </div>
+                  
+                :
+                  null
+              }
             </CardContent>
             <CardActions className="description-card-button" />
           </Card>

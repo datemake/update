@@ -15,6 +15,8 @@ import Dialog from "@material-ui/core/Dialog";
 import Button from "@material-ui/core/Button";
 import AddBox from "@material-ui/icons/AddBox";
 import Person from "@material-ui/icons/Person";
+import Avatar from "@material-ui/core/Avatar"
+
 
 import './header.css'
 
@@ -39,11 +41,11 @@ const uiConfig = {
 function Header(props) {
   const [open, setOpen] = useState(false);
   const [signedIn, setSignedIn] = useState(false);
-  const [user, setUser] = useState("");
+  const [profile, setProfile] = useState([]);
 
   useEffect(() => {
     checkUser();
-  }, [user]);
+  }, []);
 
   function openDialog() {
     setOpen(true);
@@ -62,8 +64,8 @@ function Header(props) {
         axios.post("/api/profile", info);
         setSignedIn(true);
         setOpen(false);
-        return true;
-        //   setUser(user.displayName)
+        // return true;
+          setProfile(user)
       } else {
         setSignedIn(false);
         return false;
@@ -82,7 +84,7 @@ function Header(props) {
         console.log(errorCode, errorMessage);
       });
   }
-
+  console.log(profile)
   return (
     <div>
       {/* {console.log(props)} */}
@@ -130,7 +132,7 @@ function Header(props) {
         </Dialog>
         {signedIn === true ? (
           <div id="loginSignup">
-            <Button style={{ color: "white" }} onClick={() => logout()}>
+            <Button style={{ color: "white", fontSize: '80%' }} onClick={() => logout()}>
               Logout
             </Button>
             <Link
@@ -142,24 +144,11 @@ function Header(props) {
                 alignItems: "center"
               }}
             >
-              <Person color="primary" fontSize="large" />
-              <Typography
-                variant="h6"
-                style={{
-                  color: "white",
-                  fontWeight: "900",
-                  textDecoration: "none"
-                }}
-              >
-                Profile
-              </Typography>
+              <Avatar src={profile.photoURL ? profile.photoURL : require('../../photos/user.png')}/>
             </Link>
           </div>
         ) : (
           <div id="loginSignup">
-            <Button style={{ color: "white" }} onClick={() => logout()}>
-              Logout
-            </Button>
             <Typography
               variant="h4"
               style={{

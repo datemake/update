@@ -63,6 +63,7 @@ export default class AutoComplete extends React.Component {
                   </InputAdornment>
                 )
               }}
+              // style={{width: '35vw'}}
             />
             <div className="autocomplete-dropdown-container">
               {loading && <div>Loading...</div>}

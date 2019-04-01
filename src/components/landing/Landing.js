@@ -22,7 +22,7 @@ const Landing = () => {
             <Button
               variant="contained"
               color="primary"
-              style={{ fontWeight: 900, marginLeft: "25px" }}
+              style={{ fontWeight: 900, marginLeft: "25px", color: 'white' }}
             >
               Explore Dates
             </Button>
