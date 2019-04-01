@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import {
   getMatchingActivities,
   getSpecificActivity
-} from "../../ducks/reducer";
+} from "../../ducks/reducer"; 
 
 //material-ui
 import PropTypes from "prop-types";
