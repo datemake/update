@@ -13,7 +13,7 @@ import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Checkbox from "@material-ui/core/Checkbox";
-import Button from "@material-ui/core/Button";
+
 
 //css
 import "./form-activity.css";
@@ -30,25 +30,6 @@ const styles = theme => ({
 
 function SimpleExpansionPanel(props) {
   const { classes } = props;
-
-  // console.log(props.specificActivity);
-
-  // props.specificActivity.result && console.log(props.specificActivity.result);
-
-  // let photosDisplay = () => {props.specificActivity.result.map((element, index) => {
-  //   return (
-  //     <div key={element.id}>
-  //       <img
-  //         className="photos-display"
-  //         alt="photos"
-  //         src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
-  //           props.specificActivity.result.photos[index].photo_reference
-  //         }&key=AIzaSyBLWvDffmZzsXjFnRtcflsxTFsBxbZyiDA`}
-  //       />
-  //     </div>
-  //   );
-  // })
-  // return photosDisplay}
 
   return (
     <div className={classes.root}>
@@ -74,15 +55,16 @@ function SimpleExpansionPanel(props) {
                                       id="0"
                                       color="primary"
                                       onClick={() => props.addActivityPhotoURL(
-                                        `https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
+                                        `https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&maxheight=600&photo_reference=${
                                           e.photo_reference
                                         }&key=${process.env.REACT_APP_GOOGLE}`
                                       )}
                                     />
                                   </div>
                                     <img
+                                      alt = 'activity'
                                       className="expansion-two-photos"
-                                      src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
+                                      src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&maxheight=600&photo_reference=${
                                         e.photo_reference
                                       }&key=${process.env.REACT_APP_GOOGLE}`}
                                     />
