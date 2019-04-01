@@ -76,6 +76,9 @@ function FormReviewImages(props) {
   const { classes } = props;
   const [boxOne, setBoxOne] = useState(false);
 
+  console.log(props.activityPhotoURL)
+  console.log(props.foodPhotoURL)
+  console.log(props.memoryPhotoURL)
   return (
     <div className="form-review-images-card">
       <Card className={classes.card}>

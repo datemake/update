@@ -57,15 +57,16 @@ function SimpleExpansionPanel(props) {
                                       id="0"
                                       color="primary"
                                       onClick={() => props.addFoodPhotoURL(
-                                        `https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
+                                        `https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&maxheight=600&photo_reference=${
                                           e.photo_reference
                                         }&key=${process.env.REACT_APP_GOOGLE}`
                                       )}
                                     />
                                   </div>
                                     <img
+                                      alt={'food'}
                                       className="expansion-two-photos"
-                                      src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photo_reference=${
+                                      src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&maxheight=600&photo_reference=${
                                         e.photo_reference
                                       }&key=${process.env.REACT_APP_GOOGLE}`}
                                     />
