@@ -88,8 +88,8 @@ export default function reducer(state = initialState, action) {
     console.log(action.type);
     return { ...state, inputDescription: action.payload };
     case INPUT_TAGS:
-    console.log(action.type);
-    return { ...state, tags: [...action.payload] };
+    console.log(action.payload);
+    return { ...state, tags: action.payload.split(",") };
 
     case INPUT_DATE_NAME:
       console.log(action.type);

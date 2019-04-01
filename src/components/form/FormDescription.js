@@ -85,17 +85,9 @@ const addingTags = (e) => {
               variant="filled"
             />
             <Textfield
-                onChange={addingTags}
-                // id=
-                // className={classes.textField}
-                // //   defaultValue="string"
-                value={props.tag}
-                 placeholder="Add"
-                //  name={input}
-                // margin="normal"
-                // variant="outlined"
-                // style={{ width: 700, height: 30 }}
+                onChange={(e) => props.inputTags(e.target.value)}
               />
+               
               <Button onClick={addTag}
                 size="small"
                 variant="contained"
