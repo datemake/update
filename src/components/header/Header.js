@@ -84,7 +84,7 @@ function Header(props) {
         console.log(errorCode, errorMessage);
       });
   }
-  console.log(profile)
+  // console.log(profile)
   return (
     <div>
       {/* {console.log(props)} */}
