@@ -1,0 +1,1 @@
+SELECT tags FROM dates WHERE tags Is NOT NULL

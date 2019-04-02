@@ -28,7 +28,7 @@ import "../form/form-activity.css";
 
 const styles = theme => ({
   root: {
-    width: 1100
+    width: 1100,
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -43,7 +43,10 @@ const styles = theme => ({
   dates: {
     width: "100%",
     display: "flex",
-    justifyContent: "space-around"
+    flexDirection: 'row',
+    justifyContent: "space-around",
+    flexWrap: "wrap",
+    overflowY: 'scroll'
   }
 });
 
@@ -67,7 +70,7 @@ function SimpleExpansionPanel(props) {
 
   return (
     <div className={classes.root}>
-      <ExpansionPanel>
+      <ExpansionPanel style={{overflowY: 'scroll'}}>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
         <Typography variant="h6"    style={{ fontWeight: 600 }}>View your Completed Dates</Typography>
         </ExpansionPanelSummary>
@@ -76,7 +79,7 @@ function SimpleExpansionPanel(props) {
             {props.completedDates.map((e, i) => {
                 return (
                   <Link to={`/date/${e.date_id}`} key={i} style={{textDecoration: 'none'}}>
-                         <Card>
+                         <Card id='completed_date_card'>
                             <CardActionArea >
                                 <CardMedia
                                 className={classes.media}
