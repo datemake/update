@@ -6,7 +6,13 @@ module.exports = {
         const db = req.app.get("db");
         const {location, within, tags} = req.body
         console.log(req.body)
-        const initial = await db.get_dates(tags) // <-- I'll filter by tags first (smaller & more precise query)
+        let initial = ''
+        if(tags.length > 0){
+            initial = await db.get_dates(tags)
+        }
+        else{
+            initial = await db.get_dates_notags()
+        }
         console.log(initial)
         const locationFilter = initial.filter((e) => {
             let fixedLatLng = e.lat_lng.replace(/[{}"latlng:]/gi, '').split(',')

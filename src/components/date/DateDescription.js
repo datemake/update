@@ -9,23 +9,26 @@ import Typography from '@material-ui/core/Typography';
 import {Restaurant, LocalActivity, PhotoCamera} from '@material-ui/icons'
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Chip from '@material-ui/core/Chip'
 //css
 import "./date.css";
 import firebase from 'firebase/app';
 
 
-const styles = {
+const styles = theme => ({
   card: {
     // minWidth: 375,
     width: '45vw',
     // maxHeight: '80vh'
-
-
+  },
+  chip: {
+    margin: `${theme.spacing.unit / 2}px ${theme.spacing.unit / 4}px`,
+    backgroundColor: '#EF4E4E'
   },
   pos: {
     marginBottom: 12,
   },
-};
+});
 
 
 function DateDescription(props) {
@@ -41,10 +44,10 @@ function DateDescription(props) {
       }
     })
     setCheck(true);
-    console.log(props)
+    // console.log(props)
    
   };
-  console.log(props.date)
+  console.log(props.date.tags)
   return (
     <div className='date_cards'>
       <Card className={classes.card}>
@@ -83,6 +86,25 @@ function DateDescription(props) {
           <Typography variant='h5' gutterBottom style={{ textAlign: 'left', fontWeight: '400'}}>
             {props.date.date_description}
           </Typography>
+        </CardContent>
+      </Card>
+      <Card className={classes.card} style={{marginTop: '25px'}}>
+        <CardContent>
+          {props.date.tags
+            ?
+              props.date.tags.map((e, i) => {
+                return(
+                  <Chip
+                    key={i}
+                    tabIndex={-1}
+                    label={e}
+                    className={classes.chip}
+                  />
+                )
+              })
+            :
+              null
+            }
         </CardContent>
       </Card>
     </div>
