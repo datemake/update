@@ -62,7 +62,8 @@ width: 700,
       memory_description,
       date_name,
       lat_lng,
-      date_description
+      date_description,
+      tags
     ) => {
       firebase.auth().onAuthStateChanged(function(user) {
         if(user){
@@ -79,7 +80,7 @@ width: 700,
               memory_description
             })
           )
-          .then(() => axios.post("/api/createDate", { user_id: user.uid,date_name,  lat_lng, date_description }));
+          .then(() => axios.post("/api/createDate", { user_id: user.uid,date_name,  lat_lng, date_description, tags}));
         }
        
       })
@@ -134,7 +135,8 @@ width: 700,
                       props.describeMemory,
                       props.dateName,
                       props.locationData.results[0].geometry.location,
-                      props.inputDescription
+                      props.inputDescription,
+                      props.tags
                     )
                   }
                 size="small"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 //redux
@@ -9,12 +9,13 @@ import { inputDateDescription,inputTags} from "../../ducks/reducer";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
+import Chip from '@material-ui/core/Chip'
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
 import Textfield from "@material-ui/core/TextField";
+
 
 //css
 import "./form.css";
@@ -22,7 +23,7 @@ import "./form-description.css";
 
 //other components
 
-const styles = {
+const styles = theme => ({
   describe: {
     width: 1000,
     height: 875,
@@ -35,22 +36,38 @@ const styles = {
   },
   textField: {
     width: 700
+  },
+  chip: {
+    margin: `${theme.spacing.unit / 2}px ${theme.spacing.unit / 4}px`,
+    backgroundColor: '#EF4E4E'
   }
-};
+});
 
 function FormLanding(props) {
-  console.log(props)
   const { classes,tag } = props;
   const [input,setInput] = useState("")
-  const addTag = () => {
-    setInput("")
-  }
-const addingTags = (e) => {
-  console.log(e)
-   props.inputTags(e.target.value)
- 
+  const [tags, setTags] = useState([])
   
+  const addTag = () => {
+    setTags([...tags, input])
+    setInput('')
+  }
+
+  useEffect(() => {
+    props.inputTags(tags)
+  }, [tags])
+  
+// const addingTags = (e) => {
+//   console.log(e)
+//    props.inputTags(e.target.value)
+// }
+
+  function handleDelete(e){
+    const index = tags.indexOf(e)
+    tags.splice(index, 1)
+    setTags([...tags])
 }
+// console.log(props.tags)
   return (
     <div className="main-form-description-div">
       <Card className={classes.describe} style={{ backgroundColor: "#white" }}>
@@ -72,7 +89,7 @@ const addingTags = (e) => {
               <br />
             </Typography>
 
-            <TextField
+            <Textfield
               id="filled-multiline-flexible"
               label="Write your description"
               multiline
@@ -85,7 +102,11 @@ const addingTags = (e) => {
               variant="filled"
             />
             <Textfield
-                onChange={(e) => props.inputTags(e.target.value)}
+                value={input}
+                variant='outlined'
+                onChange={(e) => setInput(e.target.value)}
+                style={{marginTop: '30px', marginBottom: '15px'}}
+                label='Create Tags'
               />
                
               <Button onClick={addTag}
@@ -96,6 +117,21 @@ const addingTags = (e) => {
               >
                 Add Tag
               </Button>
+              <div>
+                {tags.map((e, i) => {
+                  return(
+                    <Chip
+                      // icon={<Cancel onClick={handleDelete(e)}/>}
+                      key={i}
+                      tabIndex={-1}
+                      label={e}
+                      className={classes.chip}
+                      onDelete={() => handleDelete(e)}
+                      // deleteIcon={<Cancel/>}
+                    />
+                  )
+                })}
+              </div>
           </CardContent>
           <CardActions className="description-card-button">
             <Link to={"/create-date-review"} className="form-link">

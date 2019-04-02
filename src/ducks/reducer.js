@@ -2,7 +2,6 @@ import axios from "axios";
 const cors = require("cors");
 
 const initialState = {
-  tag: "",
   tags: [],
   locationData: [],
   location: "",
@@ -85,18 +84,18 @@ export default function reducer(state = initialState, action) {
     return {...state, searchResults: action.payload}
 
     case INPUT_DATE_DESCRIPTION:
-    console.log(action.type);
+    // console.log(action.type);
     return { ...state, inputDescription: action.payload };
     case INPUT_TAGS:
-    console.log(action.payload);
-    return { ...state, tags: action.payload.split(",") };
+    // console.log(action.payload);
+    return { ...state, tags: action.payload };
 
     case INPUT_DATE_NAME:
-      console.log(action.type);
+      // console.log(action.type);
       return { ...state, dateName: action.payload };
 
     case INPUT_LOCATION:
-      console.log(action.type);
+      // console.log(action.type);
       return { ...state, location: action.payload };
 
     case `${GET_USER_LOCATION}_FULFILLED`:
@@ -107,7 +106,7 @@ export default function reducer(state = initialState, action) {
       return { ...state, inputActivity: action.payload };
 
     case `${GET_MATCHING_ACTIVITY_LOCATIONS}_FULFILLED`:
-      console.log(action.payload.data.results);
+      // console.log(action.payload.data.results);
       return {
         ...state,
         allMatchingActivityLocations: action.payload.data.results
@@ -156,7 +155,7 @@ export default function reducer(state = initialState, action) {
       };
 
     case `${GET_SPECIFIC_MEMORY_LOCATION}_FULFILLED`:
-    console.log(action.payload.data)  
+    // console.log(action.payload.data)  
     return {
         ...state,
         specificMemory: action.payload.data
@@ -164,7 +163,7 @@ export default function reducer(state = initialState, action) {
       };
 
     case DESCRIBE_MEMORY:
-    console.log(state.specificMemory)
+    // console.log(state.specificMemory)
       return { ...state, describeMemory: action.payload };
 
     case ADD_MEMORY_PHOTO_URL:
@@ -194,7 +193,7 @@ export const updateSearchResults = dates => {
 
 //general date 
 export const inputDateName = name => {
-  console.log(name);
+  // console.log(name);
   return {
     type: INPUT_DATE_NAME,
     payload: name
@@ -202,7 +201,7 @@ export const inputDateName = name => {
 };
 
 export const inputDateDescription = description => {
-  console.log(description);
+  // console.log(description);
   return {
     type: INPUT_DATE_DESCRIPTION,
     payload: description
@@ -214,7 +213,7 @@ export const inputDateDescription = description => {
 
 //initial get location: puts location in dataLocation (array) in state
 export function getUserLocation(location) {
-  console.log(location);
+  // console.log(location);
   return {
     type: GET_USER_LOCATION,
     payload: axios.get(
@@ -227,7 +226,7 @@ export function getUserLocation(location) {
 
 //holds in state the input (what user types as their location) in the location part of the form
 export const inputLocation = location => {
-  console.log(location);
+  // console.log(location);
   return {
     type: INPUT_LOCATION,
     payload: location
@@ -238,7 +237,7 @@ export const inputLocation = location => {
 
 //holds in state the input (what user types as their activity) in the activity part of the form
 export const inputActivity = activity => {
-  console.log(activity);
+  // console.log(activity);
   return {
     type: INPUT_ACTIVITY,
     payload: activity
@@ -247,7 +246,7 @@ export const inputActivity = activity => {
 
 //gets a list of establishments based on the 'activity' entered in the inputActivity and the location which was saved in dataLocation. Triggered by "see results" button in expansion form one on activity page
 export function getMatchingActivities(activity, location) {
-  console.log(activity, location);
+  // console.log(activity, location);
   return {
     type: GET_MATCHING_ACTIVITY_LOCATIONS,
     payload: axios.post(
@@ -258,7 +257,7 @@ export function getMatchingActivities(activity, location) {
 
 //gets a list of photo-reference ids by sending the place_id to google of the selected place. We use the photo-reference ids on the activity page (expansion form two) to display all the photos of the chosen place
 export function getSpecificActivity(place_id) {
-  console.log(place_id);
+  // console.log(place_id);
   return {
     type: GET_SPECIFIC_ACTIVITY_LOCATION,
     payload: axios.post("/api/getSpecificActivity", { place_id })
@@ -275,7 +274,7 @@ export function addActivityPhotoURL(photo) {
 
 //holds in state the input (what user types) in the activity descriptive sentence part of the form (the last input on the page)
 export const inputActivityDescription = activityDescription => {
-  console.log(activityDescription);
+  // console.log(activityDescription);
   return {
     type: DESCRIBE_ACTIVITY,
     payload: activityDescription
@@ -293,7 +292,7 @@ export const inputFood = food => {
 };
 
 export function getMatchingFood(food, location) {
-  console.log(food, location);
+  // console.log(food, location);
   return {
     type: GET_MATCHING_FOOD_LOCATIONS,
     payload: axios.post(
@@ -305,7 +304,7 @@ export function getMatchingFood(food, location) {
 }
 
 export function getSpecificFood(place_id) {
-  console.log(place_id);
+  // console.log(place_id);
   return {
     type: GET_SPECIFIC_FOOD_LOCATION,
     payload: axios.post("/api/getSpecificFood", { place_id })
@@ -313,7 +312,7 @@ export function getSpecificFood(place_id) {
 }
 
 export function addFoodPhotoURL(photo) {
-  console.log(photo);
+  // console.log(photo);
   return {
     type: ADD_FOOD_PHOTO_URL,
     payload: photo
@@ -322,7 +321,7 @@ export function addFoodPhotoURL(photo) {
 
 
 export const inputFoodDescription = foodDescription => {
-  console.log(foodDescription);
+  // console.log(foodDescription);
   return {
     type: DESCRIBE_FOOD,
     payload: foodDescription
@@ -332,7 +331,7 @@ export const inputFoodDescription = foodDescription => {
 // FORM - MEMORY MAKER PAGE FUNCTIONS///////////////////////////////////////////////////////////////////////////////
 
 export const inputMemory = memory => {
-  console.log(memory);
+  // console.log(memory);
   return {
     type: INPUT_MEMORY,
     payload: memory
@@ -340,7 +339,7 @@ export const inputMemory = memory => {
 };
 
 export function getMatchingMemories(memory, location) {
-  console.log(memory, location);
+  // console.log(memory, location);
   return {
     type: GET_MATCHING_MEMORY_LOCATIONS,
     payload: axios.post("/api/getMatchingMemory", { memory, location })
@@ -348,7 +347,7 @@ export function getMatchingMemories(memory, location) {
 }
 
 export function getSpecificMemory(place_id) {
-  console.log(place_id);
+  // console.log(place_id);
   return {
     type: GET_SPECIFIC_MEMORY_LOCATION,
     payload: axios.post("/api/getSpecificMemory", { place_id })
@@ -356,7 +355,7 @@ export function getSpecificMemory(place_id) {
 }
 
 export function addMemoryPhotoURL(photo) {
-  console.log(photo);
+  // console.log(photo);
   return {
     type: ADD_MEMORY_PHOTO_URL,
     payload: photo
@@ -364,7 +363,7 @@ export function addMemoryPhotoURL(photo) {
 }
 
 export const inputMemoryDescription = memoryDescription => {
-  console.log(memoryDescription);
+  // console.log(memoryDescription);
   return {
     type: DESCRIBE_MEMORY,
     payload: memoryDescription

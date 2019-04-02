@@ -17,42 +17,42 @@ import Slider from '@material-ui/lab/Slider';
 
 import './search_bar.css'
 
-const suggestions = [
-  { label: 'Afghanistan' },
-  { label: 'Aland Islands' },
-  { label: 'Albania' },
-  { label: 'Algeria' },
-  { label: 'American Samoa' },
-  { label: 'Andorra' },
-  { label: 'Angola' },
-  { label: 'Anguilla' },
-  { label: 'Antarctica' },
-  { label: 'Antigua and Barbuda' },
-  { label: 'Argentina' },
-  { label: 'Armenia' },
-  { label: 'Aruba' },
-  { label: 'Australia' },
-  { label: 'Austria' },
-  { label: 'Azerbaijan' },
-  { label: 'Bahamas' },
-  { label: 'Bahrain' },
-  { label: 'Bangladesh' },
-  { label: 'Barbados' },
-  { label: 'Belarus' },
-  { label: 'Belgium' },
-  { label: 'Belize' },
-  { label: 'Benin' },
-  { label: 'Bermuda' },
-  { label: 'Bhutan' },
-  { label: 'Bolivia, Plurinational State of' },
-  { label: 'Bonaire, Sint Eustatius and Saba' },
-  { label: 'Bosnia and Herzegovina' },
-  { label: 'Botswana' },
-  { label: 'Bouvet Island' },
-  { label: 'Brazil' },
-  { label: 'British Indian Ocean Territory' },
-  { label: 'Brunei Darussalam' },
-];
+// const suggestions = [
+//   { label: 'Afghanistan' },
+//   { label: 'Aland Islands' },
+//   { label: 'Albania' },
+//   { label: 'Algeria' },
+//   { label: 'American Samoa' },
+//   { label: 'Andorra' },
+//   { label: 'Angola' },
+//   { label: 'Anguilla' },
+//   { label: 'Antarctica' },
+//   { label: 'Antigua and Barbuda' },
+//   { label: 'Argentina' },
+//   { label: 'Armenia' },
+//   { label: 'Aruba' },
+//   { label: 'Australia' },
+//   { label: 'Austria' },
+//   { label: 'Azerbaijan' },
+//   { label: 'Bahamas' },
+//   { label: 'Bahrain' },
+//   { label: 'Bangladesh' },
+//   { label: 'Barbados' },
+//   { label: 'Belarus' },
+//   { label: 'Belgium' },
+//   { label: 'Belize' },
+//   { label: 'Benin' },
+//   { label: 'Bermuda' },
+//   { label: 'Bhutan' },
+//   { label: 'Bolivia, Plurinational State of' },
+//   { label: 'Bonaire, Sint Eustatius and Saba' },
+//   { label: 'Bosnia and Herzegovina' },
+//   { label: 'Botswana' },
+//   { label: 'Bouvet Island' },
+//   { label: 'Brazil' },
+//   { label: 'British Indian Ocean Territory' },
+//   { label: 'Brunei Darussalam' },
+// ];
 
 function renderInput(inputProps) {
   const { InputProps, classes, ref, ...other } = inputProps;
@@ -74,19 +74,19 @@ function renderInput(inputProps) {
 
 function renderSuggestion({ suggestion, index, itemProps, highlightedIndex, selectedItem }) {
   const isHighlighted = highlightedIndex === index;
-  const isSelected = (selectedItem || '').indexOf(suggestion.label) > -1;
+  const isSelected = (selectedItem || '').indexOf(suggestion) > -1;
 
   return (
     <MenuItem
       {...itemProps}
-      key={suggestion.label}
+      key={suggestion}
       selected={isHighlighted}
       component="div"
       style={{
         fontWeight: isSelected ? 500 : 400,
       }}
     >
-      {suggestion.label}
+      {suggestion}
     </MenuItem>
   );
 }
@@ -98,16 +98,16 @@ renderSuggestion.propTypes = {
   suggestion: PropTypes.shape({ label: PropTypes.string }).isRequired,
 };
 
-function getSuggestions(value) {
+function getSuggestions(value, tags) {
   const inputValue = deburr(value.trim()).toLowerCase();
   const inputLength = inputValue.length;
   let count = 0;
 
   return inputLength === 0
     ? []
-    : suggestions.filter(suggestion => {
+    : tags.filter(suggestion => {
         const keep =
-          count < 5 && suggestion.label.slice(0, inputLength).toLowerCase() === inputValue;
+          count < 5 && suggestion.slice(0, inputLength).toLowerCase() === inputValue;
 
         if (keep) {
           count += 1;
@@ -163,18 +163,20 @@ class DownshiftMultiple extends React.Component {
       const selectedItem = [...state.selectedItem];
       selectedItem.splice(selectedItem.indexOf(item), 1);
       return { selectedItem };
+    }, () => {
+      this.props.setSelectedItem(this.state.selectedItem)
     });
   };
   handleSlider(event, value){
     this.props.setWithin(value)
-    console.log('change', value)
+    // console.log('change', value)
   }
 
   render() {
-    console.log(this.props.within)
-    const { classes } = this.props;
+    // console.log(this.state.selectedItem)
+    const { classes, tags } = this.props;
     const { inputValue, selectedItem } = this.state;
-    // console.log(selectedItem)
+    console.log(tags)
     return (
       <div id='search_bar_div'>
         <ExpansionPanel style={{borderRadius: '0', width: '200px', minHeight: '56px', boxShadow: '0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12)'}}>
@@ -234,11 +236,11 @@ class DownshiftMultiple extends React.Component {
                     })}
                     {isOpen ? (
                       <Paper className={classes.paper} square>
-                        {getSuggestions(inputValue2).map((suggestion, index) =>
+                        {getSuggestions(inputValue2, tags).map((suggestion, index) =>
                           renderSuggestion({
                             suggestion,
                             index,
-                            itemProps: getItemProps({ item: suggestion.label }),
+                            itemProps: getItemProps({ item: suggestion }),
                             highlightedIndex,
                             selectedItem: selectedItem2,
                           }),

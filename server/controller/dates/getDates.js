@@ -5,9 +5,9 @@ module.exports = {
     getDates: async (req, res) => {
         const db = req.app.get("db");
         const {location, within, tags} = req.body
-        // console.log(req.body)
+        console.log(req.body)
         const initial = await db.get_dates(tags) // <-- I'll filter by tags first (smaller & more precise query)
-        // console.log(initial)
+        console.log(initial)
         const locationFilter = initial.filter((e) => {
             let fixedLatLng = e.lat_lng.replace(/[{}"latlng:]/gi, '').split(',')
             // console.log(fixedLatLng)
@@ -50,5 +50,12 @@ module.exports = {
         else{
             res.status(404).json('Date Not Found')
         }
-      }
+      },
+
+    getTags: async (req, res) => {
+        const db = req.app.get("db")
+        const tags = await db.get_tags()
+
+        res.status(200).json(tags)
+    }
 }

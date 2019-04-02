@@ -31,7 +31,7 @@ import "../form/form-activity.css";
 
 const styles = theme => ({
   root: {
-    width: 1100
+    width: 1100,
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -39,21 +39,17 @@ const styles = theme => ({
   },
   card: {
     // maxWidth: 345,
-    margin: 50,
-  marginBottom: 50
   },
   media: {
     height: 140,
   },
-  inside: {
-  margin: 50,
-  marginBottom: 50
-  },
   dates: {
     width: "100%",
     display: "flex",
+    flexDirection: 'row',
     justifyContent: "space-around",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
+    overflowY: 'scroll'
   }
 });
 
@@ -78,7 +74,7 @@ function SimpleExpansionPanel(props) {
 
   return (
     <div className={classes.root}>
-      <ExpansionPanel>
+      <ExpansionPanel id='expansion_saved_dates'>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
         <Typography variant="h6"    style={{ fontWeight: 600 }}>View your Saved Dates</Typography>
         </ExpansionPanelSummary>
@@ -88,7 +84,7 @@ function SimpleExpansionPanel(props) {
             {props.savedDates.map((e, i) => {
                 return (
                   <Link to={`/date/${e.date_id}`} key={i} style={{textDecoration: 'none'}}>
-                         <Card>
+                         <Card >
                             <CardActionArea className={classes.inside} >
                                 <CardMedia
                                 className={classes.media}
@@ -113,7 +109,7 @@ function SimpleExpansionPanel(props) {
         </ExpansionPanelDetails>
 
       </ExpansionPanel>
-    </div>
+     </div>
   );
 }
 

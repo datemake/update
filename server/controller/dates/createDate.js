@@ -35,13 +35,13 @@ module.exports = {
     let food_id = foodID[0];
     let memory_id = memoryID[0];
     const db = req.app.get("db");
-    const { user_id, date_name, lat_lng, date_description } = req.body;
+    const { user_id, date_name, lat_lng, date_description, tags } = req.body;
     console.log(req.body);
     try{
       const user = await db.get_user(user_id)
       if(user.length){
         console.log(user)
-        const date = await db.create_date([food_id,activity_id,memory_id,user[0].user_id,date_name,lat_lng,date_description ])
+        const date = await db.create_date([food_id,activity_id,memory_id,user[0].user_id,date_name,lat_lng,date_description, tags ])
         if(date.length){
           const complete = await db.get_dates(user[0].user_id)
           res.status(200).json(complete)

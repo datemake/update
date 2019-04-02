@@ -1,21 +1,24 @@
 .profile-component{
   background-image: url("../../photos/amusementPark.jpg");
   background-size: cover;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   /* justify-content: space-between; */
-  align-items: center;
-
-  /* padding-right:10vw;
-  padding-left:10vw; */
+  align-items: center
 }
 
-
+#completed_date_card{
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 20px
+}
 .profile-saved-dates-card-content, .profile-saved-dates-card, .profile-completed-dates-card, .profile-completed-card-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-y: scroll
 }
 
 .profile-user-card{

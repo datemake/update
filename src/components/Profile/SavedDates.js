@@ -20,8 +20,8 @@ const styles = {
   card: {
     width: 1200,
     // height: 1000,
-    marginTop: 45
-    //   marginBottom: 65
+    marginTop: 45,
+    marginBottom: 65
   },
 
   title: {
