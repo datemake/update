@@ -1,68 +1,27 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# UpDate
 
-## Available Scripts
+UpDate is a fun online app to help people come up with creative date ideas.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+The site is made up of the following main pages:
+* a landing page (where users can register and log in) 
+* a search page (where users can search for dates by their location and by tags such as 'romantic', 'nature', 'silly')
+* a date page (where users can view the date they selected from the search results)
+* a reviews page (actually part of the date page; it contains reviews of the specific date)
+* a profile page (the user's profile which shows the dates they have made and the dates they have reviewed)
+* an extensive wizard form (where the user can create a date)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Dates
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Each date contains three parts: a main activity, a food experience, and a 'memory-maker' (which is the unique part of the date that sets it apart from other dates)
 
-### `npm test`
+Users can design dates to have a theme, such as a Japanese themed date that includes dinner at a Ramen Shop and a trip to a karaoke bar, or they can design the date to be connected to a more obvious idea such as 'romantic' or 'outdoors'.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technology
 
-### `npm run build`
+The site was made using React (including the new React hooks), Redux, Javascript, CSS, HTML, Node.js, and PostgreSQL. It also relies on the Google Places API to get data about places (including addresses and photos) and it uses Firebase for authentication and for image uploading/storage.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Domain
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+The website is hosted at https://up-date.love/.
