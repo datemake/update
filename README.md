@@ -12,7 +12,7 @@ The site is made up of the following main pages:
 * a profile page (the user's profile which shows the dates they have made and the dates they have reviewed)
 * an extensive wizard form (where the user can create a date)
 
-
+![Landing Page](https://github.com/datemake/update/blob/master/src/photos/screenshot-landing.png)
 
 
 ## Dates
