@@ -12,6 +12,9 @@ The site is made up of the following main pages:
 * a profile page (the user's profile which shows the dates they have made and the dates they have reviewed)
 * an extensive wizard form (where the user can create a date)
 
+
+
+
 ## Dates
 
 Each date contains three parts: a main activity, a food experience, and a 'memory-maker' (which is the unique part of the date that sets it apart from other dates)
